@@ -1,0 +1,204 @@
+﻿<style type="text/css">
+    .no-scroll {
+        overflow-y: hidden !important;
+    }
+</style>
+   <!-- ko compose:'templates/account.html'--><!-- /ko -->
+<article style="margin-top: 5px;" id="viewport1">
+    <div class="row">
+        <div>
+            <!--<div style="position: relative;">
+                <div style="position: absolute; z-index: 9">
+                    <span style="color: #00bfff; font-size: 3.0rem;"> Immediate access to quality care</span>
+                    We provides fast and convenient access to quality medical care
+                    24 hours a day, 7 days a week, 365 day a year throughout the United States.
+                </div>
+                <div class="card-image waves-effect waves-block waves-light"
+                     style="vertical-align: top;">
+                    <img class="activator"
+                         src="Content/images/banners/Header-Contact.jpg">
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; top: 0; overflow-y: auto; z-index: 19;">
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="Content/images/banners/family-doctor-fm.jpg"> <!-- random image -->
+                    <div class="caption right-align">
+                        <h4 class="blue-text">
+                            <br/>
+
+                            <br class="hide-on-med-and-up"/><br class="hide-on-med-and-up" />
+                            24/7 Nationwide Access
+                        </h4>
+                        <h5 class="light purple-text text-darken-3" style="font-weight: 700">to U.S. Board-Certified Physicians & Pediatricians.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="Content/images/banners/Banner-9-1.jpg" > <!-- random image -->
+                    <div class="caption left-align">
+                        <h4><br /><br/><span style="font-style: italic;"> America’s most</span><br /> reliable TeleHealth Network™</h4>
+                        
+                    </div>
+                </li>
+                <li>
+                    <img src="Content/images/banners/Banner-10-1.jpg"> <!-- random image -->
+                    <div class="caption left-align">
+                        
+                        
+                        <h3><img src="Content/images/banners/clock.png" style="max-width: 100px" /><br/>1-HOUR GUARUNTEE</h3>
+                        <h5 class="light grey-text text-lighten-3">Response Time with an average of less than 15 minutes</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="Content/images/banners/Banner-8.png"> <!-- random image -->
+                    <div class="caption left-align">
+                        <h3><br /><br  />Convenient care, anywhere</h3>
+                        <h5 class="light grey-text text-lighten-3">We provides fast and convenient access to quality medical care 24 hours a day, 7 days a week, 365 day a year throughout the United States. </h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <div class="card yellow darken-2">
+                    <div class="card-content white-text waves-effect waves-block waves-light"
+                         style="min-height: 150px;"
+                         data-bind="click:function(data,event){return $data.onclickHealthRecords(data,event);}">
+                        <span class="card-title">
+                            <i class="material-icons" style="font-size: 5rem;">loyalty</i><br />
+                            Health Records
+                        </span>
+                        <p>
+                            Keep your Health Records up to date!
+                        </p>
+                    </div>
+                    <div class="card-action white"
+                         style="text-align: center;">
+                        <a class="waves-effect waves-purple btn-flat blue-text"
+                           href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclickHealthRecords(data,event);}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4">
+                <div class="card  light-blue accent-3">
+                    <div class="card-content white-text waves-effect waves-block waves-light"
+                         style="min-height: 150px !important;"
+                         data-bind="click:function(data,event){return $data.openAddDependentDialog(data,event);}">
+                        <span class="card-title">
+                            <i class="material-icons" style="font-size: 5rem;">group_add</i><br />
+                            Family Member?
+                        </span>
+                        <p>
+                            Need to add a loved one?
+                        </p>
+                    </div>
+                    <div class="card-action white center-align"
+                         style="text-align: center;">
+                        <a class="waves-effect waves-purple btn-flat blue-text"
+                           data-bind="click:function(data,event){return $data.openAddDependentDialog(data,event);}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4">
+                <div class="card  purple darken-3">
+                    <div class="card-content white-text waves-effect waves-block waves-light"
+                         style="min-height: 150px !important;"
+                         data-bind="click:function(data,event){ $data.navigateClick(data,event, 2);}">
+                        <span class="card-title">
+                            <i class="material-icons" style="font-size: 5rem;">history</i><br />
+                            Consultation History
+                        </span>
+                        <p>
+                            Need to review your past consultations?
+                        </p>
+                    </div>
+                    <div class="card-action white ">
+                        <a class="waves-effect waves-purple btn-flat blue-text center-align"
+                           data-bind="click:function(data,event){ $data.navigateClick(data,event, 2);}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <!-- ko template :{name:'consult-center-phone-template'} --><!-- /ko -->
+            <!-- ko template: {name:'consult-center-econsult-template'}--><!-- /ko -->
+            <!-- ko template: {name:'consult-center-video-template'}--><!-- /ko -->
+        </div>
+    </div>
+</article>
+
+<script type="text/html" id="consult-center-phone-template">
+    <div class="col s12  m12 l4 ">
+        <div class="card green darken-1 fadeIn animated " id="item1">
+            <div class="card-content white-text waves-effect waves-block waves-light"
+                 data-bind="click: function (data, event) { return $data.onclick(data, event,1) }">
+                <span class=" badge cart-price white darken-1 blue-text"
+                      data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[0].MemberPrice">$39.99</span>
+                <div class="card-title" style="margin-bottom: 0 !important;">
+
+                    <i class="material-icons cart-icon" style="font-size: 4.0rem;">contact_phone</i>
+                    <br />      Phone Consultation
+
+                </div>
+                <p class="cart-text">
+                    For an in-depth, comprehensive consultation with a physician within guaranteed within 2 hour.<br /><br /><br />
+                </p>
+            </div>
+            <div class="card-action white center-align" style="padding-left:8px;">
+                <a href="javascript:void(0);" class="waves-effect waves-light btn blue darken-2 white-text"
+                   data-bind="click: function (data, event) { return $data.onclick( data, event,1) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="consult-center-video-template">
+    <div class="col s12 m12 l4 ">
+        <!--<div class="col  offset-s1 s10 offset-m1  m10">-->
+        <div class="card light-blue darken-4 fadeIn animated " id="item3">
+            <div class="card-content white-text waves-effect waves-block waves-light" data-bind="click: function (data, event) { return $data.onclick( data, event,3) }">
+                <span class=" badge cart-price white darken-1 blue-text" data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[2].MemberPrice">$49.99</span>
+                <div class="card-title" style="margin-bottom: 0 !important;">
+                    <i class="material-icons cart-icon blue-text" style="font-size: 4rem;">voice_chat</i>
+                    <br />
+                    Video Consultation
+                </div>
+                <p class="cart-text">
+                    Talk with a doctor via online video conference usually within 1 hour, guaranteed within 3 hours.<br /><br /><br />
+                </p>
+            </div>
+            <div class="card-action white center-align" style="padding-left:8px;text-align:center;">
+                <a href="javascript:void(0);" class="waves-effect waves-light btn blue darken-2 white-text"
+                   data-bind="click: function (data, event) { return $data.onclick(data, event,3) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="consult-center-econsult-template">
+    <div class="col s12 m12 l4 ">
+        <div class="card yellow darken-2 fadeIn animated " id="item2">
+            <div class="card-content white-text waves-effect waves-block waves-light" data-bind="click: function (data, event) { return $data.onclick( data, event,2) }">
+                <span class=" badge cart-price white darken-1 blue-text" data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[1].MemberPrice">$19.00</span>
+                <div class="card-title" style="margin-bottom: 0 !important;">
+                    <i class="material-icons cart-icon " style="font-size: 4rem;">speaker_notes</i><br />
+                    E-Consultation
+                </div>
+                <p class="cart-text">
+                    You can send a secure e-mail to our doctors and receive a response within as little as 2-4 hours but always guaranteed within 24 hours.<br /><br />
+                </p>
+            </div>
+            <div class="card-action white center-align" style="padding-left:8px;">
+                <a href="javascript:void(0);"
+                   class="waves-effect waves-light btn blue darken-2 white-text"
+                   data-bind="click: function (data, event) { return $data.onclick(data, event,2) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+

@@ -1,0 +1,207 @@
+﻿ .tabs .indicator {
+            background-color: #ff0000 !important;
+            height: 4px;
+        }
+        .dialog-logo {
+            max-height: 130px;
+            min-height: 100px;
+            margin-left: -20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+.tab_row {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+}
+.tab_row__account2, .tab_row__account, .tab_row__history {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+}
+.tab_row__account {
+    height: 500px;
+}
+.tab_row__history {
+    overflow: hidden !important;
+    bottom: 20px;
+}
+.tab_wrapper {
+    position: absolute; left: 0; top: -1px; right: 0px; z-index: 500
+}
+.tab_ul_myaccount__wrapper,
+ .tab_ul_clinical__wrapper,
+ .tab_ul_history__wrapper {
+    -webkit-box-shadow: 0 8px 4px rgba(0, 0, 0, 0.15), 0 4px 3px 1px rgba(0, 0, 0, 0.55);
+    -ms-box-shadow: 0 8px 4px rgba(0, 0, 0, 0.15), 0 4px 3px 1px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.15), 0 4px 3px 1px rgba(0, 0, 0, 0.55);
+     width: 105%; margin-left: 0; margin-right: 0; position: absolute; left: 0; right: -20px;
+}
+.tab_ul_history__wrapper {
+    width: 100%;
+    left: -10px;
+    right: -10px;
+}
+.tab_loader__wrapper {
+    position: absolute; top: 100px; left: 0; right: 0; text-align: center;
+}
+
+.tab_content__wrapper {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    overflow: hidden; 
+    top: 48px; 
+    padding-bottom: 0; 
+    z-index: 499;
+    text-align: left;
+}
+.tab_content_healthrecords__wrapper {
+    position: absolute; 
+    bottom: -20px; 
+    left: 0;
+    right: 11px;
+    overflow: hidden; 
+    top: 48px; 
+    padding-bottom: 0; 
+    z-index: 499;
+    text-align: left;
+}
+
+.table_input {
+    margin-bottom: 0 !important;
+    font-size: 1.5rem !important;
+}
+.tabs_container__history {
+    margin-top: 1px; 
+    overflow-y: hidden;
+    /*min-height: 620px;*/
+    position: absolute;
+   left: -10px;
+    right: -10px;
+    top: 0;
+    bottom: 0;
+
+}
+
+#viewHistoryWrapper {
+    
+}
+
+        .md-cw-phone {
+           color: #1976DF !important; 
+        }
+        .md-cw-email {
+            color: #4CAF50 !important;
+        }
+        .md-cw-video {
+            color: #01579B !important;
+        }
+
+        .SV1 {
+            background-color: #C5CAE9 !important;
+        }
+
+        .SV2 {
+            background-color: #4CAF50;
+        }
+        .SV3 {
+            background-color: #B3E5FC !important;
+        }
+
+       
+
+         /*.tabs .tab a {
+                font-size: .7rem!important;
+                font-weight: 700;
+            }*/
+        .subHeader__wrapper {
+            transition: all ease-out 300ms;
+        }
+
+          .modal.large {
+                max-width: 94vw!important;
+                max-height: 90%!important;
+               width: 94vw!important;
+                overflow-y: hidden!important;
+            }
+                .modal.modal-fixed-footer.large {
+                    top: 5%!important;
+                    height: 90vh!important;
+                }
+
+                 .modal.bottom-sheet.modal-fixed-footer.large {
+                    top: 10%!important;
+                    max-width: 100vw!important;
+                    width: 100vw!important;
+                }
+
+         @media only screen and (max-width: 550px){
+              .tabs .tab a {
+                font-size: .7rem!important;
+                font-weight: 500;
+            }
+            .tabs .tab a.history {
+                font-size: 1.0rem!important;
+                font-weight: 700;
+            }
+            .tabs_container__history {
+                left: 0;
+                right: 0;
+            }
+            .tab_content__wrapper {
+                right: 0 !important;
+            }
+            .content_account {
+                /*right:11px !important;*/
+            }
+            .content_account2 {
+                right:0!important
+            }
+            .grid_type__sm {
+                padding-left: 15px!important;
+            }
+
+            .modal {
+                max-width: 94vw!important;
+                max-height: 90%!important;
+               width: 94vw!important;
+                overflow-y: hidden!important;
+            }
+                .modal.modal-fixed-footer {
+                    top: 5%!important;
+                    height: 90vh!important;
+                }
+
+                 .modal.bottom-sheet.modal-fixed-footer {
+                    top: 10%!important;
+                    max-width: 100vw!important;
+                    width: 100vw!important;
+                }
+
+
+             .hr-right-side-button {
+                 margin-top: -16px !important;
+                 margin-right: 10px !important;
+             }
+
+        }
+         
+
+@media only screen and (max-width: 450px) {
+     .tabs .tab a {
+                font-size: .7rem!important;
+                font-weight: 500;
+            }
+
+}
+
+
+
+
+.consult_for__small {
+    padding: 0 !important;
+    padding-left: .75rem;
+}
+
+
+.clinical_loader__wrapper {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;
+}

@@ -1,0 +1,43 @@
+﻿<h1>Notes Component</h1>
+<p>The component contains the core elements to insert &amp; editing notes. What actualy gets implemented is a secondary template structure that wraps the component between splitters, to give the form style.</p>
+<p><em>Notes component has two templates for different states</em></p>
+<h2>Notes Component</h2>
+<pre><code>    &lt;template id=&quot;template_health_records_combination___splitter__notes__splitter&quot;&gt;
+        &lt;!-- ko template:{ name:'template_health_records__field___splitter'} --&gt;&lt;!-- /ko --&gt;          
+        &lt;!-- ko template:{ name:'template_health_records_note__add', data:$data}--&gt;&lt;!--/ko--&gt;    
+        &lt;!-- ko template:{ name:'template_health_records__field___splitter'} --&gt;&lt;!-- /ko --&gt;          
+    &lt;/template&gt;
+</code></pre>
+<h2>Notes / Active Record Component</h2>
+<pre><code>    &lt;template id=&quot;template_health_records_combination___notes___active&quot;&gt;
+        &lt;!-- ko template:{ name:'template_health_records__field___splitter'} --&gt;&lt;!-- /ko --&gt;          
+        &lt;!-- ko template:{ name:'template_health_records_note__edit', data:$data}--&gt;&lt;!--/ko--&gt;    
+        &lt;!-- ko template:{ name:'template_health_records__field___splitter'} --&gt;&lt;!-- /ko --&gt;          
+        &lt;!-- ko template:{ name:'template_health_records_active'}--&gt;&lt;!-- /ko --&gt;          
+     &lt;/template&gt;
+</code></pre>
+<h2>Html Template</h2>
+<pre><code>      &lt;template id=&quot;template_health_records_note__add&quot;&gt;
+        &lt;div class=&quot;field&quot; id=&quot;divAddNote&quot; style=&quot;margin-bottom: 10px;&quot;&gt;
+            &lt;a href=&quot;javascript:void(0);&quot;
+               class=&quot;btn btn-flat blue white-text&quot;
+               data-bind=&quot;click:function(data,event){ return $root.showNotes(data,event);}&quot;&gt;+ Add Note&lt;/a&gt;  
+        &lt;/div&gt;
+        &lt;div class=&quot;field fadeIn animated-200-delay m-hide&quot; id=&quot;divNote&quot; style=&quot;margin-top: 10px; position: relative;&quot;&gt;
+            &lt;label&gt;
+                Notes
+            &lt;/label&gt;
+            &lt;a href=&quot;javascript:void(0)&quot;
+               data-bind=&quot;click:function(data,event){ return $root.hideNotes(data,event);}&quot;
+               style=&quot;position: absolute; right: 10px; top: 55px;&quot;&gt;
+                &lt;i class=&quot;material-icons red-text &quot;&gt;
+                    delete
+                &lt;/i&gt;
+            &lt;/a&gt;
+            &lt;textarea data-bind=&quot;value:$data.Notes,valueUpdate:'keypress'&quot; style=&quot;height: 80px !important;&quot;&gt;&lt;/textarea&gt;  
+        &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;!-- For editing use template name: 'template_health_records_note__edit'--&gt;
+</code></pre>
+<p>To learn more about the markdown syntax, refer to these links:
+ - <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a></p>

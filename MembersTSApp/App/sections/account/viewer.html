@@ -1,0 +1,465 @@
+﻿<section id="domArticlePage" class="responsive_page__container">
+    <article class="responsive_page_article__top fadeIn animated">
+        <!-- ko template: {name:'template_myaccount__account'}--><!--/ko-->
+    </article>
+    <article class="responsive_page_article__bottom">
+        <div class="control_content__container fadeIn animated">
+            <div class="row tab_row__account">
+                <!-- ko template: { name: 'template_myaccount__tabs'}--><!-- /ko -->
+                <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+                <!-- ko template:{ name:'template_myaccount__sections'}--><!-- /ko -->
+            </div>
+        </div>
+    </article>
+</section>
+<!--==========================================================================-->
+<!--============[ ACCOUNT      ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__account">
+    <table class="table bordered striped z-depth-1" style="background: #fff">
+        <thead class=" red darken-1">
+            <tr>
+                <th class=" col m6 white-text" colspan="4" style="border-radius: 0; padding-left: 15px; font-size: 1.2rem;">Account Information</th>
+            </tr>
+        </thead>
+        <tbody class="hide-on-small-and-down">
+            <tr>
+                <td class="col m1 left-buffer" style="max-width: 150px !important;">Client</td>
+                <td class=" col  m5">
+                    &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.ClientInfo.Client.Name"></span>
+                </td>
+                <td class="col  m1 left-buffer  splitter-left">Account #</td>
+                <td class="col m5" style="max-width: 150px !important;">
+                    &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.AccountInfo.Account.AccountID"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-buffer">Group</td>
+                <td>
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text:$data.GroupInfo.GroupName"></span>
+                </td>
+                <td class="left-buffer splitter-left">Member #</td>
+                <td>
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text:$data.checkMemberNumber($data.AccountInfo.MemberNumber)"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-buffer">Status</td>
+                <td>
+                    &nbsp;
+                    <!-- ko if: $data.AccountInfo.Account.IsActive -->
+                    <i class="material-icons green-text darken-2" style="font-size: 1.2rem;">check_circle</i> Active
+                    <!-- /ko -->
+                    <!-- ko if: !$data.AccountInfo.Account.IsActive() -->
+                    <i class="material-icons yellow-text darken-2">remove_circle</i>
+                    <!-- /ko -->
+                </td>
+                <td class="left-buffer splitter-left">Membership</td>
+                <td>
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text: $data.Membership.MembershipLabel"></span>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="left-buffer">Activated Date</td>
+                <td style="width: 30%">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Activated"></span>
+                </td>
+                <td class="left-buffer splitter-left">Expiration Date</td>
+                <td style="width: 30%">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Expires"></span>
+                </td>
+
+            </tr>
+        </tbody>
+        <tbody class="show-on-small-and-down hide-on-med-and-up">
+            <tr>
+                <td class="col left-buffer s5 offset-s1" style="width: 150px !important">Account #</td>
+                <td class="col s5">
+                    &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.AccountInfo.Account.AccountID"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 m1 left-buffer offset-s1">Client</td>
+                <td class=" col s5 m5">
+                    &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.ClientInfo.Client.Name"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 left-buffer offset-s1">Group</td>
+                <td class="col s5">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text:$data.GroupInfo.GroupName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 offset-s1 left-buffer">Member #</td>
+                <td class="col s5 ">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text:$data.checkMemberNumber($data.AccountInfo.MemberNumber)"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 offset-s1 left-buffer">Status</td>
+                <td class="col s5 ">
+                    &nbsp;
+                    <!-- ko if: $data.AccountInfo.Account.IsActive -->
+                    <i class="material-icons green-text darken-2" style="font-size: 1.2rem;">check_circle</i> Active
+                    <!-- /ko -->
+                    <!-- ko if: !$data.AccountInfo.Account.IsActive() -->
+                    <i class="material-icons yellow-text darken-2">remove_circle</i>
+                    <!-- /ko -->
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 offset-s1 left-buffer ">Membership</td>
+                <td class="col s5">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="text: $data.Membership.MembershipLabel"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 offset-s1 left-buffer">Activated Date</td>
+                <td class="col s5 ">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Activated"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col s5 offset-s1 left-buffer">Expiration Date</td>
+                <td class="col s5 ">
+                    &nbsp;
+                    <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Expires"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+<!--==========================================================================-->
+<!--============[ TABS         ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__tabs">
+    <div class="tab_wrapper fadeInLeft animated">
+        <ul class="tabs blue darken-4 tab_ul_clinical__wrapper">
+            <li class="tab col s3">
+                <a href="#personInfo"
+                   data-bind="click:function(data,event){return $data.resetView(data,event,1);}"
+                   class=" waves-effect white-text active ext">General</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#contactInfo" data-bind="click:function(data,event){return $data.resetView(data,event,2);}"
+                   class="waves-effect white-text ext">Contact</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#addressInfo" data-bind="click:function(data,event){return $data.resetView(data,event,3);}"
+                   class="waves-effect white-text ext">Address(s)</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#billingInfo" data-bind="click:function(data,event){return $data.resetView(data,event,5);}"
+                   class="waves-effect white-text ext">Billing</a>
+            </li>
+        </ul>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__sections">
+    <div class=" tab_content__wrapper content_account white fadeIn animated-300 m-hide" id="viewAccountInfo">
+        <div id="personInfo" class="col s12">
+            <!-- ko if:$data.isDataLoaded() -->
+            <!-- ko template:{ name:'template_myaccount__general'} --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko template: {name:'template_myaccount__buttons'}--><!-- /ko -->
+        </div>
+        <div id="contactInfo" class="col s12">
+
+            <!-- ko if: $data.isDataLoaded() -->
+            <!-- ko template:{ name:'template_myaccount__contact'} --><!--/ko -->
+            <!-- /ko-->
+            <!-- ko template: {name:'template_myaccount__buttons'}--><!-- /ko -->
+        </div>
+        <div id="addressInfo" class="col s12">
+
+
+            <!-- ko if:$data.isDataLoaded() -->
+            <!-- ko template: { name: 'template_myaccount__address'}--> <!--/ko-->
+            <!-- /ko -->
+            <!-- ko template: {name:'template_myaccount__buttons'}--><!-- /ko -->
+
+        </div>
+        <div id="billingInfo" class="col s12">
+
+            <!-- ko if:$data.isDataLoaded() -->
+            <!-- ko template:{name:'template_myaccount__billing'}--> <!--/ko-->
+            <!-- /ko -->
+            <!-- ko template: {name:'template_myaccount__buttons'}--><!-- /ko -->
+        </div>
+
+    </div>
+
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ GENERAL INFO ]==============================================-->
+<!--==========================================================================-->
+
+<script type="text/html" id="template_myaccount__general">
+    <div class="row fadeInRight animated-500-delay">
+        <!-- ko template:{ name:'template_myaccount__general1'}--><!-- /ko -->
+        <!-- ko template: { name:'template_myaccount__general2'}--><!-- /ko -->
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__general1">
+    <br />
+    <br />
+    <div class="col s10 offset-s1 col-s-push-1 m5 offset-m1">
+        <label style="font-weight: 700">Name</label>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="First Name" data-bind="textInput:$data.PersonInfo.FName" class="table_input validate" required /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Middle Name" data-bind="textInput:$data.PersonInfo.MName" class="table_input" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Last Name" data-bind="textInput:$data.PersonInfo.LName" class="table_input validate" value="" required /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__general2">
+    <div class="col s10 offset-s1 col-s-push-1 m5 col-m-push-1">
+        <label style="font-weight: 700">Date Of Birth</label>
+        <table class="table" style="">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <input type="date" data-bind="date:$data.PersonInfo.Dob, dateFormat: 'MMMM Do YYYY'" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight: 700">Gender</label>
+                        <!--<span data-bind="text:ko.toJSON($data.optionList.selectedValue)"></span>-->
+                    </td>
+                    <td>
+                        <!-- ko foreach:$data.optionList.items -->
+                        <input class="with-gap" name="radioGender" type="radio" style="margin-left: 5px;"
+                               data-bind="checkedValue:$data,attr:{ id:$data.id}, checked: $root.optionList.selectedValue" />
+                        <label data-bind="attr:{for:$data.id}, text:$data.label"></label>&nbsp;&nbsp;
+                        <!-- /ko-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ CONTACT      ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__contact">
+    <!-- ko template: { name: 'template_myaccount__contact1' } --> <!-- /ko -->
+    <!-- ko template: { name: 'template_myaccount__contact2' } --> <!-- /ko -->
+</script>
+<script type="text/html" id="template_myaccount__contact1">
+    <div class="row fadeInLeft animated-500-delay">
+        <br /><br />
+        <div class="col s10 offset-s1 m5 offset-m1">
+            <label style="font-weight: 700">Mobile</label>
+            <table class="table" style="">
+                <tbody>
+                    <tr>
+
+                        <td style="width: 70%;">
+
+                            <input type="tel" id="inputMobile"
+                                   placeholder="Mobile"
+                                   data-bind="value:$data.ctxContact.Mobile.PhoneNumber" class="table_input validate" required />
+                        </td>
+                        <td>
+                            <input list="phoneType1" id="inputPhoneType1" class="table_input"
+                                   value="Mobile" disabled="disabled" type="text" />
+                            <datalist id="phoneType1"><option value="Mobile"></option></datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70%;">
+                            <input type="tel" placeholder="Home" id="inputHome"
+                                   data-bind="value:$data.ctxContact.Home.PhoneNumber" class="table_input validate" />
+                        </td>
+                        <td>
+                            <input list="phoneType2"
+                                   id="inputPhoneType2" class="table_input"
+                                   value="Home" disabled="disabled" type="text" />
+                            <datalist id="phoneType2"><option value="Home"></option></datalist>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col s10 offset-s1 col-s-push-1 m5 col-m-push-1">
+            <label style="font-weight: 700" class="hide-on-small-only">Work Phone</label>
+            <table class="table" style="">
+                <tbody>
+                    <tr>
+                        <td style="width: 70%;">
+                            <input type="tel" placeholder="Work" id="inputWork" class="table_input validate"
+                                   data-bind="value:$data.ctxContact.Work.PhoneNumber" />
+                        </td>
+                        <td>
+                            <input list="phoneType3" id="inputPhoneType3" class="table_input" value="Work"
+                                   disabled="disabled" type="text" />
+                            <datalist id="phoneType3"><option value="Work"></option></datalist>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__contact2">
+    <div class="row fadeInLeft animated-500-delay">
+        <div class="col s10 offset-s1 col-s-push-1 m5  offset-m1 col-m-push-1">
+            <label style="font-weight: 700">Email</label>
+            <table class="table" style="">
+                <tbody>
+                    <tr>
+                        <td style="width: 70%;">
+                            <input type="email" placeholder="Personal" data-bind="value:$data.ctxContact.Email.Email" class="table_input validate" required />
+                        </td>
+                        <td>
+                            <input list="emailType1" id="inputEmailType1" class="table_input"
+                                   value="Personal" disabled="disabled" type="text" />
+                            <datalist id="emailType1"><option value="Personal"></option></datalist>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br class="show-on-small" />
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ CONTACT ]===================================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ ADDRESS      ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__address">
+    <div class="row fadeInRight animated-500-delay">
+        <br /><br />
+        <div class="col s10 offset-s1 col-s-push-1 m10 offset-m1 col-m-push-1">
+            <label style="font-weight: 700">Address</label>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td style="font-size: 1.5rem !important">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Home</option>
+                                <option value="2">Other</option>
+                                <option value="3">Billing</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Street Number/Name" value="" class="table_input validate" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="APT/STE Number" value="" class="table_input" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="City" class="table_input validate" value="" required /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" placeholder="State"
+                                                   value="" class="table_input validate" required />
+                                        </td>
+                                        <td>
+                                            <input type="text" placeholder="Zip Code" class="table_input validate" value="" required />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ ADDRESS      ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ BILLING ]===================================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__billing">
+    <div class="row fadeInLeft animated-500-delay">
+        <br /><br />
+        <div class="col s10 offset-s1 col-s-push-1 m5 offset-m1">
+            <label style="font-weight: 700">Credit Card</label>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Name on Card" value="" class="table_input validate" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Credit Card Number" value="" class="table_input" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Exp Date" class="table_input validate" value="" required /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ BILLING ]===================================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ BUTTON ]====================================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__buttons">
+    <div class="row" id="button">
+        <div class=" col s10 offset-s1 col-s-push-1 m10 offset-m1 col-m-push-1"
+             style="text-align: right; border-top: solid 5px #265BAA; margin-bottom: 50px;">
+            <br />
+            <a href="javascript:void(0);"
+               class="waves-effect waves-light btn-large grey  white-text fadeUpIn animated-500-delay pull-left">
+                Cancel
+            </a>
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $data.onClickUpdate(data,event);}"
+               class="waves-effect waves-light btn-large green  white-text fadeUpIn animated-500-delay">
+                Update
+            </a>
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ BUTTON ]====================================================-->
+<!--==========================================================================-->

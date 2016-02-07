@@ -1,0 +1,62 @@
+﻿<div class="blue darken-4 white-text fadeInRight animated-500-delay" style="margin-top: 1px; padding: 8px;">
+    Plan of Care
+</div>
+<article class="fadeInLeft animated-500-delay">
+    <header class="sub-heading grey darken-1" style="margin-top: 1px;">Patient Referred</header>
+    <div class="planofcare-text">
+        <span data-bind="text:$data.PatientReferredTo"></span>
+    </div>
+</article>
+<article class="fadeInRight animated-500-delay">
+    <header class="sub-heading grey darken-1">Treatment Plan(s)</header>
+    <div class="planofcare-text" data-bind="template: { name: 'template-treatmentplan-item',foreach: $data.ListOfTreatmentPlanOptions }"></div>
+</article>
+<article class="fadeInLeft animated-500-delay">
+    <header class="sub-heading grey darken-1">Patient Education</header>
+    <div class="planofcare-text" data-bind="template: { name: 'template-treatmentplan-item',foreach: $data.ListOfPatientEducationOptions }"></div>
+</article>
+<article class="fadeInRight animated-500-delay">
+    <header class="sub-heading grey darken-1">Follow up Instructions</header>
+    <div class="planofcare-text">
+        <span data-bind="text:$data.PatientInstructedToFollowUpInHours"></span>
+    </div>
+</article>
+<article class="fadeInLeft animated-500-delay">
+    <header class="sub-heading grey darken-1">Follow up Disclaimer</header>
+    <div>
+        <table class="table bordered">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <i class="fa fa-check-circle"></i>
+                    </td>
+                    <td>
+                        <span>Patient instructed to inform Primary Care Physician about outcomes of this consultation.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <i class="fa fa-check-circle"></i>
+                    </td>
+                    <td>
+                        <span>Patient instructed that if signs and/or symptoms worsen, seek immediate medical attention.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</article>
+<!--<article class="fadeInRight animated-500-delay">
+    <header class="sub-heading grey darken-1">Notes</header>
+    <div data-bind="text: $data.Notes">NA.</div>
+</article>-->
+
+<script type="text/html" id="template-treatmentplan-item">
+    <span data-bind="text:$data"></span>
+</script>

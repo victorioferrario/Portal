@@ -1,0 +1,205 @@
+﻿
+<div class="blue darken-3"
+     style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;z-index:5555"
+     data-bind="visible:$data.isLoading">
+    <!-- ko template:{ name:'loaderHealthRecordItem'}--><!--/ko-->
+</div>
+<div style="position: relative;" class="fadeIn animated-200">
+    <div class="row red darken-2 white-text" style="padding: 10px; text-align: left !important;">
+        <h5 data-bind="text:$data.title">
+            Add Condition
+        </h5>
+    </div>
+    <div class="row" data-bind="visible:$data.isInsert()">
+        <form>
+            <div id="formView_Search" data-bind="visible:$data.isSearch()">
+                <div class="field" style="position: relative;">
+                    <span class="fadeIn animated-500-delay" style="position: absolute; right: 5px; top: 6px;"
+                          data-bind="visible:$data.hasAddButtonsToSearch">
+                        <a href="javascript:void(0);" data-bind="click:function(data,event){
+                           return $data.searchAdd(data,event, selectedItem);}"
+                           class="btn btn-flat green darken-1 white-text">Add</a>
+                    </span>
+                    <input type="search"
+                           name="condition-name" placeholder="Enter Condition"
+                           required
+                           data-bind="textInput: selectedItemValue,
+                           autoComplete: {selected: selectedItem},
+                           hasFocus: isInputFocused, event: { 
+                                focus:function(data,event){return $root.searchOnFocus(data,event);},
+                                blur:function(data,event){return $root.searchOnBlur(data,event);}
+                           }"
+                           id="SearchText" style="margin: auto"/>
+                    <!-- ko template:{name:'template_loader__autocomplete'}--><!-- /ko-->
+                </div>
+                <table class="striped fadeIn animated-300"
+                       data-bind="visible:$data.hasDoneButtonsToSearch">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:$data.vmList">
+                        <tr>
+                            <td style="width: 100%;">
+                                <span style="display: block; margin-left: 8px"
+                                      data-bind="text:$data.MedicalConditionText"></span>
+                            </td>
+                            <td style="width: 70px;">
+                                <a href="javascript:void(0);" title="Add Details"
+                                   data-bind="click:function(data,event){return $parent.addDetailToTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text tooltipped"
+                                   data-position="left" data-delay="50" data-tooltip="Add Details">
+                                    <!--<i class="material-icons">playlist_add</i>--> Details
+                                </a>
+                            </td>
+                            <td style="width: 50px;">
+                                <a href="javascript:void(0);"
+                                   data-bind="click:function(data,event){return $parent.removeTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text">
+                                    <i class="material-icons red-text ">
+                                        delete
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="formView_Insert__Detail"
+                 data-bind="visible:!$data.isSearch()"
+                 class="fadeIn animated-300" style="text-align: left !important">
+                <!-- ko template:{name:'template_condition__detail' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+    <div class="row" data-bind="visible:$data.isEdit()">
+        <form>
+            <div id="formView_Edit__Detail"
+                 class="fadeIn animated-300" style="text-align: left !important">
+                <!-- ko template:{name:'template_condition__edit' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/html" id="template_condition__detail">
+    <div class="field">
+        <input type="text" name="medicalcondition-name-disabled" disabled="disabled" data-bind="value:$data.MedicalConditionText"/>
+    </div>
+    <div class="fadeInUp animated-100-delay">
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <table style="padding: 0 !important; margin-bottom: 0; width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="padding: 0 !important">
+                        <div class="field">
+                            <label>Date Started</label>
+                            <input type="text" name="date-started" id="inputInsertDateStart" placeholder="Date Started"
+                                   data-bind="date:$data.D_Start, dateFormat: 'L',valueUpdate:'keypress'" />
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td style="padding: 0 !important">
+                        <div class="field" style="padding-left: 0 !important;">
+                            <label>Date Ended</label>
+                            <input type="text" name="date-ended" id="inputInsertDateEnd" placeholder="Date Ended"
+                                   data-bind="date:$data.D_End, dateFormat: 'L',valueUpdate:'keypress'" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding: 0 !important;">
+                        <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+                        <div class="field">
+                            <label>Status</label>
+                            <select data-bind=" options:$root.dataModel.conditionStatus.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.MedicalConditionStatus,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'">
+                                <option value="">Choose...</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="field" data-bind="visible:$data.IsPast">
+            <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+            <label>How did it end?</label>
+            <input type="text" name="medicalcondition-how-did-it-end"
+                   data-bind="value:$data.HowItEnded" />
+        </div>
+        <!-- ko template:{ name:'template_health_records_combination___splitter__notes__splitter'} --><!-- /ko -->
+    </div>
+</script>
+<script type="text/html" id="template_condition__edit">
+    <div class="field">
+        <input type="text" name="medicalcondition2-name-disabled" disabled="disabled"
+               data-bind="value:$data.MedicalConditionText" />
+    </div>
+    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+    <table style="padding: 0 !important; margin-bottom: 0; width: 100%;">
+        <tbody>
+            <tr class="hide-on-small-and-down show-on-med-and-up">
+                <td style="padding: 0 !important">
+                    <div class="field">
+                        <label>Date Started</label>
+                        <input type="text" name="date-started" id="inputDateStart" placeholder="Date Started"
+                               data-bind="date:$data.D_Start, dateFormat: 'L',valueUpdate:'keypress'" />
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+                <td style="padding: 0 !important">
+                    <div class="field" style="padding-left: 0 !important;">
+                        <label>Date Ended</label>
+                        <input type="text" name="date-ended" id="inputDateEnd" placeholder="Date Ended"
+                               data-bind="date:$data.D_End, dateFormat: 'L',valueUpdate:'keypress'" />
+                    </div>
+                </td>
+            </tr>
+            <tr class="show-on-small-and-down hide-on-med-and-up">
+                <td colspan="3" style="padding: 0 !important">
+                    <div class="field">
+                        <label>Date Started</label>
+                        <input type="date" name="date-started" placeholder="Date Started"
+                               data-bind="date:$data.D_Start,valueUpdate:'keypress'" />
+                    </div>
+                </td>
+            </tr>
+            <tr class="show-on-small-and-down hide-on-med-and-up">
+                <td colspan="3" style="padding: 0 !important">
+                    <div class="field" style="padding-left: 0 !important;">
+                        <label>Date Ended</label>
+                        <input type="date" name="date-started" placeholder="Date Ended"
+                               data-bind="date:$data.D_End,valueUpdate:'keypress'" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="padding: 0 !important;">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                    <div class="field">
+                        <label>Status</label>
+                        <select data-bind=" options:$root.dataModel.conditionStatus.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.MedicalConditionStatus,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'">
+                            <option value="">Choose...</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="field" data-bind="visible:$data.IsPast">
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <label>How did it end?</label>
+        <input type="text" name="medicalcondition-how-did-it-end"
+               data-bind="value:$data.HowItEnded"/>
+    </div>
+    <!-- ko template:{ name: 'template_health_records_combination___notes___active'}--><!-- /ko -->
+</script>

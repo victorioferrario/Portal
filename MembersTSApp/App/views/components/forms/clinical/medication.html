@@ -1,0 +1,105 @@
+﻿<!-- if: $data.IsLoading() -->
+    <!-- ko template:{name:"template_clinical_form__loader"}-->
+<!-- /ko-->
+<div style="position: relative;" class="fadeIn animated-200" data-bind="visible:!$data.isLoading()">
+    <div class="container">
+        <div class="row blue darken-1 white-text" style="padding: 8px; padding-left: 25px !important;" data-bind="text:$data.title"></div>
+    </div>
+    <div class="container" style="min-height: 750px;">
+        <!-- ko if: $data.hasData() -->
+        <div class="row" data-bind="visible:$data.isInsert()">
+            <div class="col s12 m12">
+                <label style="font-weight: 500">Medication</label>
+                <div style="position: relative;">
+                    <div class="icon-search fadeInLeft animated" data-bind="visible:$data.isSearchActive">
+                        <i class="fa fa-cog fa-spin green-text"></i>
+                    </div>
+                    <input data-bind="textInput: selectedItemValue,
+                                   autoComplete: {selected: selectedItem}"
+                           id="SearchText" type="text" style="margin: auto"/>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-bind="visible:!$data.isInsert()">
+            <div class="col s12 m12">
+                <label style="font-weight: 500">Medication</label>
+                <input type="text" data-bind="textInput:$data.vm.MedicationName" disabled="disabled"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m3">
+                <label style="font-weight: 500" for="inputMedicationStrength2">Strength</label>
+                <input type="text" class="form-control"
+                       id="inputMedicationStrength2" placeholder="ex:500 mg"
+                       data-bind="textInput:$data.vm.MedicationStrength" required/>
+            </div>
+            <div class=" col s12 m9" style="padding-top: 2px">
+                <label style="font-weight: 500">Units</label>
+                <select style="text-transform: capitalize !important;" data-bind="
+                    options:$data.dataModel.medicationStrengthList.options.availableOptions,
+                    optionsText:'Label' ,
+                    optionsValue:'Value' ,
+                    value: $data.vm.MedicationStrengthUnitID,
+                    optionsCaption: 'Choose...'"
+                        required></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col s12 m3">
+                <label style="font-weight: 500">Dosage</label>
+                <input type="text" class="form-control"
+                       id="inputMedicationStrength" placeholder="ex:500 mg"
+                       data-bind="textInput:$data.vm.MedicationDosage" required/>
+            </div>
+            <div class="col s12 m9" style="padding-top: 2px">
+                <label style="font-weight: 500">Method</label>
+                <select style="text-transform: capitalize !important;" data-bind="
+                options:$data.dataModel.medicationDoseList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.MedicationDosageUnitID,
+                optionsCaption: 'Choose...'"
+                        required></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m3">
+                <label style="font-weight: 500">How often taken?</label>
+                <input type="text" data-bind="textInput:$data.vm.HowOftenTaken"/>
+            </div>
+            <div class="col s12 m9">
+                <label style="font-weight: 500">How is medication taken?</label>
+                <select style="text-transform: capitalize !important;" data-bind="
+                options:$data.dataModel.medicationRoutesList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.HowTakenID,
+                optionsCaption: 'Choose...'"
+                        required></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 m6">
+                <label style="font-weight: 500">Start Date</label>
+                <input type="text" data-bind="textInput:$data.vm.D_Start"/>
+            </div>
+            <div class="col s6 m6">
+                <label style="font-weight: 500">End Date</label>
+                <input type="text" data-bind="textInput:$data.vm.D_End"/>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -30px !important;">
+            <div class="col s12 m12">
+                <input type="checkbox" id="test5" class="filled-in" data-bind="checked:!$data.vm.IsHidden()"/>
+                <label for="test5">Yes, This medication is visible on my medical record.</label>
+            </div>
+        </div>
+        <div class="row m-hide">
+            <div class="col s12  m12">
+                <label> Notes</label>
+                <textarea class="materialize-textarea" data-bind="text:$data.vm.Notes"></textarea>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

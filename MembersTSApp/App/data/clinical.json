@@ -1,0 +1,778 @@
+﻿{
+  "Allergens": [
+    {
+      "AllergenID": 1,
+      "AllergenText": "Animal"
+    },
+    {
+      "AllergenID": 2,
+      "AllergenText": "Environmental"
+    },
+    {
+      "AllergenID": 3,
+      "AllergenText": "Food"
+    },
+    {
+      "AllergenID": 4,
+      "AllergenText": "Medication"
+    },
+    {
+      "AllergenID": 5,
+      "AllergenText": "Plant"
+    }
+  ],
+  "Reactions": [
+    {
+      "ReactionID": 1,
+      "ReactionText": "abdominal pain               "
+    },
+    {
+      "ReactionID": 2,
+      "ReactionText": "abdominal swelling           "
+    },
+    {
+      "ReactionID": 3,
+      "ReactionText": "abnormal blood clotting      "
+    },
+    {
+      "ReactionID": 4,
+      "ReactionText": "abnormal reflexes            "
+    },
+    {
+      "ReactionID": 5,
+      "ReactionText": "abnormal thirst              "
+    },
+    {
+      "ReactionID": 6,
+      "ReactionText": "blood infection              "
+    },
+    {
+      "ReactionID": 7,
+      "ReactionText": "chest pain                   "
+    },
+    {
+      "ReactionID": 8,
+      "ReactionText": "constipation                 "
+    },
+    {
+      "ReactionID": 9,
+      "ReactionText": "cough                        "
+    },
+    {
+      "ReactionID": 10,
+      "ReactionText": "coughing up blood            "
+    },
+    {
+      "ReactionID": 11,
+      "ReactionText": "diarrhea                     "
+    },
+    {
+      "ReactionID": 12,
+      "ReactionText": "dizziness                    "
+    },
+    {
+      "ReactionID": 13,
+      "ReactionText": "easy bruising                "
+    },
+    {
+      "ReactionID": 14,
+      "ReactionText": "elevated liver enzymes       "
+    },
+    {
+      "ReactionID": 15,
+      "ReactionText": "enlarged glands              "
+    },
+    {
+      "ReactionID": 16,
+      "ReactionText": "excessive crying of infant   "
+    },
+    {
+      "ReactionID": 17,
+      "ReactionText": "excessive sleeping           "
+    },
+    {
+      "ReactionID": 18,
+      "ReactionText": "facial weakness              "
+    },
+    {
+      "ReactionID": 19,
+      "ReactionText": "fainting                     "
+    },
+    {
+      "ReactionID": 20,
+      "ReactionText": "fast breathing               "
+    },
+    {
+      "ReactionID": 21,
+      "ReactionText": "fast heart rate              "
+    },
+    {
+      "ReactionID": 22,
+      "ReactionText": "fatigue                      "
+    },
+    {
+      "ReactionID": 23,
+      "ReactionText": "fever                        "
+    },
+    {
+      "ReactionID": 24,
+      "ReactionText": "flushing                     "
+    },
+    {
+      "ReactionID": 25,
+      "ReactionText": "frequent urination           "
+    },
+    {
+      "ReactionID": 26,
+      "ReactionText": "gas                          "
+    },
+    {
+      "ReactionID": 27,
+      "ReactionText": "green or yellow phlegm       "
+    },
+    {
+      "ReactionID": 28,
+      "ReactionText": "growth problem               "
+    },
+    {
+      "ReactionID": 29,
+      "ReactionText": "hallucinations               "
+    },
+    {
+      "ReactionID": 30,
+      "ReactionText": "headache                     "
+    },
+    {
+      "ReactionID": 31,
+      "ReactionText": "hearing changes              "
+    },
+    {
+      "ReactionID": 32,
+      "ReactionText": "heart murmur                 "
+    },
+    {
+      "ReactionID": 33,
+      "ReactionText": "heart palpitations           "
+    },
+    {
+      "ReactionID": 34,
+      "ReactionText": "heartburn                    "
+    },
+    {
+      "ReactionID": 35,
+      "ReactionText": "hiccough                     "
+    },
+    {
+      "ReactionID": 36,
+      "ReactionText": "high blood pressure          "
+    },
+    {
+      "ReactionID": 37,
+      "ReactionText": "hyperventilation             "
+    },
+    {
+      "ReactionID": 38,
+      "ReactionText": "insomnia                     "
+    },
+    {
+      "ReactionID": 39,
+      "ReactionText": "jaundice or yellow skin      "
+    },
+    {
+      "ReactionID": 40,
+      "ReactionText": "lack of coordination         "
+    },
+    {
+      "ReactionID": 41,
+      "ReactionText": "leakage of stool             "
+    },
+    {
+      "ReactionID": 42,
+      "ReactionText": "leakage of urine             "
+    },
+    {
+      "ReactionID": 43,
+      "ReactionText": "loss of appetite             "
+    },
+    {
+      "ReactionID": 44,
+      "ReactionText": "low blood count              "
+    },
+    {
+      "ReactionID": 45,
+      "ReactionText": "low blood pressure           "
+    },
+    {
+      "ReactionID": 46,
+      "ReactionText": "memory loss                  "
+    },
+    {
+      "ReactionID": 47,
+      "ReactionText": "muscle aches                 "
+    },
+    {
+      "ReactionID": 48,
+      "ReactionText": "nausea and vomiting          "
+    },
+    {
+      "ReactionID": 49,
+      "ReactionText": "nausea only                  "
+    },
+    {
+      "ReactionID": 50,
+      "ReactionText": "noisy breathing              "
+    },
+    {
+      "ReactionID": 51,
+      "ReactionText": "nosebleed                    "
+    },
+    {
+      "ReactionID": 52,
+      "ReactionText": "numbness or tingling         "
+    },
+    {
+      "ReactionID": 53,
+      "ReactionText": "painful breathing            "
+    },
+    {
+      "ReactionID": 54,
+      "ReactionText": "painful urination            "
+    },
+    {
+      "ReactionID": 55,
+      "ReactionText": "paleness                     "
+    },
+    {
+      "ReactionID": 56,
+      "ReactionText": "paralysis                    "
+    },
+    {
+      "ReactionID": 57,
+      "ReactionText": "problem walking              "
+    },
+    {
+      "ReactionID": 58,
+      "ReactionText": "rash                         "
+    },
+    {
+      "ReactionID": 59,
+      "ReactionText": "reduced urination            "
+    },
+    {
+      "ReactionID": 60,
+      "ReactionText": "retention of urine           "
+    },
+    {
+      "ReactionID": 61,
+      "ReactionText": "seizures                     "
+    },
+    {
+      "ReactionID": 62,
+      "ReactionText": "shock                        "
+    },
+    {
+      "ReactionID": 63,
+      "ReactionText": "shortness of breath          "
+    },
+    {
+      "ReactionID": 64,
+      "ReactionText": "smell or taste disturbance   "
+    },
+    {
+      "ReactionID": 65,
+      "ReactionText": "speech problem               "
+    },
+    {
+      "ReactionID": 66,
+      "ReactionText": "stiff neck                   "
+    },
+    {
+      "ReactionID": 67,
+      "ReactionText": "swallowing problem           "
+    },
+    {
+      "ReactionID": 68,
+      "ReactionText": "sweating                     "
+    },
+    {
+      "ReactionID": 69,
+      "ReactionText": "swelling                     "
+    },
+    {
+      "ReactionID": 70,
+      "ReactionText": "throat pain                  "
+    },
+    {
+      "ReactionID": 71,
+      "ReactionText": "twitching                    "
+    },
+    {
+      "ReactionID": 72,
+      "ReactionText": "unconsciousness              "
+    },
+    {
+      "ReactionID": 73,
+      "ReactionText": "visual changes               "
+    },
+    {
+      "ReactionID": 74,
+      "ReactionText": "voice problem                "
+    },
+    {
+      "ReactionID": 75,
+      "ReactionText": "vomiting only                "
+    },
+    {
+      "ReactionID": 76,
+      "ReactionText": "weakness                     "
+    },
+    {
+      "ReactionID": 77,
+      "ReactionText": "weight gain                  "
+    },
+    {
+      "ReactionID": 78,
+      "ReactionText": "weight loss                  "
+    },
+    {
+      "ReactionID": 79,
+      "ReactionText": "wheezing                     "
+    }
+  ],
+  "MedicationRoutes": [
+    {
+      "ID": 1,
+      "Label": "By injection                       "
+    },
+    {
+      "ID": 2,
+      "Label": "By mouth                           "
+    },
+    {
+      "ID": 3,
+      "Label": "In the ear                         "
+    },
+    {
+      "ID": 4,
+      "Label": "In the eye                         "
+    },
+    {
+      "ID": 5,
+      "Label": "In the nose (spray/drops)          "
+    },
+    {
+      "ID": 6,
+      "Label": "Inhaled                            "
+    },
+    {
+      "ID": 7,
+      "Label": "Rectal                             "
+    },
+    {
+      "ID": 8,
+      "Label": "Through a feeding tube             "
+    },
+    {
+      "ID": 9,
+      "Label": "Through an intravenous (IV) line   "
+    },
+    {
+      "ID": 10,
+      "Label": "Through the skin                   "
+    },
+    {
+      "ID": 11,
+      "Label": "Under the tongue                   "
+    },
+    {
+      "ID": 12,
+      "Label": "Vaginal                            "
+    }
+  ],
+  "MedicationDose": [
+    {
+      "ID": 1,
+      "Label": "Applicatorfuls    "
+    },
+    {
+      "ID": 2,
+      "Label": "Bags              "
+    },
+    {
+      "ID": 3,
+      "Label": "Bars              "
+    },
+    {
+      "ID": 4,
+      "Label": "Capsules          "
+    },
+    {
+      "ID": 5,
+      "Label": "Doses             "
+    },
+    {
+      "ID": 6,
+      "Label": "Dropperfuls       "
+    },
+    {
+      "ID": 7,
+      "Label": "Drops             "
+    },
+    {
+      "ID": 8,
+      "Label": "Grams (g)         "
+    },
+    {
+      "ID": 9,
+      "Label": "Inhalations       "
+    },
+    {
+      "ID": 10,
+      "Label": "Lozenges          "
+    },
+    {
+      "ID": 11,
+      "Label": "Micrograms (mcg)  "
+    },
+    {
+      "ID": 12,
+      "Label": "Milligrams (mg)   "
+    },
+    {
+      "ID": 13,
+      "Label": "Milliliters (ml)  "
+    },
+    {
+      "ID": 14,
+      "Label": "Packets           "
+    },
+    {
+      "ID": 15,
+      "Label": "Pads              "
+    },
+    {
+      "ID": 16,
+      "Label": "Patches           "
+    },
+    {
+      "ID": 17,
+      "Label": "Percent (%)       "
+    },
+    {
+      "ID": 18,
+      "Label": "Puffs             "
+    },
+    {
+      "ID": 19,
+      "Label": "Scoops            "
+    },
+    {
+      "ID": 20,
+      "Label": "Shots             "
+    },
+    {
+      "ID": 21,
+      "Label": "Sprays            "
+    },
+    {
+      "ID": 22,
+      "Label": "Suppositories     "
+    },
+    {
+      "ID": 23,
+      "Label": "Syringe           "
+    },
+    {
+      "ID": 24,
+      "Label": "Tablespoons (tbsp)"
+    },
+    {
+      "ID": 25,
+      "Label": "Tablets           "
+    },
+    {
+      "ID": 26,
+      "Label": "Teaspoons (tsp)   "
+    },
+    {
+      "ID": 27,
+      "Label": "Units (U)         "
+    }
+  ],
+  "MedicationStrength": [
+    {
+      "ID": 1,
+      "Label": "Colony forming units per milliliter (cfu/ml)   "
+    },
+    {
+      "ID": 2,
+      "Label": "International unit (iu)                        "
+    },
+    {
+      "ID": 3,
+      "Label": "Micrograms (mcg)                               "
+    },
+    {
+      "ID": 4,
+      "Label": "Milliequivalent (meq)                          "
+    },
+    {
+      "ID": 5,
+      "Label": "Milliequivalent per milliliter (meq/ml)        "
+    },
+    {
+      "ID": 6,
+      "Label": "Milligram (mg)                                 "
+    },
+    {
+      "ID": 7,
+      "Label": "Milligram per milliliter (mg/ml)               "
+    },
+    {
+      "ID": 8,
+      "Label": "Milliliter (ml)                                "
+    },
+    {
+      "ID": 9,
+      "Label": "Percent (%)                                    "
+    },
+    {
+      "ID": 10,
+      "Label": "Unit (unt)                                    "
+    },
+    {
+      "ID": 11,
+      "Label": "Units per milliliter (unt/ml)                 "
+    }
+  ],
+  "FamilyHistoryCondition": [
+    {
+      "ID": 1,
+      "Label": "Allergies              "
+    },
+    {
+      "ID": 2,
+      "Label": "Alzheimer's Disease    "
+    },
+    {
+      "ID": 3,
+      "Label": "Anxiety                "
+    },
+    {
+      "ID": 4,
+      "Label": "Arthritis              "
+    },
+    {
+      "ID": 5,
+      "Label": "Asthma                 "
+    },
+    {
+      "ID": 6,
+      "Label": "Blood Disorder         "
+    },
+    {
+      "ID": 7,
+      "Label": "Cancer                 "
+    },
+    {
+      "ID": 8,
+      "Label": "Depression             "
+    },
+    {
+      "ID": 9,
+      "Label": "Diabetes               "
+    },
+    {
+      "ID": 10,
+      "Label": "Epilepsy               "
+    },
+    {
+      "ID": 11,
+      "Label": "Eye Condition          "
+    },
+    {
+      "ID": 12,
+      "Label": "Heart Disease          "
+    },
+    {
+      "ID": 13,
+      "Label": "High Blood Pressure    "
+    },
+    {
+      "ID": 14,
+      "Label": "Kidney Disease         "
+    },
+    {
+      "ID": 15,
+      "Label": "Lung Disease           "
+    },
+    {
+      "ID": 16,
+      "Label": "Osteoporosis           "
+    },
+    {
+      "ID": 17,
+      "Label": "Psychiatric Disorder   "
+    },
+    {
+      "ID": 18,
+      "Label": "Smoking                "
+    },
+    {
+      "ID": 19,
+      "Label": "Stroke                 "
+    },
+    {
+      "ID": 20,
+      "Label": "Substance Abuse        "
+    },
+    {
+      "ID": 21,
+      "Label": "Suicide                "
+    },
+    {
+      "ID": 22,
+      "Label": "Tuberculosis           "
+    },
+    {
+      "ID": 23,
+      "Label": "Ulcer                  "
+    }
+  ],
+  "FamilyRelationship": [
+    {
+      "ID": 1,
+      "Label": "Aunt                          "
+    },
+    {
+      "ID": 2,
+      "Label": "Aunt (maternal)               "
+    },
+    {
+      "ID": 3,
+      "Label": "Aunt (paternal)               "
+    },
+    {
+      "ID": 4,
+      "Label": "Brother                      "
+    },
+    {
+      "ID": 5,
+      "Label": "Cousin                       "
+    },
+    {
+      "ID": 6,
+      "Label": "Cousin (first)               "
+    },
+    {
+      "ID": 7,
+      "Label": "Cousin (second)              "
+    },
+    {
+      "ID": 8,
+      "Label": "Daughter                     "
+    },
+    {
+      "ID": 9,
+      "Label": "Father                       "
+    },
+    {
+      "ID": 10,
+      "Label": "Friend                       "
+    },
+    {
+      "ID": 11,
+      "Label": "Granddaughter                "
+    },
+    {
+      "ID": 12,
+      "Label": "Grandfather                  "
+    },
+    {
+      "ID": 13,
+      "Label": "Grandfather (maternal)       "
+    },
+    {
+      "ID": 14,
+      "Label": "Grandfather (paternal)       "
+    },
+    {
+      "ID": 15,
+      "Label": "Grandmother                  "
+    },
+    {
+      "ID": 16,
+      "Label": "Grandmother (maternal)       "
+    },
+    {
+      "ID": 17,
+      "Label": "Grandmother (paternal)       "
+    },
+    {
+      "ID": 18,
+      "Label": "Grandson                     "
+    },
+    {
+      "ID": 19,
+      "Label": "Guardian                     "
+    },
+    {
+      "ID": 20,
+      "Label": "Mother                       "
+    },
+    {
+      "ID": 21,
+      "Label": "Nephew                       "
+    },
+    {
+      "ID": 22,
+      "Label": "Niece                        "
+    },
+    {
+      "ID": 23,
+      "Label": "Other relative               "
+    },
+    {
+      "ID": 24,
+      "Label": "Sister                       "
+    },
+    {
+      "ID": 25,
+      "Label": "Son                          "
+    },
+    {
+      "ID": 26,
+      "Label": "Spouse                       "
+    },
+    {
+      "ID": 27,
+      "Label": "Uncle                         "
+    },
+    {
+      "ID": 28,
+      "Label": "Uncle (maternal)              "
+    },
+    {
+      "ID": 29,
+      "Label": "Uncle (paternal)              "
+    }
+  ],
+  "ConditionStatus": [
+    {
+      "ID": 0,
+      "Label": "Unknown"
+    },
+    {
+      "ID": 1,
+      "Label": "Current"
+    },
+    {
+      "ID": 2,
+      "Label": "Intermittent"
+    },
+    {
+      "ID": 3,
+      "Label": "Past"
+    }
+  ]
+}

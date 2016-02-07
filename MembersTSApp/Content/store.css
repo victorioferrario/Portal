@@ -1,0 +1,89 @@
+﻿/*.app_content { overflow: hidden !important; }
+        .app_content-wrapper {
+            overflow: hidden !important;
+        }*/
+
+        .image_preview__container {
+            margin: auto !important;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 6666666666;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.78) !important;
+            padding-top: 5%;
+        }
+
+        .image_large__class {
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            -ms-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        /*.page_ext {
+            background: #fff;
+            max-width: 1250px !important;
+            margin: auto;
+            top: 0 !important;
+        }
+        .app_content {
+            top: 0 !important;
+        }*/
+        .app_header__sub {
+            background-color: #1976f3;
+            /*background: rgba(16, 108, 200, 1) !important;*/
+            position: absolute;
+            left: 0;
+            top: 2px;
+            right: -20px;
+            height: 45px;
+            z-index: 4;
+        }
+        .app_store {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+
+        }
+        .app_store__header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 45px;
+            right: 0;
+            z-index: 2;
+        }
+        .app_store__content {
+            position: absolute;
+            left: 0;
+            top:46px;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            border-top: solid 1px #FFFFFF;
+            overflow-y: auto;
+        }
+        .collection {
+            border-radius: 0 !important;
+        }
+        .cart_other__wrapper {
+            height: 0;
+            overflow: hidden;
+            transition: height 200ms ease-out;
+            background: #ffffff;
+            border-bottom: solid 1px #ccc
+        }
+        .cart_other__wrapper.open {
+            height: 150px;
+            border-left: solid rgba(38, 91, 170, 1) 54px;
+            border-bottom: solid 2px rgba(38, 91, 170, 1);
+            border-top: solid 2px rgba(38, 91, 170, 1);
+            padding: 15px;
+            margin-bottom: 1px
+        }

@@ -1,0 +1,743 @@
+﻿<style type="text/css">
+    .left-buffer {
+        padding-left: 15px !important;
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    .splitter-left {
+        border-left: solid 1px #ccc;
+    }
+
+    label {
+        font-size: 1.1rem !important;
+        color: #062B4F;
+        -ms-text-rendering: optimizeLegibility !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    .label_accountInfo__value {
+        font-weight: 300;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 550px) {
+        .left-buffer {
+            padding-left: 25px !important;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .splitter-left {
+            border-left: solid 1px #ccc;
+        }
+
+        .label_accountInfo__value {
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+    }
+
+    @media only screen and (max-width: 550px) {
+        .tabs .tab a.ext {
+            font-size: .8rem !important;
+            font-weight: 700;
+        }
+    }
+
+    input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+        box-shadow: 0 0 0 0 rgb(16, 108, 200) !important;
+    }
+</style>
+<link href="Content/formreset.css" rel="stylesheet" />
+<section class="container-fluid  fadeInUp animated-500"
+         style="margin-top: 1px; overflow-y: hidden;">
+    <article style="position: relative;"
+             id="wrapperItem">
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; top: 0;"
+             id="bottomPANEL">
+            <div class="row tab_row__account">
+                <!-- ko template: { name: 'template_myaccount__tabs'}--><!-- /ko -->
+                <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+                <!-- ko template:{ name:'template_myaccount__sections'}--><!-- /ko -->
+            </div>
+            <!-- ko template: {name:'template_myaccount__buttons'}--><!-- /ko -->
+            <!-- ko template: {name:'template_myaccount__buttons__contactInfo'}--><!-- /ko -->
+        </div>
+    </article>
+</section>
+<script type="text/html" id="template_tab__loader">
+    <div class="tab_loader__wrapper">
+        <div class="preloader-wrapper big active" id="spinnerTemplateID">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ TABS         ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__tabs">
+    <div class="tab_wrapper fadeInLeft animated">
+        <ul class="tabs blue darken-4 tab_ul_clinical__wrapper">
+            <li class="tab col s3">
+                <a href="#personInfo"
+                   data-bind="click:function(data,event){return $data.resetView(data,event,1);}"
+                   class=" waves-effect white-text active ext">General</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#contactInfo" data-bind="click:function(data,event){return $data.resetView(data,event,2);}"
+                   class="waves-effect white-text ext">Contact</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#addressInfo" data-bind="click:function(data,event){return $data.resetView(data,event,3);}"
+                   class="waves-effect white-text ext">Address(s)</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#billingInfo" data-bind="click:function(data,event){return $data.resetView(data,event,5);}"
+                   class="waves-effect white-text ext">Billing</a>
+            </li>
+        </ul>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html"
+        id="template_myaccount__sections">
+    <div class=" tab_content__wrapper content_account fadeIn animated-300 m-hide"
+         id="viewAccountInfo">
+        <div id="personInfo"
+             class="col s12 white fadeInUp animated-500-delay"
+             style="position: absolute; top: 0; left: 0; right: -10px; bottom: 80px; overflow-y: auto; overflow-x: hidden;">
+            <!-- ko if:$data.isDataLoaded() -->
+            <!-- ko template:{ name:'template_myaccount__general'} --><!-- /ko -->
+            <!-- /ko -->
+            <div data-bind="visible:$data.isLoadingGeneralInfo"
+                 style="background-color: rgb(12, 34, 56); z-index: 5; position: absolute; top: 0; bottom: 0; right: 0; left: 0; padding-right: 18px; padding-top: 12px;"
+                 class="right-align">
+                <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+            </div>
+        </div>
+        <div id="contactInfo"
+             class="col s12 white fadeInUp animated-500-delay"
+             style="position: absolute; top: 0; left: 0; right: 0; bottom: 80px; overflow-y: auto; overflow-x: hidden;">
+            <!-- ko if: $data.isDataLoaded() -->
+            <!-- ko template:{ name:'template_myaccount__contact'} --><!--/ko -->
+            <div data-bind="visible:$data.isDataLoading"
+                 style="background-color: rgb(12, 34, 56); z-index: 5; position: absolute; top: 0; bottom: 0; right: 0; left: 0; padding-right: 18px; padding-top: 12px;"
+                 class="right-align">
+                <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+            </div>
+            <!-- /ko-->
+        </div>
+        <div id="addressInfo"
+             class="col s12 fadeInUp animated-500-delay"
+             style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; overflow-x: hidden; background-color: #0c2238;">
+            <!-- ko if:$data.isDataLoaded() -->
+            <!-- ko template: { name: 'template_myaccount__address'}--> <!--/ko-->
+            <!-- /ko -->
+        </div>
+        <div id="billingInfo"
+             class="col s12 fadeInUp animated-500-delay"
+             style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; overflow-x: hidden; background-color: rgb(12, 34, 56);">
+            <div class="row"
+                 style="background-color: rgb(12, 34, 56);">
+                <!--<div class="col s10 offset-s1 col-s-push-1 m10 offset-m1 col-m-push-1 ">-->
+                <div class="col s12 m12 ">
+                    <style>
+                        select:invalid, select:focus:invalid {
+                            border: 3px solid #ff0000 !important;
+                            outline: none;
+                            background: #f8e5df;
+                        }
+
+                        select:valid, select:focus:valid {
+                            margin-top: -2px;
+                            border: 3px solid #32cd32 !important;
+                            outline: none;
+                        }
+
+                        .collapsible > li > .collapsible-header {
+                            background-color: #0d47a1;
+                            color: #cccccc;
+                        }
+
+                        .collapsible > li.active > .collapsible-header {
+                            background-color: #ff0000;
+                            color: #fff;
+                        }
+                    </style>
+                    <br class="hide-on-small-and-down"/>
+                    <!-- ko if:$data.isDataLoaded() -->
+                    <ul class="collapsible"
+                        data-collapsible="accordion">
+                        <!-- ko foreach: $data.ctxCreditCardList, afterRender : $data.myPostProcessingLogic -->
+                        <li>
+                            <div class="collapsible-header"
+                                 data-bind="click:function(data,event){ return $root.doReset(data,event);}">
+                                <i data-bind="css:$root.getCreditCartType($data)"></i><span data-bind="text:$data.Last4"></span>
+                            </div>
+                            <div class="collapsible-body"
+                                 style="padding: 10px; position: relative; background-color: #ffffff;">
+                                <!-- ko template:{ name:'template_myaccount__billing', data:$data,afterRender: function(data,event){ return $root.myPostProcessingLogic(data,event,$data)} } --><!-- /ko -->
+                            </div>
+                        </li>
+                        <!-- /ko -->
+                    </ul>
+                    <a href="javascript:void(0);"
+                       class="waves-effect waves-lights btn-flat red darken-2  pull-right white-text"
+                       data-bind="click:function(data,event){return $data.addNewCardCommand(data,event);}">Add New Card</a>
+                    
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ GENERAL INFO ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__general">
+    <div class="row fadeIn animated-200-delay">
+        <!-- ko template:{ name:'template_myaccount__general1'}--><!-- /ko -->
+        <!-- ko template: { name:'template_myaccount__general2'}--><!-- /ko -->
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__general1">
+    <br />
+    <div class="col s12 m6 " style="padding-top: 0 !important;">
+        <label style="font-weight: 700; margin-bottom: 5px;">Name</label><br /><br />
+        <form class="isValidate">
+            <div class="field">
+                <input type="text" name="first-name" placeholder="First Name" required data-bind="textInput:$data.PersonInfo.FName" />
+            </div>
+            <div class="field">
+                <input type="text" name="middle-name" placeholder="Middle Name" data-bind="textInput:$data.PersonInfo.MName">
+            </div>
+            <div class="field">
+                <input type="text" name="last-name" placeholder="Last Name" required data-bind="textInput:$data.PersonInfo.LName" />
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/html"
+        id="template_myaccount__general2">
+    <div class="col s12 m6">
+        <label style="font-weight: 700">Date Of Birth</label>       
+        <table class="table"
+               style="">
+            <tbody>
+            <tr>
+                <td colspan="2">
+                    <input type="text" id="inputDOB"
+                           data-bind="date: $data.PersonInfo.Dob, dateFormat: 'L',valueUpdate:'keypress'"
+                           style="margin-bottom: 0 !important;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight: 700">Gender</label>
+                    </td>
+                    <td>
+                        <!-- ko foreach:$data.optionList.items -->
+                        <input class="with-gap" name="radioGender" type="radio" style="margin-left: 5px;"
+                               data-bind="checkedValue:$data,attr:{ id:$data.id}, checked: $root.optionList.selectedValue" />
+                        <label data-bind="attr:{for:$data.id}, text:$data.label"></label>&nbsp;&nbsp;
+                        <!-- /ko-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<!--==========================================================================-->
+<!--============[ MYACCOUNT    ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ CONTACT      ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__contact">
+    <div id="divContactInfoWrapper">
+        <!-- ko template: { name: 'template_myaccount__contact1' } --> <!-- /ko -->
+        <!-- ko template: { name: 'template_myaccount__contact2' } --> <!-- /ko -->
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__contact1">
+    <div class="row white" style="margin-bottom:0">
+        <br />
+        <div class="col s12  m6">
+            <label style="font-weight: 700">Mobile</label>
+            <table class="table" style="">
+                <tbody>
+                    <tr>
+                        <td style="width: 65%;">
+
+                            <input type="tel" id="inputMobile"
+                                   placeholder="Mobile"
+                                   data-bind="value:$data.ctxContact.Mobile.PhoneNumber"
+                                   class="table_input validate" required style="margin-bottom: 0 !important;" />
+                        </td>
+                        <td>
+                            <input list="phoneType1" id="inputPhoneType1" class="table_input"
+                                   value="Mobile" disabled="disabled" type="text" />
+                            <datalist id="phoneType1"><option value="Mobile"></option></datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 65%;">
+                            <input type="tel" placeholder="Home" id="inputHome"
+                                   data-bind="value:$data.ctxContact.Home.PhoneNumber" class="table_input validate" />
+                        </td>
+                        <td>
+                            <input list="phoneType2"
+                                   id="inputPhoneType2" class="table_input"
+                                   value="Home" disabled="disabled" type="text" />
+                            <datalist id="phoneType2"><option value="Home"></option></datalist>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col s12 m6 ">
+            <label style="font-weight: 700" class="hide-on-small-only">Work Phone</label>
+            <table class="table" style="">
+                <tbody>
+                    <tr>
+                        <td style="width: 65%;">
+                            <input type="tel" placeholder="Work" id="inputWork" class="table_input validate"
+                                   data-bind="value:$data.ctxContact.Work.PhoneNumber" />
+                        </td>
+                        <td>
+                            <input list="phoneType3" id="inputPhoneType3" class="table_input" value="Work"
+                                   disabled="disabled" type="text" />
+                            <datalist id="phoneType3"><option value="Work"></option></datalist>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__contact2">
+    <div class="row white"
+         style="position: relative; margin-top: 0;">
+        <div class="col s12 m6">
+            <label style="font-weight: 700">Email</label>
+            <table class="table"
+                   style="">
+                <tbody>
+                <tr>
+                    <td style="width: 65%;">
+                        <input type="email"
+                               placeholder="Personal"
+                               data-bind="value:$data.ctxContact.Email.Email"
+                               class="table_input validate"
+                               required/>
+                    </td>
+                    <td>
+                        <input list="emailType1"
+                               id="inputEmailType1"
+                               class="table_input"
+                               value="Personal"
+                               disabled="disabled"
+                               type="text"/>
+                        <datalist id="emailType1"><option value="Personal"></option></datalist>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br class="show-on-small"/>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br />
+</script>
+<!--==========================================================================-->
+<!--============[ CONTACT      ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[  ADDRESS      ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__address">
+    <style>
+        select:invalid, select:focus:invalid {
+            border: 3px solid #ff0000 !important;
+            outline: none;
+            background: #f8e5df;
+        }
+
+        select:valid, select:focus:valid {
+            margin-top: -2px;
+            border: 3px solid #32cd32 !important;
+            outline: none;
+        }
+
+        .collapsible > li > .collapsible-header {
+            background-color: #0d47a1;
+            color: #cccccc;
+        }
+
+        .collapsible > li.active > .collapsible-header {
+            background-color: #ff0000;
+            color: #fff;
+        }
+    </style>
+    <div class="row" style="background-color: rgb(12, 34, 56);">
+        <div class="col s12 m12 ">
+            <br class="hide-on-small-and-down" />
+            <ul class="collapsible"
+                data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">home</i>Home
+                    </div>
+                    <div class="collapsible-body"
+                         style="padding: 10px; position: relative; background-color: #ffffff">
+                        <!-- ko template:{ name:'template_address__form', data:$data.ctxAddressList()[0]} --><!-- /ko -->
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">account_balance</i>Billing
+                    </div>
+                    <div class="collapsible-body"
+                         style="padding: 10px; position: relative; background-color: #ffffff">
+                        <!-- ko template:{ name:'template_address__form', data:$data.ctxAddressList()[1]} --><!-- /ko -->
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">store_mall_directory</i>Work
+                    </div>
+                    <div class="collapsible-body"
+                         style="padding: 10px; position: relative; background-color: #ffffff">
+                        <!-- ko template:{ name:'template_address__form', data:$data.ctxAddressList()[2]} --><!-- /ko -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template_address__form">
+    <form class="isValidate">
+        <div class="field">
+            <input type="text" name="Address1"
+                   placeholder="Address1" required
+                   data-bind="textInput:$data.AddressLine1" />
+        </div>
+        <div class="field">
+            <input type="text" name="Address2" placeholder="Address 2"
+                   data-bind="textInput:$data.AddressLine2">
+        </div>
+        <div class="field">
+            <input type="text" name="City" placeholder="City" required
+                   data-bind="textInput:$data.City" />
+        </div>
+        <table class="table" cellspacing="0" cellpadding="0" style="margin-left: 1px;">
+            <tbody>
+                <tr>
+                    <td style="padding-left: 0 !important; padding-top: 2px !important;">
+                        <select id="ddlThemedAddressState"
+                                required style="height: 3.2rem;"
+                                class="form-control form-control-ext"
+                                data-bind="value: $data.State">
+                            <option></option>
+                            <optgroup label="U.S. States">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </optgroup>
+                            <optgroup label="US Outlying Territories">
+                                <option value="AS">American Samoa</option>
+                                <option value="GU">Guam</option>
+                                <option value="MP">Northern Mariana Islands</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="VI">Virgin Islands</option>
+                            </optgroup>
+                            <optgroup label="Armed Forces">
+                                <option value="AA">Armed Forces Americas</option>
+                                <option value="AP">Armed Forces Pacific</option>
+                                <option value="AE">Armed Forces Others</option>
+                            </optgroup>
+                        </select>
+
+                    </td>
+                    <td>
+                        <div class="field">
+                            <input type="number" name="ZipCode" pattern="\d{5}" style="height: 2.0rem;"
+                                   placeholder="ZipCode" required maxlength="5" size="5" max="99999"
+                                   data-bind="textInput:$data.ZipCode" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div data-bind="visible:$data.isLoading" style="background-color: rgb(12, 34, 56); z-index:5 ; position: absolute; top: 0; bottom: 0; right: 0; left: 0; padding-right: 18px; padding-top: 12px;" class="right-align">
+            <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+        </div>
+        <div style="background-color: rgb(12, 34, 56); z-index: 4; position: absolute; bottom: 0; right: 0; left: 0; height: 65px; padding-right: 18px; padding-top: 12px;" class="right-align">
+            <div style="position: absolute; left: 15px; top:3px; color: #fff">
+                <table class="fadeInRight animated-200-delay" data-bind="visible:$data.isError">
+                    <tbody>
+                        <tr>
+                            <td style="padding-top: 18px;"><i class="material-icons yellow-text darken-2">notifications</i></td>
+                            <td> Please fill in required fields, outlined in <span style="color: #ff0000;font-weight:500">RED</span>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $parent.onAddressUpdate(data,event,$data)}, text:$data.ButtonLabel "
+               class="waves-effect waves-lights btn-flat blue darken-2 white-text right-align">Save</a>
+        </div>
+    </form>
+</script>
+<!--==========================================================================-->
+<!--============[ ADDRESS      ]==============================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ BILLING ]===================================================-->
+<!--==========================================================================-->
+
+<script type="text/html" id="template_myaccount__billing">
+    <form class="row">
+        <div class="col s12 m12" data-bind="css:$root.hasValidateCreditCard">
+            <table style="padding: 0 !important; margin: 0 !important;">
+                <tbody>
+                    <tr>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <input type="checkbox" class="filled-in" id="filled-in-IsActive" data-bind="checked:$data.IsActive, attr:{ id: $root.getInputIDForIsActive($data) }" />
+                                <label for="filled-in-IsActive" data-bind="checked:$data.IsDefault, attr:{ for: $root.getInputIDForIsActive($data) }">Is Active</label>
+                            </div>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <input type="checkbox" class="filled-in" id="filled-in-IsDefault" checked="checked"
+                                       data-bind="checked:$data.IsDefault, attr:{ id: $root.getInputIDForIsDefault($data) }" />
+                                <label for="filled-in-IsDefault" data-bind="checked:$data.IsDefault, attr:{ for: $root.getInputIDForIsDefault($data) }">Is Default</label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="field">
+                <input type="text" name="NameOnCard"
+                       placeholder="Name on Card" required
+                       data-bind="textInput:$data.NameOnCard " />
+            </div>
+
+            <div class="field">
+                <p class="log" style="position: absolute; top: 10px; right: 100px;"></p>
+                <input type="text"
+                       placeholder="Credit Card Number" required
+                       data-bind="textInput:$data.CCNumber,attr:{ id: $root.getInputID($data) }" />
+            </div>
+            <table style="padding: 0 !important; margin: 0 !important;">
+                <tbody>
+                    <tr>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <select id="ddlExpMonth"
+                                        required style="height: 3.2rem;"
+                                        class="form-control form-control-ext"
+                                        data-bind="value: $data.ExpMonth">
+                                    <option></option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <select id="ddlYear"
+                                        required style="height: 3.2rem;"
+                                        class="form-control form-control-ext"
+                                        data-bind="value: $data.ExpYear">
+                                    <option></option>
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <select id="ddlCCType"
+                                        required style="height: 3.2rem;"
+                                        class="form-control form-control-ext"
+                                        data-bind="value: $data.CCType">
+                                    <option></option>
+                                    <option value="1">Visa</option>
+                                    <option value="2">Master Card</option>
+                                    <option value="3">American Express</option>
+                                    <option value="4">Discover</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <input type="tel" name="CCV"
+                                       placeholder="CCV" required style="width: 100px;"
+                                       data-bind="textInput:$data.CVVCode" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+         
+            <br /><br />
+        </div>
+        <div style="background-color: rgb(12, 34, 56); z-index: 4; position: absolute; bottom: 0; right: 0; left: 0; height: 65px; padding-right: 18px; padding-top: 12px;" class="right-align">
+            <div style="position: absolute; left: 15px; top:3px; color: #fff">
+                <table class="fadeInRight animated-200-delay" data-bind="visible:$root.IsError">
+                    <tbody>
+                        <tr>
+                            <td style="padding-top: 18px;"><i class="material-icons yellow-text darken-2">notifications</i></td>
+                            <td> Please fill in required fields, outlined in <span style="color: #ff0000;font-weight:500">RED</span>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $root.onCreditCardUpdate(data,event,$data)}, text:$data.ButtonLabel "
+               class="waves-effect waves-lights btn-flat blue darken-2 white-text right-align">Save</a>
+        </div>
+    </form>
+</script>
+<!--==========================================================================-->
+<!--============[ BILLING ]===================================================-->
+<!--==========================================================================-->
+<!--==========================================================================-->
+<!--============[ BUTTON ]====================================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__buttons">
+    <div class="row "
+         id="button"
+         style="position: absolute; bottom: 0; z-index: 999999; left: 0; right: 0; border-top: solid 5px #265BAA; margin-bottom: 0 !important; background: rgb(12, 34, 56);">
+        <div class=" col s12  m12"
+             style="text-align: right; margin-bottom: 20px;padding-right: 15px;">
+            <br />
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $data.onClickUpdate(data,event);}"
+               class="waves-effect waves-lights btn-flat blue darken-2 white-text right-align fadeIn animated">
+                Update
+            </a>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__buttons__contactInfo">
+    <div class="row "
+         id="button2"
+         style="position: absolute; bottom: 0; z-index: 999999; left: 0; right: 0; border-top: solid 5px #265BAA; margin-bottom: 0 !important; background: rgb(12, 34, 56);">
+        <div style="position: absolute; left: 15px; top:8px; color: #fff">
+            <table class="fadeInRight animated-200-delay" data-bind="visible:$root.IsError">
+                <tbody>
+                    <tr>
+                        <td style="padding-top: 18px;"><i class="material-icons yellow-text darken-2">notifications</i></td>
+                        <td> Please fill in required fields, outlined in <span style="color: #ff0000;font-weight:500">RED</span>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" col s12 m12"
+             style="text-align: right; margin-bottom: 20px; padding-right: 15px;">
+            <br />
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $root.onUpdateContact(data,event,$data)}"
+               class="waves-effect waves-lights btn-flat blue darken-2 white-text right-align fadeIn animated">Update</a>
+        </div>
+    </div>
+</script>
+
+<!--==========================================================================-->
+<!--============[ BUTTON ]====================================================-->
+<!--==========================================================================-->

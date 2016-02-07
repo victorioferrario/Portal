@@ -1,0 +1,50 @@
+﻿<!--==========================================================================-->
+<!--============[ TABS         ]==============================================-->
+<!--==========================================================================-->
+<section class="container tabs_container__history fadeInUp animated-500" style="overflow-y: hidden !important;">
+    <div class="row tab_row__history" style="overflow-y: hidden !important; border-bottom: solid 0 #ff0000">
+        <!-- ko template:{ name: 'template_history__tabs'}-->
+        <!-- /ko -->
+        <!-- ko template:{ name:'template_tab__loader'} -->
+        <!-- /ko -->
+        <!-- ko template:{ name:'template_history__sections'}-->
+        <!-- /ko -->
+    </div>
+</section>
+<!--==========================================================================-->
+<!--============[ TABS         ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_history__tabs">
+    <div class="tab_wrapper fadeInLeft animated">
+        <ul class="tabs blue darken-4 tab_ul_history__wrapper">
+            <li class="tab col s3 active">
+                <a href="#pending" data-bind="click:function(data,event){return $data.resetView(data,event,2);}"
+                   class="waves-effect white-text active ext history">Pending Orders</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#complete"
+                   data-bind="click:function(data,event){return $data.resetView(data,event,1);}"
+                   class="waves-effect white-text  ext history">Completed Consults</a>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="text/html" id="template_history__sections">
+    <div class=" tab_content__wrapper  fadeIn animated-300 m-hide" id="viewHistoryWrapper">
+        <div id="pending" class="col s12" style="width: 100%; background: #ffffff;">
+            <!-- ko template:{ name:'template_history__pending'} --> <!--/ko -->
+            <!-- ko if: $data.isDataLoaded() --> <!-- /ko-->
+        </div>
+        <div id="complete" class="col s12" style="width: 100%; background: #ffffff;">
+            <!-- ko template:{ name:'template_history__completed' } --><!-- /ko -->
+            <!-- ko if:$data.isDataLoaded() --> <!-- /ko -->
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template_history__completed">
+        <section data-bind="compose:$data.pageViewControl_Completed "></section>
+</script>
+<script type="text/html" id="template_history__pending">
+    <section data-bind="compose:$data.pageViewControl_Pending "></section>
+</script>
+

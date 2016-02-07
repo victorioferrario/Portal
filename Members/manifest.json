@@ -1,0 +1,41 @@
+﻿{
+  "version": "1.0.0",
+  "name": "1800MD.com: Member Dashboard",
+  "launch_path": "https://wwww.1888md.com/Members/default.aspx",
+  "description": "A Member dashboard to order consultations, and update medical records.",
+  "icons": [
+    {
+      "src": "Content/images/touch/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "Content/images/touch/ms-touch-icon-144x144-precomposed.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "Content/images/touch/chrome-touch-icon-196x196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/Default.aspx",
+  "display": "standalone",
+  "developer": {
+    "name": "Victorio Manuel Ferrario & Andrei Morozov",
+    "url": "http://www.lincoln-group.com"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "1800MD.com: Member Dashboard",
+      "description": "A Member dashboard that gives members modern mobile web apps."
+    }
+  }
+}

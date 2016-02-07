@@ -1,0 +1,304 @@
+﻿<article id="viewport3" style="position: absolute; left: 0; right: -10px; bottom: 0; top: 0;">
+    <style>
+        .tabs .tab a {
+        }
+
+            .tabs .tab a.active {
+                background: rgba(1, 87, 155, .2) !important;
+            }
+
+        td.health_record__label {
+            font-size: 1.5rem;
+            padding-left: 10px;
+            -webkit-transition: all 200ms ease-in-out;
+            -moz-transition: all 200ms ease-in-out;
+            -ms-transition: all 200ms ease-in-out;
+            -o-transition: all 200ms ease-in-out;
+            transition: all 200ms ease-in-out;
+        }
+
+        @media (max-width: 600px) {
+            td.health_record__label {
+                font-size: 1.4rem;
+                padding-left: 10px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            td.health_record__label {
+                font-size: 1.2rem;
+                padding-left: 10px;
+            }
+        }
+
+        .th_col__first {
+            border-radius: 0;
+            padding-left: 15px;
+            font-size: 1.2rem;
+        }
+
+        .th_col__second {
+            border-radius: 0;
+            padding-left: 15px;
+        }
+
+        .col_edit {
+            width: 120px;
+        }
+
+        .td_item__label {
+            -ms-border-radius: 2px;
+            border-radius: 2px;
+            font-size: 1.0rem;
+            font-weight: 500;
+            display: inline-block;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .td_item__value {
+            font-size: 1.0rem !important;
+            text-transform: capitalize;
+        }
+    </style>
+    <div style="position: absolute; bottom: 20px; right: 55px; z-index: 998999">
+        <a class="btn-floating btn-large waves-effect waves-light red" title="Add New Item"
+           data-bind="click:function(data,event){ return $data.onAddClick(data,event)}"><i class="material-icons">add</i></a>
+    </div>
+    <div class="row blue darken-4" style="position: absolute; left: 0; right: -10px; bottom: 0; height: 55px;">
+        &nbsp;
+    </div>
+    <div class="row tab_row">
+        <div class="tab_wrapper fadeInLeft animated">
+            <ul class="tabs blue darken-4 tab_ul_clinical__wrapper">
+                <li class="tab col s3">
+                    <a href="#allergies"
+                       data-bind="click:function(data,event){return $data.resetView(data,event,1);}" class=" waves-effect waves-lights white-text active">Allergies</a>
+                </li>
+                <li class="tab col s3"><a href="#conditions" data-bind="click:function(data,event){return $data.resetView(data,event,2);}" class="waves-effect white-text">Conditions</a></li>
+                <li class="tab col s3"><a href="#familyhistory" data-bind="click:function(data,event){return $data.resetView(data,event,3);}" class="waves-effect white-text">Family History</a></li>
+                <li class="tab col s3"><a href="#medications" data-bind="click:function(data,event){return $data.resetView(data,event,5);}" class="waves-effect white-text">Medications</a></li>
+                <!--<li class="tab col s3 "><a href="#measurements" data-bind="click:function(data,event){return $data.resetView(data,event,4);}" id="btn1" class="waves-effect white-text">Vitals</a></li>-->
+            </ul>
+        </div>
+        <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+        <div class=" tab_content_healthrecords__wrapper white fadeIn animated-300 m-hide" id="viewHealthRecords">
+            <div id="allergies" class="col s12">
+                <div class="fadeInUp animated-200-delay" data-bind="visible:$data.isLoaded">
+                    <br />
+                    <table data-bind="css:$data.getData($data.results)">
+                        <thead class="red darken-1">
+                            <tr>
+                                <th class="th_col__first white-text" data-field="AllergyText">Allergy</th>
+                                <th class="th_col__second" data-field="D_FirstObserved">
+                                    <!-- ko template:{name:'template_shared__firstSwitch', data:$data}--><!-- /ko -->
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: 'template___health__records_item___FILTER', foreach: $data.results.__rows }"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="conditions" class="col s12">
+                <div class="fadeInUp animated-200-delay">
+                    <br />
+                    <table data-bind="css:$data.getData($data.results)">
+                        <thead class="red darken-1">
+                            <tr>
+                                <th class="white-text th_col__first">Condition</th>
+                                <th class="th_col__second">
+                                    <!-- ko template:{name:'template_shared__switch', data:$data}--><!-- /ko -->
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: $data.listItemTemplateProvider, foreach: $data.results.listConditions }"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="familyhistory" class="col s12">
+                <div class="fadeInUp animated-200-delay">
+                    <br />
+                    <table data-bind="css:$data.getData($data.results)">
+                        <thead class="red darken-1">
+                            <tr>
+                                <th class="white-text th_col__first">Condition</th>
+                                <th class="th_col__second">
+                                    <!-- ko template:{name:'template_shared__switch', data:$data}--><!-- /ko -->
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: $data.listItemTemplateProvider, foreach: $data.results.listFamilyHistory }"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="medications" class="col s12">
+                <div class="fadeInUp animated-200-delay">
+                    <br/>
+                
+                    <table data-bind="css:$data.getData($data.results)">
+                        <thead class="red darken-1">
+                            <tr>
+                                <th class="white-text th_col__first">Medication</th>
+                                <th class="th_col__second">
+                                    <!-- ko template:{name:'template_shared__switch', data:$data}--><!-- /ko -->
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: $data.listItemTemplateProvider , foreach: $data.results.listMedicationTaken }"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<script type="text/html" id="template___health__records_item___FILTER">
+    <tr>
+        <td class="health_record__label">
+            &nbsp;<span style="font-weight:500" data-bind="text:$data.AllergyText"></span>
+            <br />
+            &nbsp;<span class="yellow darken-3 white-text td_item__label">&nbsp;Allergen&nbsp;</span>
+            &nbsp;&nbsp;<span class="td_item__value"
+                              data-bind="text:$data.AllergenText"></span>
+            <br />
+            &nbsp;<span class="amber darken-4 white-text td_item__label">&nbsp;Reaction&nbsp;</span>
+            &nbsp;&nbsp;<span style="font-size:1.0rem!important;text-transform:capitalize"
+                              data-bind="text:$data.ReactionText"></span>
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item">
+    <tr data-bind="visible:!$data.IsHidden">
+        <td class="health_record__label">
+            &nbsp;<span data-bind="text:$data.AllergyText"></span>
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item_hidden">
+    <tr>
+        <td class="health_record__label">
+            &nbsp;<span data-bind="text:$data.AllergyText"></span>
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___2">
+    <tr data-bind="visible:!$data.IsHidden">
+        <td class="health_record__label">
+            <span data-bind="text:$data.MedicalConditionText"></span>
+            <!-- ko template:{name:'template_shared__date', data:$data}--><!-- /ko -->
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___2___hidden">
+    <tr>
+        <td class="health_record__label">
+            <span data-bind="text:$data.MedicalConditionText"></span>
+            <!-- ko template:{name:'template_shared__date', data:$data}--><!-- /ko -->
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___3">
+    <tr data-bind="visible:!$data.IsHidden">
+        <td class="health_record__label">
+            <span data-bind="text:$data.FamilyHistoryConditionName"></span>
+            <br />
+            &nbsp;<span class="yellow darken-3 white-text td_item__label">&nbsp;Relation&nbsp;</span>
+            &nbsp;&nbsp;<span class="td_item__value"
+                              data-bind="text:$data.FamilyRelationshipName"></span>
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___3___hidden">
+    <tr>
+        <td class="health_record__label">
+            <span data-bind="text:$data.FamilyHistoryConditionName"></span>
+            <br />
+            &nbsp;<span class="yellow darken-3 white-text td_item__label">&nbsp;Relation&nbsp;</span>
+            &nbsp;&nbsp;<span class="td_item__value"
+                              data-bind="text:$data.FamilyRelationshipName"></span>
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___4">
+    <tr data-bind="visible:!$data.IsHidden">
+        <td class="health_record__label">
+            <span data-bind="text:$data.MedicationName"></span>
+            <!-- ko template:{name:'template_shared__date', data:$data}--><!-- /ko -->
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___4___hidden">
+    <tr>
+        <td class="health_record__label">
+            <span data-bind="text:$data.MedicationName"></span>
+            <!-- ko template:{name:'template_shared__date', data:$data}--><!-- /ko -->
+        </td>
+        <!-- ko template:{name:'template_shared_edit__button', data:$data}--><!-- /ko -->
+    </tr>
+</script>
+<script type="text/html" id="template___health__records_item___5" type="html/text">
+    <!-- ko if: $data.VitalStatistics === 9 -->
+    <tr>
+        <td style="padding-left:20px;" class="health_record__label">
+            <span data-bind="text:$data.VitalReadingAsSent"></span>
+        </td>
+        <td class="health_record__label" style="width:120px;">
+            <span data-bind="text:$parent.getDateFormat($data.DTUTC_Created)"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+</script>
+<script type="text/html" id="template___health__records_item___6" type="html/text">
+    <!-- ko if: $data.VitalStatistics === 5 -->
+    <tr>
+        <td style="padding-left:20px;" class="health_record__label">
+            <span data-bind="text:$parent.getHeightFormat($data.VitalReadingAsSent)"></span>
+        </td>
+        <td class="health_record__label" style="width:120px;">
+            <span data-bind="text:$parent.getDateFormat($data.DTUTC_Created)"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+</script>
+<script type="text/html" id="template_shared_edit__button">
+    <td class="col_edit">
+        <a href="javascript:void(0);" class="waves-effect waves-light btn blue darken-2 white-text" data-bind="click:function(data,event){return $root.onEdit(data,event,$data);}">Edit</a>
+    </td>
+</script>
+<script type="text/html" id="template_shared__date">
+    <br />
+    &nbsp;
+    <span class="yellow darken-3 white-text td_item__label">&nbsp;Date Started&nbsp;</span>
+    &nbsp;&nbsp;
+    <span class="td_item__value"
+          data-bind="text:$root.getDateFormat($data.D_Start)"></span>
+    <br />
+    &nbsp;
+    <span class="amber darken-4 white-text td_item__label">&nbsp;Date Ended&nbsp;&nbsp;&nbsp;</span>
+    &nbsp;&nbsp;
+    <span class="td_item__value"
+          data-bind="text:$root.getDateFormat($data.D_End)"></span>
+</script>
+<script type="text/html" id="template_shared__firstSwitch">
+    <div class="switch tooltipped" data-position="left" data-delay="20" data-tooltip="Show/Hide&nbsp;Inactive&nbsp;">
+        <label>
+            <input type="checkbox" data-bind="checked:$data.results.isViewingHidden">
+            <span class="lever red darken-4"></span>
+        </label>
+    </div>
+</script>
+<script type="text/html" id="template_shared__switch">
+    <div class="switch tooltipped" data-position="left" data-delay="20" data-tooltip="Show/Hide&nbsp;Inactive&nbsp;">
+        <label>
+            <input type="checkbox" data-bind="checked:$data.isHiddenItems">
+            <span class="lever red darken-4"></span>
+        </label>
+    </div>
+</script>

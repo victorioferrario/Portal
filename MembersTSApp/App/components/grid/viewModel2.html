@@ -1,0 +1,111 @@
+﻿<article id="list2Wrapper" style="overflow-y: auto; overflow-x: hidden; position: absolute; top: 0; bottom: 25px; left: 0; right: 10px;background-color: rgb(12, 34, 56);">
+    <table class="table bordered striped fadeIn animated z-depth-4 white" 
+           style="margin-right: 20px; margin-left:10px;border-bottom:solid 3px rgb(12, 34, 56);">
+        <thead>
+            <tr>
+                <th class="hide-on-small-and-down center-align" style="width: 80px !important;">ID</th>
+                <th>
+                    <a href="javascript:void(0);" class="col-header-anchor sortable "
+                       data-bind="click: function (data, event) { onSortCommand('ConsultationName', data, event) }">
+                        <span class="th-text">&nbsp;Type</span>
+                        <!-- ko if: getSortColumn('ConsultationName')-->
+                        <i class="icon fa fa-sort-desc" data-bind="visible:sortDesc()"></i>
+                        <i class="icon fa fa-sort-asc" data-bind="visible:!sortDesc()"></i>
+                        <!-- /ko -->
+                        <!-- ko ifnot: getSortColumn('ConsultationName')-->
+                        <i class="icon fa fa-sort"></i>
+                        <!-- /ko -->
+                    </a>
+                </th>
+                <th class="center-align hide-on-small-and-down" style="width: 120px;">
+                    <a href="javascript:void(0);" class="col-header-anchor sortable "
+                       data-bind="click: function (data, event) { onSortCommand('StateCodeRecipientLocatedDuringConsultation', data, event) }">
+                        <span class="th-text">&nbsp;State</span>
+                        <!-- ko if: getSortColumn('StateCodeRecipientLocatedDuringConsultation')-->
+                        <i class="icon fa fa-sort-desc" data-bind="visible:sortDesc()"></i>
+                        <i class="icon fa fa-sort-asc" data-bind="visible:!sortDesc()"></i>
+                        <!-- /ko -->
+                        <!-- ko ifnot: getSortColumn('StateCodeRecipientLocatedDuringConsultation')-->
+                        <i class="icon fa fa-sort"></i>
+                        <!-- /ko -->
+                    </a>
+                </th>
+                <th class="hide-on-small-and-down" style="width: 120px;">
+                    <a href="javascript:void(0);" class="col-header-anchor sortable "
+                       data-bind="click: function (data, event) { onSortCommand('DTUTC_Created', data, event) }">
+                        <span class="th-text">&nbsp;Date</span>
+                        <!-- ko if: getSortColumn('DTUTC_Created')-->
+                        <i class="icon fa fa-sort-desc" data-bind="visible:sortDesc()"></i>
+                        <i class="icon fa fa-sort-asc" data-bind="visible:!sortDesc()"></i>
+                        <!-- /ko -->
+                        <!-- ko ifnot: getSortColumn('DTUTC_Created')-->
+                        <i class="icon fa fa-sort"></i>
+                        <!-- /ko -->
+                    </a>
+                </th>
+                <th style="width: 120px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: $data.rows -->
+            <tr style="height: 45px;">
+                <td style="height: 45px;" class="center-align hide-on-small-and-down"><span data-bind="text: $data.ConsultationID"></span></td>
+                <td style="height: 45px;" class="grid_type__sm">
+                    <div style="width: 25px; display: inline-block; float: left;"
+                         data-bind="html:$parent.getProductIcon($data.ProductID)"></div>
+                    <div style="font-size: 18px; padding-left: 4px; font-weight: 500; display: inline-block; float: left;" data-bind="text: $data.ConsultationName"></div>
+                </td>
+                <td style="height: 45px;" class="center-align hide-on-small-and-down"><span data-bind="text: $data.StateCodeRecipientLocatedDuringConsultation"></span></td>
+                <td style="height: 45px;" class="hide-on-small-and-down"><span data-bind="date: $data.DTUTC_Created"></span></td>
+
+                <td  style="height: 45px;padding-right: 15px;">
+                    <a href="javascript:void(0);" data-bind="click:function(data,event){ return $parent.onSelect(data,event, $data); }" class="btn blue darken-2 white-text">View</a>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</article>
+<nav class="footer text-center top-buffer blue darken-2" style="margin-top: 0 !important; text-align: center; position:fixed;right:0; left: 0; bottom: 0;">
+        <div class="row" style="margin-left: 25px!important;">
+            <style type="text/css">
+                nav ul.mygridfooter li:hover, nav ul.mygridfooter li.active {
+                    background-color: transparent !important;
+                    background: none;
+                }
+                .pagerButton-Container {
+                    width: 100%;
+                    margin-left: 52px;
+                }
+                li.footer-buffer {
+                    
+                }
+
+            </style>
+            <ul id="pagerButton-Container" class="mygridfooter blue darken-2"
+                style="margin: auto; padding: 0;">
+                <li style="width:55px!important">&nbsp;</li>
+<li data-bind="css:isBack">
+                    <a href="javascript:void(0);" class="btn blue darken-2 white-text btn-flat"
+                       data-bind="click:onBackPage">&laquo;</a>
+                </li>
+                <!-- ko foreach:{data:pageButtons} -->
+                <li class="hide-on-small-and-down" style="padding: 0; margin-left: 2px;">
+                    <!-- ko if: $data.isActive() === 'no' -->
+                    <a href="javascript:void(0);" class="btn blue  darken-2 white-text btn-flat"
+                       data-bind="text:$data.label,click: function (data, event) {$parent.onClickPage($data.value, data, event) }  "></a>
+                    <!-- /ko -->
+                    <!-- ko if: $data.isActive() === 'active' -->
+                    <a href="javascript:void(0);" class="btn white blue-text btn-flat fadeIn animated-500-delay"
+                       data-bind="text:$data.label,click: function (data, event) {$parent.onClickPage($data.value, data, event) }  "></a>
+                    <!-- /ko -->
+                </li>
+                <!-- /ko -->
+                <li data-bind="css:isNext">
+                    <a href="javascript:void(0);" class="btn btn-flat blue darken-2 white-text"
+                       data-bind="click: function (data, event) {$data.onNextPage(data, event) } ">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!--<div class="col s12  m12" style="padding: 0 !important; position: relative;"></div>-->

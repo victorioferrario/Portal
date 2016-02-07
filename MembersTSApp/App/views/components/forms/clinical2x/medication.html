@@ -1,0 +1,364 @@
+﻿
+<style>
+    tr.form-field > td {
+        padding: 0 !important;
+        padding-bottom: 5px;
+    }
+    .tr_form_no__padding {
+        padding: 0 !important;
+    }
+    .editMedicalForm > tbody > tr, .editMedicalForm > tbody > tr > td {
+        padding: 0 !important;
+    }
+</style>
+
+<div class="blue darken-3"
+     style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;"
+     data-bind="visible:$data.isLoading">
+    <!-- ko template:{ name:'template_clinical_form__loader'}--><!--/ko-->
+</div>
+<div style="position: relative;" class="fadeIn animated-200" data-bind="visible:!$data.isLoading()">
+    <div class="row red darken-2 white-text" style="padding: 10px; text-align: left !important;">
+        <h5 data-bind="text:$data.title">
+            Add Medication
+        </h5>
+    </div>
+    <div class="row" data-bind="visible:$data.isInsert()">
+        <form data-bind="css:$data.isValidate()?'isValidate':''">
+            <div id="formView_Search" data-bind="visible:$data.isSearch()">
+                <div class="field" style="position: relative;">
+                    <span class="fadeIn animated-500-delay" style="position: absolute; right: 5px; top: 6px;"
+                          data-bind="visible:$data.hasAddButtonsToSearch">
+                        <a href="javascript:void(0);" data-bind="click:function(data,event){ return $data.searchAdd(data,event, selectedItem);}"
+                           class="btn btn-flat green darken-1 white-text">Add</a>
+                    </span>
+                    <input type="search"
+                           name="allergy-name" placeholder="Enter Medication Name"
+                           required
+                           data-bind="textInput: selectedItemValue,
+                           autoComplete: {selected: selectedItem},
+                           hasFocus: isInputFocused,event: { 
+                                focus:function(data,event){return $root.searchOnFocus(data,event);},
+                                blur:function(data,event){return $root.searchOnBlur(data,event);}
+                           }"
+                           id="SearchText" style="margin: auto"/>
+                    <!-- ko template:{name:'template_loader__autocomplete'}--><!-- /ko-->
+                </div>
+                <table class="striped fadeIn animated-300"
+                       data-bind="visible:$data.hasDoneButtonsToSearch">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Medication</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:vmList">
+                        <tr>
+                            <td style="width: 100%;">
+                                <span style="display: block; margin-left: 8px" data-bind="text:$data.MedicationName"></span>
+                            </td>
+                            <td style="width: 70px;">
+                                <a href="javascript:void(0);" title="Add Details"
+                                   data-bind="click:function(data,event){return $parent.addDetailToTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text tooltipped"
+                                   data-position="left" data-delay="50" data-tooltip="Add Details">
+                                    <!--<i class="material-icons">playlist_add</i>--> Details
+                                </a>
+                            </td>
+                            <td style="width: 50px;">
+                                <a href="javascript:void(0);"
+                                   data-bind="click:function(data,event){return $parent.removeTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text">
+                                    <i class="material-icons red-text ">
+                                        delete
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="formView_Insert__Detail"
+                 data-bind="visible:!$data.isSearch()"
+                 class="fadeIn animated-300" style="text-align: left !important">
+                <!-- ko template:{name:'template_medication__detail' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+    <div class="row" data-bind="visible:$data.isEdit()">
+        <form data-bind="css:$data.isValidate()?'isValidate':''">
+            <div id="formView_Update__Detail"
+                 class="fadeIn animated-300" style="text-align: left !important">
+                <!-- ko template:{name:'template_medication__edit' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/html"
+        id="template_medication__detail">
+    <div class="field">
+        <input type="text"
+               style="text-transform: capitalize !important;"
+               name="medication-name-disabled"
+               disabled="disabled"
+               data-bind="value:$data.MedicationName"/>
+    </div>
+    <div class="fadeInUp animated-100-delay">
+        <table style="padding: 0 !important; margin-bottom: 15px;">
+            <tbody>
+            <tr class="tr_form_no__padding">
+                <td colspan="3"
+                    class="tr_form_no__padding">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="tr_form_no__padding">
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="inputMedicationStrength">Strength</label>
+                        <input type="number"
+                               class="form-control"
+                               id="inputMedicationStrength"
+                               placeholder="ex:500 mg"
+                               data-bind="textInput:$data.MedicationStrength"
+                               required/>
+                    </div>
+                </td>
+                <td class="tr_form_no__padding">&nbsp;</td>
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="selectUnits">Units</label>
+                        <select id="selectUnits"
+                                style="text-transform: capitalize !important;"
+                                data-bind="
+                    options:$root.dataModel.medicationStrengthList.options.availableOptions,
+                    optionsText:'Label' ,
+                    optionsValue:'Value' ,
+                    value: $data.MedicationStrengthUnitID,
+                    optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+            <tr class="tr_form_no__padding">
+                <td colspan="3"
+                    class="tr_form_no__padding">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="tr_form_no__padding">
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="inputMedicationDosage">Dosage</label>
+                        <input type="number"
+                               class="form-control"
+                               id="inputMedicationDosage"
+                               placeholder="ex:1 or 2"
+                               data-bind="textInput:$data.MedicationDosage"
+                               required/>
+                    </div>
+                </td>
+                <td class="tr_form_no__padding">&nbsp;</td>
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="selectMethod">Method</label>
+                        <select id="selectMethod"
+                                style="text-transform: capitalize !important;"
+                                data-bind="
+                options:$root.dataModel.medicationDoseList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.MedicationDosageUnitID,
+                optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+            <tr class="tr_form_no__padding">
+                <td colspan="3"
+                    class="tr_form_no__padding">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="tr_form_no__padding">
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="inputHowOften">How often taken?</label>
+
+                        <input type="text"
+                               id="inputHowOften"
+                               data-bind="textInput:$data.HowOftenTaken"
+                               placeholder="ie:Once/Three"/>
+                    </div>
+                </td>
+                <td class="tr_form_no__padding">&nbsp;</td>
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="selectRoute">How is medication taken?</label>
+                        <select style="text-transform: capitalize !important;"
+                                id="selectRoute"
+                                data-bind="
+                options:$root.dataModel.medicationRoutesList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.HowTakenID,
+                optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <table>
+            <tbody>
+            <tr class="tr_form_no__padding">
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="inputStartDate">Date Started</label>
+                        <input type="text"
+                               name="date-started"
+                               id="inputStartDate"
+                               placeholder="Date Started"
+                               data-bind="date:$data.D_Start, dateFormat: 'L',valueUpdate:'keypress'">
+                    </div>
+                </td>
+                <td class="tr_form_no__padding">&nbsp;</td>
+                <td class="tr_form_no__padding">
+                    <div class="field">
+                        <label style="font-weight: 500"
+                               for="inputEndDate">End Date</label>
+                        <input type="text"
+                               id="inputEndDate"
+                               data-bind="date:$data.D_End, dateFormat: 'L',valueUpdate:'keypress'" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- ko template:{ name:'template_health_records_combination___splitter__notes__splitter'} --><!-- /ko -->
+   </div>
+</script>
+<script type="text/html" id="template_medication__edit">
+    <div class="field">
+        <input type="text" style="text-transform: capitalize !important;" name="medication-name-disabled" 
+               disabled="disabled" data-bind="value:$data.MedicationName"/>
+    </div>
+   <table style="padding: 0 !important; margin-bottom: 15px;" class="editMedicalForm">
+        <tbody>
+            <tr>
+                <td colspan="3">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="inputMedicationStrength2">Strength</label>
+                        <input type="number" class="form-control"
+                               id="inputMedicationStrength2" placeholder="ex:500 mg"
+                               data-bind="textInput:$data.MedicationStrength" required />
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="selectUnits2">Units</label>
+                        <select id="selectUnits2" style="text-transform: capitalize !important;" data-bind="
+                    options:$root.dataModel.medicationStrengthList.options.availableOptions,
+                    optionsText:'Label' ,
+                    optionsValue:'Value' ,
+                    value: $data.MedicationStrengthUnitID,
+                    optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="inputMedicationDosage2">Dosage</label>
+                        <input type="number" class="form-control"
+                               id="inputMedicationDosage2" placeholder="ex:1 or 2"
+                               data-bind="textInput:$data.MedicationDosage" required />
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="selectMethod2">Method</label>
+                        <select id="selectMethod2" style="text-transform: capitalize !important;" data-bind="
+                options:$root.dataModel.medicationDoseList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.MedicationDosageUnitID,
+                optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="inputHowOften2">How often taken?</label>
+
+                        <input type="text" id="inputHowOften2" data-bind="textInput:$data.HowOftenTaken" placeholder="ie:Once/Three" />
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="selectRoute2">How is medication taken?</label>
+                        <select style="text-transform: capitalize !important;" id="selectRoute2" data-bind="
+                options:$root.dataModel.medicationRoutesList.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.HowTakenID,
+                optionsCaption: 'Choose...'"
+                                required></select>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+    <table>
+        <tbody>
+            <tr class="form-field">
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="inputStartDate2">Date Started</label>
+                        <input type="text" name="date-started" id="inputStartDate2" placeholder="Date Started"
+                               data-bind="date:$data.D_Start, dateFormat: 'L',valueUpdate:'keypress'">
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div class="field">
+                        <label style="font-weight: 500" for="inputEndDate2">End Date</label>
+                        <input type="text" id="inputEndDate2"  name="date-ended"
+                               data-bind="date:$data.D_End, dateFormat: 'L',valueUpdate:'keypress'" />
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <!-- ko template:{ name: 'template_health_records_combination___notes___active'}--><!-- /ko -->
+</script>

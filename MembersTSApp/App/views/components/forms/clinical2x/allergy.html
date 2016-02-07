@@ -1,0 +1,197 @@
+﻿
+<div class="blue darken-3"
+     style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;"
+     data-bind="visible:$data.isLoading">
+    <!-- ko template:{ name:'loaderHealthRecordItem'}--><!--/ko-->
+</div>
+<div style="position: relative;" class="fadeIn animated-200" data-bind="visible:!$data.isLoading()">
+    <div class="row red darken-2 white-text form_header__healthrecords">
+        <h5 data-bind="text:$data.title">
+            Add Allergy
+        </h5>
+    </div>
+    <div class="row" data-bind="visible:$data.isInsert()">
+        <form class="form_content__healthrecords">
+            <div id="formView_Search" data-bind="visible:$data.isSearch()">
+                <div class="field" style="position: relative;">
+                    <span class="fadeIn animated-500-delay" style="position: absolute; right: 5px; top: 6px;"
+                          data-bind="visible:$data.hasAddButtonsToSearch">
+                        <a href="javascript:void(0);" data-bind="click:function(data,event){ return $data.searchAdd(data,event, selectedItem);}"
+                           class="btn btn-flat green darken-1 white-text">Add</a>
+                    </span>
+                    <input type="search"
+                           name="allergy-name" placeholder="Enter Allergy"
+                           required
+                           data-bind="textInput: selectedItemValue,
+                           autoComplete: {selected: selectedItem},
+                           hasFocus: isInputFocused, event: {
+                                focus:function(data,event){return $root.searchOnFocus(data,event);},
+                                blur:function(data,event){return $root.searchOnBlur(data,event);}
+                           }"
+                           id="SearchText" style="margin: auto" />
+                    <!-- ko template:{name:'template_loader__autocomplete'}--><!-- /ko-->
+                </div>
+                <table class="striped fadeIn animated-300"
+                       data-bind="visible:$data.hasDoneButtonsToSearch">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Allergy</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:vmList">
+                        <tr>
+                            <td style="width: 100%;">
+                                <span style="display: block; margin-left: 8px" data-bind="text:$data.AllergyText"></span>
+                            </td>
+                            <td style="width: 70px;">
+                                <a href="javascript:void(0);" title="Add Details"
+                                   data-bind="click:function(data,event){return $parent.addDetailToTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text tooltipped"
+                                   data-position="left" data-delay="50" data-tooltip="Add Details">
+                                    <!--<i class="material-icons">playlist_add</i>--> Details
+                                </a>
+                            </td>
+                            <td style="width: 50px;">
+                                <a href="javascript:void(0);"
+                                   data-bind="click:function(data,event){return $parent.removeTempItem(data,event, $data);}"
+                                   class="btn btn-flat waves-effect waves-lights white red-text">
+                                    <i class="material-icons red-text ">
+                                        delete
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="formView_Insert__Detail"
+                 data-bind="visible:!$data.isSearch()"
+                 class="fadeIn animated" style="text-align: left !important">
+                <!-- ko template:{name:'template_allergy__detail' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+    <div class="row" data-bind="visible:$data.isEdit()">
+        <form>
+            <div id="formView_Edit__Detail" style="text-align: left !important">
+                <!-- ko template:{name:'template_allergy__edit' , data:$data.vm}--><!-- /ko-->
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/html"
+        id="template_allergy__detail">
+    <div class="field">
+        <input type="text"
+               name="allergy-name-disabled"
+               disabled="disabled"
+               data-bind="value:$data.AllergyText"/>
+    </div>
+    <div id="divAllergyDetail"
+         class="fadeInUp animated-100-delay">
+        <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+        <table style="padding: 0 !important; margin-bottom: 15px;">
+            <tbody>
+            <tr>
+                <td style="padding: 0 !important; padding-bottom: 5px;">Allergen</td>
+                <td></td>
+                <td style="padding: 0 !important; padding-bottom: 5px;">Reaction</td>
+            </tr>
+            <tr>
+                <td style="padding: 0 !important">
+                    <select data-bind=" options:$root.dataModel.allergenList.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.AllergenID,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'">
+                        <option value="">Choose...</option>
+                        <option value="1">Animal</option>
+                        <option value="2">Environmental</option>
+                        <option value="3">Food</option>
+                        <option value="4">Medication</option>
+                        <option value="5">Plant</option>
+                    </select>
+                </td>
+                <td>&nbsp;</td>
+                <td style="padding: 0 !important">
+                    <select data-bind="
+                            options:$root.dataModel.reactionList.options.availableOptions,
+                            optionsText:'Label' ,
+                            optionsValue: 'Value',
+                            value: $data.ReactionID,
+                            optionsCaption :'Choose...'"></select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <div class="field">
+            <label>Date Started</label>
+            <input type="text"
+                   name="date-started"
+                   placeholder="Date Started" id="inputDateDetail"
+                   data-bind="date:$data.D_FirstObserved, dateFormat: 'L',valueUpdate:'keypress'">
+
+        </div>
+        <!-- ko template:{ name:'template_health_records_combination___splitter__notes__splitter'} --><!-- /ko -->
+    </div>
+</script>
+<script type="text/html"
+        id="template_allergy__edit">
+    <div class="field">
+        <input type="text"
+               name="allergy-name-disabled"
+               disabled="disabled"
+               data-bind="value:$data.AllergyText"/>
+    </div>
+    <div id="divAllergyDetail3"
+         class="fadeIn animated-200-delay">
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <table style="padding: 0 !important; margin-bottom: 15px;">
+            <tbody>
+            <tr>
+                <td style="padding: 0 !important; padding-bottom: 5px;">Allergen</td>
+                <td></td>
+                <td style="padding: 0 !important; padding-bottom: 5px;">Reaction</td>
+            </tr>
+            <tr>
+                <td style="padding: 0 !important">
+                    <select data-bind=" options:$root.dataModel.allergenList.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.AllergenID,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'">
+                        <option value="">Choose...</option>
+                        <option value="1">Animal</option>
+                        <option value="2">Environmental</option>
+                        <option value="3">Food</option>
+                        <option value="4">Medication</option>
+                        <option value="5">Plant</option>
+                    </select>
+                </td>
+                <td>&nbsp;</td>
+                <td style="padding: 0 !important">
+                    <select data-bind="
+                            options:$root.dataModel.reactionList.options.availableOptions,
+                            optionsText:'Label' ,
+                            optionsValue: 'Value',
+                            value: $data.ReactionID,
+                            optionsCaption :'Choose...',
+                            valueUpdate:'keypress'"
+                            style="text-transform: capitalize"></select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        
+        <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+        <div class="field">
+            <label>Date Started</label>
+            <input type="text" name="date-started" placeholder="Date Started" id="inputDateUpdate"
+                   data-bind="date:$data.D_FirstObserved, dateFormat: 'L',valueUpdate:'keypress'">
+        </div>
+        <!-- ko template:{ name: 'template_health_records_combination___notes___active'}--><!-- /ko -->
+    </div>
+</script>  

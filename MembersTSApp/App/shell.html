@@ -1,0 +1,298 @@
+﻿<div id="nav"
+     class="navbar-fixed fadeIn animated-500-delay m-hide"
+     style="background: rgba(16, 108, 200, 1) !important; height: 56px; border-bottom: solid 1px rgba(38, 91, 170, 0.6);
+                                      max-width: 1250px !important; margin: auto;">
+    <div style="position: absolute; right: 8px; top: 6px; z-index: 1000">
+       
+        <a href="javascript:void(0);" data-bind="click:function(data,event){return $data.onGetProfile(data,event)}" class="waves-effect waves-light"> <i class="material-icons white-text text-darken-4" style="font-size:3rem;">account_box</i></a>
+</div>
+    <div style="position: absolute; right: 55px; top: 15px; z-index: 999">
+
+        <span class="label blue darken-4 white-text logged-in" style="font-size: 12px; font-weight: 300; position: absolute; right: 4px; top: -5px !important;">Logged in:</span>
+        <span class="data-person" data-bind="text:$data.PersonName" style="position: absolute; width: 150px; right: 5px; text-align: right; top: 14px;"></span>
+        <div style="position: absolute; z-index: 111111111111; right: -10px; top: 52px; width: 150px;text-align: right" class="blue-text text-accent-2" data-bind="text:$data.browser"></div>
+    </div>
+    <nav style="background: rgba(16, 108, 200, 1) !important; height: 56px; max-width: 1250px !important;"
+         class="my-blue ">
+        <div class="nav-wrapper">
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $data.onclick(data,event, 1);}"
+               class="brand-logo "
+               style="top: 5px !important;">
+                <img src="Content/images/1800md-logo.svg"
+                     class="md-1800MD-logo"/>
+            </a>
+            <div style="width: 55px; padding-left: 0; padding-top: 15px; height: 56px; border-left: solid 1px rgba(38, 91, 170, 0.6); border-right: solid 1px rgba(38, 91, 170, 0.6);">
+                <a href="#"
+                   data-activates="mobile-demo"
+                   class="button-collapse"
+                   style="padding-left: 15px; padding-right: 15px;"><i class="material-icons"
+                                                                       style="margin-top: 0; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; color: rgba(0, 0, 0, 0.5); font-size: 24px; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;">menu</i></a>
+            </div>
+            <div class="side-nav app-drawer-blue"
+                 id="mobile-demo"
+                 style="border-right: #fff solid 1px; z-index: 1000">
+                <div style="background: #fff; height: 150px; padding-left: 20px; padding-top: 5px; border-bottom: solid 1px rgba(38, 91, 170, 0.9); width: 100%; text-align: center;">
+                    <img src="Content/images/member-2.svg"
+                         style="max-height: 140px; margin-top: 0;"
+                         class="app-logo"/>
+                </div>
+                <ul style="margin-top: 0; text-align: left;"
+                    class="my-nave">
+                    <li class="active"
+                        style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkHome">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 1);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">home</i> <span class="side-menu-text-col">Home</span></span>
+                        </a>
+                    </li>
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkConsultCenter">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 2);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">perm_phone_msg</i> <span class="side-menu-text-col">Consult&nbsp;Center</span></span>
+                        </a>
+                    </li>
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkConsultHistory">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 6);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">history</i> <span class="side-menu-text-col">Consult&nbsp;History</span></span>
+                        </a>
+                    </li>
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkHealthRecords">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 3);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">local_hospital</i> <span class="side-menu-text-col">Health&nbsp;Records</span></span>
+                        </a>
+                    </li>
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkMyProfile">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 8);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper">
+                                <i class="material-icons icon-color">account_box</i><span class="side-menu-text-col">My&nbsp;Profile</span></span>
+                        </a>
+                    </li>
+                    <!--<li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                            id="linkFamilyMembers">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 4);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">supervisor_account</i> <span class="side-menu-text-col">Family&nbsp;Members</span></span>
+                        </a>
+                    </li>-->
+                    <!--<li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                            id="linkMyAccount">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 5);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper">
+                                <i class="material-icons icon-color">account_box</i> <span class="side-menu-text-col">My Account</span>
+                            </span>
+                        </a>
+                    </li>-->
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkMyAccount">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclick(data,event, 5);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper">
+                                <i class="material-icons  icon-color">settings_applications</i> <span class="side-menu-text-col">Account Settings</span>
+                            </span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+                <div style="width: 100%; border-top: solid 1px #00008b;"></div>
+                <ul style="margin-top: 0; text-align: left;"
+                    class="my-nave">
+                    <!-- ko if: !$data.appContext.browser.isIE -->
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkFullScreen">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclickFullScreen(data,event, true);}"
+                           class="waves-effect waves-light"
+                           id="linkFullScreenss">
+                            <span class="side-menu-icon-text-wrapper">
+                                <i class="material-icons icon-color">fullscreen</i><span class="side-menu-text-col">Full Screen</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkExitFullScreen"
+                        class="m-hide">
+                        <a href="javascript:void(0);"
+                           data-bind="click:function(data,event){return $data.onclickFullScreen(data,event, false);}"
+                           class="waves-effect waves-light">
+                            <span class="side-menu-icon-text-wrapper">
+                                <i class="material-icons icon-color">fullscreen_exit</i><span class="side-menu-text-col">Exit Full Screen</span>
+                            </span>
+                        </a>
+                    </li>
+                    <!-- /ko -->
+                    <li style="border-bottom: solid 1px rgba(38, 91, 170, 0.9);"
+                        id="linkLogout">
+                        <a href="javascript:void(0);"
+                           class="waves-effect waves-light"
+                           data-bind="click:function(data,event){return $data.onStartLogout(data,event, 7);}">
+                            <span class="side-menu-icon-text-wrapper"><i class="material-icons icon-color">input</i> <span class="side-menu-text-col">Logout</span></span>
+                        </a>
+                    </li>
+                </ul>
+                <div style="width: 100%; border-top: solid 1px #00008b;"></div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="subNav"
+     class="subHeader__wrapper fadeIn animated-500-delay   m-hide"
+     style="max-width: 1250px !important; margin: auto;">
+    
+    <div class="subHeader z-depth-2"
+         style="text-align: left; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.55), 0 3px 1px -2px rgba(0, 0, 0, 0.20), 0 1px 5px 0 rgba(0, 0, 0, 0.55);">
+        <div style="margin-left: 18px; font-size: 18px; color: #fff; padding-top: 10px;">
+            <a href="#dashboard">Home</a> <span id="breadCrumbText" data-bind="text:$data.breadText"></span>
+            <span style="display: inline-block; margin-left: 100px;" >
+               <a href="javascript:void(0);" class=" white " data-bind="click:function(data,event){return $root.debugQuickADD(data,event);},visible:$data.isDebugHR">Store </a>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div id="page" class="app_content-wrapper fadeIn animated m-hide" style="background: #fff; max-width: 1250px !important; margin: auto;">
+    <div data-bind="compose:activeLoader"></div>
+    <div class="app_content" id="pageContainer"
+         data-bind="router: {transition: 'entrance', cacheViews: false }"></div>
+</div>
+<div data-bind="compose:activeScreen"></div>
+<div data-bind="compose:activeViewScreen"></div>
+<div data-bind="compose:activePendingViewScreen"></div>
+<div data-bind="compose:activeBillingFormScreen"></div>
+<div data-bind="compose:activeDependentFormScreen"></div>
+<div data-bind="compose:activeHealthRecordsFormScreen"></div>
+
+<!-- Modal Structure -->
+<div id="modalCallMemberServices" class="modal">
+    <div class="modal-content" style="text-align: left;">
+        <h4 style="border-bottom: solid 2px #ccc; padding-bottom: 15px;">Family Members</h4>
+        <div class="container row">
+            <div class="col hide-on-small-and-down m4">
+                <img src="Content/images/customer-service.svg" />
+            </div>
+            <div class="col s12 m8">
+                <p class="flow-text">
+                    If you would like to add family members, please call customer service at <span style="font-style: italic">1-800-DOC-TALK(1-888-252-8144).</span> <br />Thank you.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" class="btn-large  modal-action modal-close waves-effect waves-light red">Ok</a>
+    </div>
+</div>
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+</div>
+<article id="superAppLoader" class="new-loader fadeIn animated-500-delay">
+    <div class="loader-message">
+        <img src="Content/images/member-2.svg" id="superAnimationLogo" style="max-height: 300px;" class="zoomIn animated-200-delay" />
+        <span class="start-text loading-text fadeInDown animated-500-delay" id="superAnimationText">Initializing Application</span>
+    </div>
+</article>
+<section id="dialogConfirmLogout"
+         class="dialog-wrapper m-hide">
+    <div class="dialog-container">
+        <div class="dialog fadeInDown animated-500-delay">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s5 m4">
+                            <img src="Content/images/noun_65703_cc.svg"
+                                 class="dialog-logo"
+                                 alt=""/>
+                        </div>
+                        <div class="col  s7 m8 dialogTextContainer">
+                            <div class="dialogSignOutTitle"><span style="color: #ff0000">1800-MD</span><span style="color: #265BAA; font-style: italic">Member Dashboard</span></div>
+                            <div class="dialogSignOutText">Are you sure you want to logout? If you continue, you will be logged out of your dashboard?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-actions">
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);"
+                               class="waves-effect waves-lights btn-flat pull-left"
+                               i
+                               data-bind="click:function(data,event){return $data.onCancelLogout(data,event);}">Cancel</a>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);"
+                               id="logoutButton"
+                               class=" waves-effect waves-purple btn btn-danger pull-right"
+                               data-bind="click:function(data,event){return $data.onConfirmLogout(data,event);}">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-background fadeIn animated-500-delay"></div>
+</section>
+<div id="modalFrmManager5"
+     class="modal bottom-sheet modal-fixed-footer large m-hide"
+     style="overflow-y: hidden !important;">
+    <div class="modal-header white-text ">
+        <div class="row red darken-2 white-text form_header__healthrecords "
+             style="z-index: 988888">
+            <h5 style="padding-left: 25px;"
+                class="">
+                Upgrade Browser
+            </h5>
+        </div>
+    </div>
+    <div id="modalContentFrmManager5"
+         class="modal-content"
+         style="top: 68px !important; text-align: left;">
+        <!-- ko template: { name:'template_upgrade'} --><!-- /ko --><br />
+    </div>
+    <div class="modal-footer fadeIn animated-200-delay">
+        <div style="position: relative;">
+            <a href="javascript:void(0);"
+               data-bind="click:function(data,event){return $data.cancelUpgrade(data,event)}"
+               class=" modal-action waves-effect btn btn-flat left-align grey white-text"
+               style="float: left !important; margin-left: 8px;">No Thanks.</a>
+        </div>
+    </div>
+</div>
+<script id="template_upgrade"
+        type="text/html">
+    <article>
+        <h4>Please upgrade your web browser</h4>
+        <p class="flow-text">
+            To get the most out of 1800MD, we recommend that you upgrade your web browser. Upgrading should only take a few minutes.
+        </p>
+        <ul class="collection">
+            <li class="collection-item">Download <a href="https://www.google.com/chrome/">Google Chrome</a> </li>
+            <li class="collection-item">Download the latest version of <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">Microsoft Internet Explorer</a></li>
+        </ul>
+    </article>
+</script>

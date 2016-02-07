@@ -1,0 +1,1100 @@
+﻿
+<style type="text/css">
+    .m-hide {
+        display: none;
+    }
+
+    .row-ext {
+        /*padding: 25px;*/
+    }
+
+    .cart_label {
+        margin-top: -25px;
+        color: #000 !important;
+        font-weight: 500;
+    }
+
+    .cart_label__for__text {
+        margin-top: -25px;
+        color: #000 !important;
+        font-weight: 500;
+    }
+    /* label color */
+    .input-field label {
+        color: #000;
+    }
+    /* label focus color */
+    .input-field input[type=text]:focus + label {
+        color: #000;
+    }
+
+    select {
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -ms-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        transition: all 300ms ease-out;
+    }
+
+    .input-field input[type=text] {
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -ms-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        transition: all 300ms ease-out;
+    }
+
+        /* label underline focus color */
+        .input-field input[type=text]:focus {
+            border-bottom: 1px solid #000;
+            box-shadow: 0 0 0 0 #000;
+        }
+        /* valid color */
+        .input-field input[type=text]:required:valid {
+            border-bottom: 3px solid #1976D2;
+            box-shadow: 0 0 0 0 #1976D2;
+        }
+        /* invalid color */
+
+        .input-field input[type=text]:required:invalid, .input-field input[type=tel]:invalid, textarea:invalid, .input-field input[type=tel]:invalid:focus {
+            border-bottom: 3px solid #ff0000 !important;
+            box-shadow: 0 0 0 0 #ff0000 !important;
+        }
+
+    select:invalid, select:focus:invalid {
+        border: 3px solid #ff0000 !important;
+        outline: none;
+    }
+
+    select:valid, select:focus:valid {
+        border: 3px solid #32cd32 !important;
+        outline: none;
+    }
+    /* icon prefix focus color */
+    .input-field .prefix.active {
+        color: #000;
+    }
+</style>
+<article style="text-align: left;">
+    <section class="row" data-bind="visible:$data.views.layout.isPricingTable()">
+        <br class="show-on-medium hide-on-small-and-down hide-on-large-only" />
+
+        <!-- ko template :{name:'template_banner__hero'}--><!-- /ko-->
+        <!-- ko template :{name:'consult-center-phone-template'} --><!-- /ko -->
+        <!-- ko template: {name:'consult-center-econsult-template'}--><!-- /ko -->
+        <!-- ko template: {name:'consult-center-video-template'}--><!-- /ko -->
+
+    </section>
+    <section class="store_view" data-bind="visible:$data.views.layout.isCheckOut()">
+        <article class="cart">
+            <!-- ko template:{name:'cart-header-template'} --><!-- /ko -->
+            <div class="cart_checkout__steps fadeInDown animated-200-delay" id="checkoutSteps">
+                <!-- ko template:{ name:'cart-recipient-selection-step'} --><!-- /ko -->
+                <!-- ko template:{ name:'cart-recipient-state-selection-step'}--><!--/ko-->
+                <!-- ko template:{ name:'cart-search-pharmacies-step'}--><!--/ko-->
+                <!-- ko template:{ name:'cart-consent-required'}--><!--/ko-->
+                <!-- ko if: $data.views.layout.isCheckOut() -->
+                <!-- ko template:{ name:'cart-reason-for-consult-template'}--><!--/ko-->
+                <!--/ko-->
+                <!-- ko template:{ name:'cart-payment-template'}--><!--/ko-->
+                <!-- ko template:{ name:'cart-nav-button-template'}--><!--/ko-->
+            </div>
+            <div class="cart_orderComplete fadeInUp animated-500-delay m-hide" id="orderComplete">
+                <div class="cart_step__7__view1">
+                    <div class="row" style="padding: 15px;">
+                        <div class="col s12 m12">
+                            <!-- ko template: {name:"template-upload"} --><!-- /ko -->
+                        </div>
+                        <div class="col s12 m12">
+                            <h5>
+                                Order Complete
+                            </h5>
+                            <div>
+                                Thank you for you order. <span data-bind="text:$data.views.orderCompleteMessage"></span> <br />
+                                <a class="waves-effect waves-lights btn-large green darken-2 white-text" href="Default.aspx">Click here to continue</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+<!--<%--HEADER TEMPLATES--%>-->
+<!-------------------------------------------------------------------->
+<!-- [ CART HEADER TEMPLATE     ]------------------------------------->
+<!-------------------------------------------------------------------->
+<script type="text/html" id="cart-header-template">
+    <header class="cart-header ">
+        <!--<div class="cart-header-title blue darken-3 white-text zoomIn animated-500-delay">
+            <div class="col s12 m12 fadeInLeft animated">
+                <span class="cart_item__title blue-text darken-4"> Shopping Cart</span>
+            </div>
+        </div>-->
+        <div class="cart-header-product blue darken-2 white-text fadeInUp animated-500-delay z-depth-1">
+            <!-- ko if: $data.store.hasCartItem() -->
+            <div class="col s8 m7 fadeInRight animated">
+                <i class="material-icons cart-icon cart_item__icon" data-bind="text: $data.store.cart.Selected.Icon()"></i>
+                <span class="cart_item__product" data-bind="text:$data.store.cart.Selected.ProductLabel()"></span>
+            </div>
+            <div class="col s2 m3 pull-right right-align">
+                <span class="cart_item__price" data-bind="text:'$' + $data.store.cart.Selected.MemberPrice()"></span>
+            </div>
+            <div class="cart_item__splitter"></div>
+            <div class="col s2 m2 pull-right right-align">
+                <span class="cart_item__button">
+                    <a href="javascript:void(0);"
+                       data-bind="click:function(data,event){ return $data.click(null,'REMOVE',data,event)},css:$data.views.isProcessingOrder">X</a>
+                </span>
+            </div>
+            <!-- /ko -->
+        </div>
+    </header>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ CART HEADER TEMPLATE     ]------------------------------------->
+<!-------------------------------------------------------------------->
+<!--<%--NAVIGATION TEMPLATES--%>-->
+<!-------------------------------------------------------------------->
+<!-- [ CART NAV BUTTON TEMPLATE ]------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-nav-button-template" type="text/html">
+    <div class="row fadeIn animated m-hide" style="background: #ccc" id="viewsTermsAndConditionsCheckout">
+        <div class="col s8 m8">
+            <p style="padding: 10px; margin-left: 4px;">
+                <input type="checkbox" class="filled-in" id="filled-in-box-2" data-bind="checked:$data.views.isTermsAccepted" />
+                <label for="filled-in-box-2" class="black-text" data-bind="text:$data.views.TermsText">I agree to the above Consultation Consent & Acknowledgment</label>
+            </p>
+        </div>
+        <div class="col s4 m4">
+            <div class="cart_nav__right">
+                <button data-bind="click:function(data,event){ return $data.views.onBack(data,event)}"
+                        class="waves-effect waves-light btn blue darken-2 white-text">
+                    Back
+                </button>
+                <button data-bind="visible:!$data.views.isTermsAccepted(), enabled:$data.views.isTermsAccepted, css :$data.views.isTermsChecked">
+                    Check Out
+                </button>
+                <button data-bind="visible:$data.views.isTermsAccepted,enabled:$data.views.isTermsAccepted,
+                        css :$data.views.isTermsChecked, click:function(data,event){ return $data.views.onPaymentNext(data,event)}">
+                    Check Out
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row fadeIn animated m-hide" style="background: #ccc" id="viewsConsentCheckBox">
+        <div class="col s8 m8">
+            <p style="padding: 10px; margin-left: 4px;">
+                <input type="checkbox" class="filled-in" id="filled-in-box" data-bind="checked:$data.views.isNextConsentButton" />
+                <label for="filled-in-box" class="black-text">I agree to the above Consultation Consent & Acknowledgment</label>
+            </p>
+        </div>
+        <div class="col s4 m4">
+            <div class="cart_nav__right" style="margin-top: 8px;">
+                <button data-bind="click:function(data,event){ return $data.views.onBack(data,event)}"
+                        class="waves-effect waves-light btn blue darken-2 white-text">
+                    Back
+                </button>
+                <span style="display: block; clear: both; height: 10px;" class="show-on-small-and-down hide-on-med-and-up"></span>
+                <button data-bind="visible:!$data.views.isConsentChecked(), enabled:$data.views.isNextConsentButton, css :$data.views.isConsentChecked">
+                    Next
+                </button>
+                <button data-bind="visible:$data.views.isConsentChecked,enabled:$data.views.isNextConsentButton, css :$data.views.isConsentChecked, click:function(data,event){ return $data.views.onNext(data,event)}">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background: #ccc" id="viewsStepperBar">
+        <div class="col s5 m5">
+            <div class="cart_nav__left">
+                <a data-bind="css :$data.views.layout.backButton, click:function(data,event){ return $data.views.onBack(data,event)}" id="backButtonInstance">Back</a>
+            </div>
+        </div>
+        <div class="col s7 m7">
+            <div class="cart_nav__right">
+                <a data-bind="visible:$data.views.isNextButton, css :$data.views.layout.isOtherButtonDisabled, click:function(data,event){ return $data.views.onNext(data,event)}">Next</a>
+                <a data-bind="visible:$data.views.isSearchButton, click:function(data,event){ return $data.views.picker.onSearch(data,event)}"
+                   class="waves-effect waves-light btn green  white-text">Search</a>
+            </div>
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ CART NAV BUTTON TEMPLATE ]------------------------------------->
+<!-------------------------------------------------------------------->
+<!--<%--PRODUCT TEMPLATES--%>-->
+<!-------------------------------------------------------------------->
+<!-- [ PRODUCTS                 ]------------------------------------->
+<!-------------------------------------------------------------------->
+<script type="text/html" id="template_banner__hero">
+    <style>
+        section.Individuals-Container {
+            color: #ffffff;
+            font-family: "Open Sans";
+            background-image: url(Content/images/banners/banner-8.png);
+            -ms-background-size: cover;
+            background-size: cover;
+            background-position: 50% 0%;
+            background-repeat: no-repeat no-repeat;
+            min-height: 500px !important;
+            -ms-text-rendering: optimizeLegibility;
+            text-rendering: optimizeLegibility;
+        }
+
+            section.Individuals-Container > .container > .row > .col-md-12 > h1 {
+                font-size: 50px;
+                -ms-text-rendering: optimizeLegibility;
+                text-rendering: optimizeLegibility;
+                margin-bottom: 5px;
+                margin-top: 150px;
+            }
+
+        .banner-logo {
+            max-width: 320px;
+        }
+
+        h2 {
+            -webkit-transition: all 300ms ease-out;
+            -moz-transition: all 300ms ease-out;
+            -ms-transition: all 300ms ease-out;
+            -o-transition: all 300ms ease-out;
+            transition: all 300ms ease-out;
+        }
+
+        @media (max-width: 985px) {
+            .banner-logo {
+                margin-top: -100px;
+                max-width: 300px;
+            }
+
+            h2 {
+                font-size: 2.8rem;
+                margin-top: -100px;
+            }
+        }
+
+        @media (max-width: 825px) {
+            .banner-logo {
+                margin-top: -100px;
+                max-width: 250px;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-top: -100px;
+            }
+        }
+
+        @media (max-width: 625px) {
+            .banner-logo {
+                margin-top: -150px;
+                max-width: 200px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-top: -150px;
+            }
+        }
+
+        @media (max-width: 435px) {
+            .banner-logo {
+                max-width: 150px;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+                margin-top: -50px;
+            }
+        }
+    </style>
+    <div class="row">
+        <div class="col s12  m12 l12 ">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="responsive-img " src="Content/images/banners/Banner-9-1.jpg" style="max-height: 580px">
+                    <div class="card-title">
+                        <h2 style="color: #00BFFF">
+                            <img src="Content/images/banners/1800MD-2.png" class="banner-logo fadeInRight animated" /><br />
+                            <span class="fadeInDown animated">America's Most <br /><span style="color: #ffffff !important">Reliable Telehealth network</span></span>
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="consult-center-phone-template">
+    <div class="col s12   m12 l4 ">
+        <div class="card green darken-1 fadeIn animated m-hide" id="item1">
+            <div class="card-content white-text waves-effect waves-block waves-light"
+                 data-bind="click: function (data, event) { return $data.click2(1, 'ADD', data, event) }">
+                <span class=" badge cart-price white darken-1 blue-text"
+                      data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[0].MemberPrice">$39.99</span>
+                <div class="card-title" style="margin-bottom: 0 !important; text-align: center">
+                    <i class="material-icons cart-icon" style="font-size: 4.0rem;">contact_phone</i>
+                    <br />      Phone Consultation
+                </div>
+                <p class="cart-text" style="text-align: center">For an in-depth, comprehensive consultation with a physician within guaranteed within 2 hour.<br /><br /><br /></p>
+            </div>
+            <div class="card-action white center-align">
+                <a href="#" class="waves-effect waves-light btn blue darken-2 white-text" data-bind="click: function (data, event) { return $data.click2(1, 'ADD', data, event) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="consult-center-video-template">
+    <div class="col s12 m12 l4 ">
+        <!--<div class="col  offset-s1 s10 offset-m1  m10">-->
+        <div class="card light-blue darken-4 fadeIn animated m-hide" id="item3">
+            <div class="card-content white-text waves-effect waves-block waves-light" data-bind="click: function (data, event) { return $data.click2(3, 'ADD', data, event) }">
+                <span class=" badge cart-price white darken-1 blue-text" data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[2].MemberPrice">$49.99</span>
+                <div class="card-title" style="margin-bottom: 0 !important; text-align: center">
+                    <i class="material-icons cart-icon blue-text" style="font-size: 4rem;">voice_chat</i>
+                    <br />
+                    Video Consultation
+                </div>
+                <p class="cart-text" style="text-align: center">
+                    Talk with a doctor via on-line video conference usually within 1 hour, guaranteed within 3 hours.<br /><br /><br />
+                </p>
+            </div>
+            <div class="card-action white center-align">
+                <a href="#" class="waves-effect waves-light btn blue darken-2 white-text"
+                   data-bind="click: function (data, event) { return $data.click2(3, 'ADD', data, event) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="consult-center-econsult-template">
+    <div class="col s12 m12 l4 ">
+        <!--<div class="col offset-s1 s10 offset-m1  m10 ">-->
+        <div class="card yellow darken-2 fadeIn animated m-hide" id="item2">
+            <div class="card-content white-text waves-effect waves-block waves-light" data-bind="click: function (data, event) { return $data.click2(2, 'ADD', data, event) }">
+                <span class=" badge cart-price white darken-1 blue-text" data-bind="text:'$'+ $data.appContext.identityUser.instance.Products[1].MemberPrice">$19.00</span>
+                <div class="card-title" style="margin-bottom: 0 !important; text-align: center">
+                    <div class="card-title" style="margin-bottom: 0 !important;">
+                        <i class="material-icons cart-icon " style="font-size: 4rem;">speaker_notes</i><br />
+                        E-Consultation
+                    </div>
+                </div>
+                <p class="cart-text" style="text-align: center">You can send a secure e-mail to our doctors and receive a response within as little as 2-4 hours but always guaranteed within 24 hours.<br /><br /></p>
+            </div>
+            <div class="card-action white center-align">
+                <a href="#" class="waves-effect waves-light btn blue darken-2 white-text" data-bind="click: function (data, event) { return $data.click2(2, 'ADD', data, event) }">Talk to A Doctor Now!</a>
+            </div>
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ PRODUCTS                 ]------------------------------------->
+<!-------------------------------------------------------------------->
+<!--<%--RECIPIENT SELECTION--%>-->
+<!-------------------------------------------------------------------->
+<!-- [ RECIPIENT  TEMPLATES      ------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-recipient-selection-step" type="text/html">
+    <div class="cart_step__1__view1">
+        <div class="row">
+            <div class="question-single-line">
+                <div class="col s4 m5 consult_for__small">
+                    <span class="cart_item__description" style="margin-top: 8px;">
+                        This consultation is for:
+                    </span>
+                </div>
+                <div class="col s8 m7 right-align" style="padding-right: 15px; padding-top: 5px;">
+                    <!-- ko if: $data.views.layout.isSelectingPerson -->
+                    <span class="cart_item__recipient fadeInRight animated-500-delay">
+                        <input class="with-gap" name="group1" type="radio" id="recipientSelf" value="SELF"
+                               data-bind="checked:$data.store.cart.instance.recipient" /><label for="recipientSelf" data-bind="text:$data.store.session.Name"></label>
+                    </span>
+                    <span class="cart_item__recipient___other fadeInRight animated-500-delay"> <input class="with-gap" name="group1" type="radio" id="recipientOther" value="OTHER" data-bind="checked:$data.store.cart.instance.recipient" /><label for="recipientOther">Other</label></span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $data.views.layout.isSelectingPerson -->
+                    <span class="title fadeInRight animated-500-delay" data-bind=" text:$data.store.session.SelectedName"></span>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart_step__1__view1___sub_1" id="viewDependentPanel"
+         data-bind="style:{ height: $data.store.cart.instance.recipient()==='SELF' ? 0 : $data.store.openHeight, background: $data.store.cart.instance.recipient()==='SELF' ? '#0d47a1':'#ccc'}">
+        <div class="gutter-shadow z-depth-3"></div>
+        <div class="row">
+            <div class="question-other-members-line z-depth-3 fadeInUp animated-500-delay m-hide" id="panelOtherRecipients">
+                <div style="position: relative;">
+                    <div class="yellow darken-1 dependentFlag z-depth-2 fadeIn animated"
+                         data-bind="visible:$data.views.isDependentError">
+                        <table>
+                            <tr>
+                                <td><i class="material-icons red-text">error_outline</i></td>
+                                <td style="font-weight:700;">Required</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- ko if: $data.store.hasDependents() -->
+                    <div class="col s12 m12"
+                         data-bind="template: { name: 'cart-recipient-dependent-accounts-item-template',
+                         foreach: $data.store.accounts, as: 'account' }">
+                    </div>
+                    <!-- /ko-->
+                    <!-- ko ifnot: $data.store.hasDependents() -->
+                    <div class="col s12 m12">
+                        <div style="float: left; display: inline-block">
+                            <i class="material-icons large hide-on-small-and-down">group_add</i>
+                            <i class="material-icons medium show-on-small-and-down hide-on-med-and-up">group_add</i>
+                        </div>
+                        <div class="flow-text hide-on-small-and-down show-on-med-and-up" style="float: left; margin-top: 25px; padding-left: 10px; display: inline-block">You have not added any family members.</div>
+                        <div class="show-on-small-and-down hide-on-med-and-up"
+                             style="float:left;margin-top:5px;padding-left:10px;display:inline-block">You have not added<br />any family members.</div>
+                    </div>
+                    <!-- /ko-->
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="cart-recipient-dependent-accounts-item-template" type="text/html">
+    <div class="col s12 m12" style="border-bottom: solid 1px #ccc">
+        <span class="cart_item__recipient___other_sub">
+            <input class="with-gap" name="group2" type="radio"
+                   data-bind="attr:{id: 'recipientOther_' + $data.AccountID},value: $data.AccountID, checked:$root.store.other" /><label data-bind="attr:{for: 'recipientOther_' + $data.AccountID },text: $data.FName + ' '+ $data.LName"></label>
+        </span>
+    </div>
+</script>
+<script id="cart-recipient-state-selection-step" type="text/html">
+    <article id="view2Row" class="cart_step__2__view1" data-bind="style:{ height: $data.views.layout.heightOfView2 }">
+        <div class="row">
+            <div class="question-single-line ">
+                <div class="col s7 m7">
+                    <span id="stateInstructions1" class="cart_item__description fadeInLeft animated-500-delay" style="padding-top: 10px; font-weight: bold; margin-top: 12px;">
+                        Select the state you are in:
+                    </span>
+                    <span id="stateInstructions2" class="cart_item__description fadeInLeft animated-500-delay m-hide" style="padding-top: 10px; font-weight: bold; margin-top: 12px;">
+                        This member's is currently in the state of:
+                    </span>
+                </div>
+                <div class="col s5 m5 right-align">
+                    <div id="stateForm" style="margin-top: 15px; margin-right: 10px;">
+                        <select id="ddlThemedAddressState"
+                                required
+                                class="form-control form-control-ext"
+                                data-bind="value: $data.store.cart.instance.selectedState">
+                            <option></option>
+                            <optgroup label="U.S. States">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </optgroup>
+                            <optgroup label="US Outlying Territories">
+                                <option value="AS">American Samoa</option>
+                                <option value="GU">Guam</option>
+                                <option value="MP">Northern Mariana Islands</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="UM">United States Minor Outlying Islands</option>
+                                <option value="VI">Virgin Islands</option>
+                            </optgroup>
+                            <optgroup label="Armed Forces">
+                                <option value="AA">Armed Forces Americas</option>
+                                <option value="AP">Armed Forces Pacific</option>
+                                <option value="AE">Armed Forces Others</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div id="stateLabel" class="fadeInRight animated-200 m-hide">
+                        <span data-bind="text: $data.store.cart.instance.selectedState"
+                              class="cart_item__description fadeInLeft animated-500-delay"
+                              style="padding-right:40px; padding-top: 10px; font-weight: bold; margin-top: 12px;">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ RECIPIENT  TEMPLATES      ------------------------------------->
+<!-------------------------------------------------------------------->
+<!--<%--SEARCH PHARMACIES--%>-->
+<!-------------------------------------------------------------------->
+<!-- [ PHARMACY  TEMPLATES       ------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-search-pharmacies-step" type="text/html">
+
+    <!-- ko template:{ name:'cart-search-pharmacies-zipcode-step'}--><!--/ko-->
+
+</script>
+<script id="cart-search-pharmacies-zipcode-step"
+        type="text/html">
+    <article id="view3"
+             class="cart_step__3__view1 "
+             data-bind="style:{ height: $data.views.layout.heightOfView3 }">
+        <!-- ko if:!$data.views.layout.hasPharmacyBeenSelected() -->
+        <div id="view3Row"
+             class="row fadeInUp animated-200 z-depth-2 m-hide"
+             style="height: 75px; margin-bottom: 0 !important; border-bottom: solid 1px #ccc">
+            <div class="question-single-line "
+                 style="border-top: solid 1px #ccc">
+                <div class="col s6 m6">
+                    <span class="cart_item__description fadeInLeft animated-500-delay" style="padding-top: 0; font-weight: bold; margin-top: 12px;">
+                        Search Pharmacy by ZipCode:
+                    </span>
+                </div>
+                <div class="col s6 m6 ">
+                    <input type="text"
+                           id="inputZipCode"
+                           placeholder="ZipCode"
+                           data-bind="textInput:$data.store.cart.instance.selectedZipCode" style="width: 100px;" maxlength="5"
+                           pattern="\d{5}" />
+                    <span class="red-text m-hide" id="errorIconZipCode"><i class="material-icons fadeIn animated ">error_outline</i> Required</span>
+                </div>
+            </div>
+        </div>
+        <div id="view3Results" data-bind="style:{ height: $data.views.layout.heightOfView3Results }">
+            <div style="position: relative;">
+                <div data-bind="visible:$data.views.layout.isLoadingSearch">
+                    <!-- ko template:{name:'cart-search-pharmacies-loader-template'} --><!-- /ko -->
+                </div>
+                <div data-bind="visible:$data.views.layout.hasPharmaciesSearchResults" style="background: #01579b">
+                    <table class="table bordered  fadeIn animated pull-right" style="width: 90%; margin-left: 35px; border: solid 1px #ccc; border-top: solid 0 #ccc; background: #fff">
+                        <tbody data-bind="foreach:{data:$data.views.picker.list, as: 'Item'} ">
+                            <!-- ko template: { name: 'cart-search-pharmacies-results-item-template', data:Item} --><!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if:$data.views.layout.hasPharmacyBeenSelected() -->
+        <div id="view3RowDone" class="row fadeInUp animated-200 z-depth-2" style="height: 75px; margin-bottom: 0 !important; border-bottom: solid 1px #ccc; background: #01579b;height: 100px;padding-top:1px;">
+            <table class="table bordered  fadeIn animated pull-right" style="width: 90%; margin-left: 35px; border: solid 1px #ccc; border-top: solid 0 #ccc; background: #fff">
+                <tbody data-bind="template: { name: 'cart-search-pharmacies-item-template', data:$data.views.store.cart.instance.selectedPharmacy } "></tbody>
+            </table>
+        </div>
+        <!-- /ko -->
+    </article>
+</script>
+<script id="cart-search-pharmacies-results-item-template" type="text/html">
+    <tr>
+        <td style="padding-left:10px;width:65px;"> <img data-bind="attr:{src: $root.store.getIcon(nameField)}" /> </td>
+        <td>
+            <a href="#" data-bind="text:nameField"></a><br />
+            <address>
+                <span data-bind="text:addressField.address1Field"></span><span data-bind="text:addressField.address2Field"></span><br />
+                <span data-bind="text:addressField.cityField"></span>, <span data-bind="text:addressField.stateField"></span>
+            </address>
+        </td>
+        <td style="padding-right:10px;">
+            <a href="javascript:void(0)" class="waves-effect waves-light btn blue darken-2 white-text pull-right"
+               data-bind="click: function (data, event) { $root.views.picker.onSelectPharmacy($data, data, event) }">Select</a>
+        </td>
+    </tr>
+</script>
+<script id="cart-search-pharmacies-item-template" type="text/html">
+    <tr>
+        <td style="padding-left:10px;width:65px;"> <img data-bind="attr:{src: $root.store.getIcon(nameField)}" /> </td>
+        <td>
+            <a href="#" data-bind="text:nameField"></a><br />
+            <address>
+                <span data-bind="text:addressField.address1Field"></span><span data-bind="text:addressField.address2Field"></span><br />
+                <span data-bind="text:addressField.cityField"></span>, <span data-bind="text:addressField.stateField"></span>
+            </address>
+        </td>
+    </tr>
+</script>
+<script id="cart-search-pharmacies-loader-template" type="text/html">
+    <div style="width: 100%; text-align: center; margin-top: 25px;" class="fadeInUp animated">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ PHARMACY  TEMPLATES       ------------------------------------->
+<!-------------------------------------------------------------------->
+<!-------------------------------------------------------------------->
+<!-- [ Consent  TEMPLATES       -------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-consent-required" type="text/html">
+    <div class="cart_step__4__view1 m-hide">
+        <div class="z-depth-1" style="background: #fff; height: 25px; position: absolute; left: -20px; right: -20px; top: -25px; z-index: 99">&nbsp;</div>
+        <div id="viewConsentForm" class="cart_step__4__view1 fadeIn animated m-hide" style="padding: 20px;">
+            <h5 style="border-bottom: solid 1px #ccc; padding-bottom: 10px;">Consultation Consent & Acknowledgment</h5>
+            <p>I understand and acknowledge that 1800-MD 24/7 functions as a cross coverage physician network when I am unable to access timely care with my own physician or other clinical settings. It is not intended to replace a necessary in person visit with a provider.</p>
+            <p>I acknowledge that I am accessing this service because I may not be able to access other care in a timely manner and I believe that if I do not receive care in a timely fashion my health may suffer. As such, in order to facilitate continuity of care, I certify and authorize 1800-MD to release information about my consultation only to those individuals or organizations designated by me that may include my physician, my health plan, referring physician, family members or others.</p>
+            <p>I understand that the information from interactions with any care coordinator or physician as a result of this permission will remain confidential. As long as I am a member of 1800-MD this authorization shall remain in effect.</p>
+            <br />
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ Consent  TEMPLATES       -------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-reason-for-consult-template" type="text/html">
+    <div class="cart_step__5__view1 m-hide">
+        <div class="row fadeIn animated" style="margin-bottom: 0 !important;">
+            <div class="input-field col s12">
+                <span class="cart_label" for="inputReasonForConsult" style="margin-top: -10px;">What is the reason for your consultation?</span><br />
+                <form enctype="multipart/form-data" id="frmHtmlEditor">
+                    <textarea data-bind="wysiwyg:$data.store.cart.instance.data.reason,
+                              wysiwygConfig: { statusbar: true }"></textarea>
+
+                </form>
+                <!--<span data-bind="html:$data.store.cart.instance.data.reason"></span>-->
+            </div>
+        </div>
+        <div class="row" data-bind="visible:!$data.views.isConsultationEConsult()">
+            <div class="input-field col s12">
+                <span for="inputPhoneNumber" class="cart_label__for__text">Provide Phone number the doctor should call you at?</span>
+                <input data-bind="textInput:$data.store.cart.instance.data.phone" placeholder="Phone Number" id="inputPhoneNumber" type="tel" required>
+            </div>
+        </div>
+        <div class="row" data-bind="visible:!$data.views.isEConsult()">
+            <div class="input-field col s12">
+                <label class="cart_label__for__text">Where would of you gone, if you did not have this option?</label><br />
+                <select required data-bind="value:$data.store.cart.instance.data.alternative">
+                    <option value="">Select...</option>
+                    <option value="1">Emergency Room</option>
+                    <option value="2">Urgent Care</option>
+                    <option value="3">Primary Care Physician</option>
+                    <option value="4">Retail Clinic</option>`
+                </select>
+            </div>
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ Consent  TEMPLATES       ------------------------------------->
+<!-------------------------------------------------------------------->
+<!-------------------------------------------------------------------->
+<!-- [ PAYMENT   TEMPLATES       ------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="cart-payment-template" type="text/html">
+
+    <!-- ko if: !$data.views.isProcessingPayment() -->
+    <!-- ko template:{ name:"cart-payment-credit-card-template"} --><!-- /ko -->
+    <!-- ko template:{ name:"cart-payment-billing-address-template"} --><!-- /ko -->
+    <!-- ko template:{ name:"cart-payment-terms-template"} --><!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.views.isProcessingPayment -->
+    <!-- ko template:{ name:"cart-payment-processing-loader-template"} --><!-- /ko -->
+    <!-- /ko -->
+</script>
+<script id="cart-payment-credit-card-template" type="text/html">
+    <div class="cart_step__6__view1 isValidateForm m-hide">
+        <div class="row row-ext fadeIn animated" style="padding-bottom: 0; margin-bottom: 0 !important;">
+            <div class="col s12">
+                <div class="row row-ext-2 blue darken-2 white-text" style="font-size: 18px; font-weight: 500; margin-bottom: 5px !important; padding-bottom: 0 !important; padding: 8px !important;">
+                    Payment Detials<br />
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row row-ext-2" style="margin-bottom: 5px !important; padding-bottom: 0 !important;">
+                    <div class="input-field col s12 m6">
+                        <br />
+                        <span class="cart_label__for__text" for="inputNameOnCard" style="display: block; clear: both; margin-bottom: 5px;">Name on Card</span>
+                        <input placeholder="Name on Card"
+                               data-bind="textInput:$data.store.cart.instance.payment.CreditCard.NameOnCard" id="inputNameOnCard" type="text" required />
+                    </div>
+                    <div class="input-field col s12 m6" style="position: relative;">
+                        <br />
+                        <span for="inputCreditCard" class="cart_label__for__text" style="display: block; clear: both; margin-bottom: 5px;">Credit Card Number</span>
+                        <input placeholder="Credit Card Number" id="inputCreditCard"
+                               type="text" class="cart_select"
+                               data-bind="textInput:$data.store.cart.instance.payment.CreditCard.CardNumber" required />
+                        <p class="log" style="position: absolute; top: 10px; right: 100px;"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row row-ext-2" style="margin-bottom: 5px !important; padding-bottom: 0 !important;">
+                    <table class="bordered">
+                        <!--<tr>
+                            <th>Expiration Month</th>
+                            <th>Expiration Year</th>
+                            <th>CCV</th>
+                        </tr>-->
+                        <tbody>
+                            <tr>
+                                <td valign="top" class="col m3">
+                                    <select id="cc_exp_mo" name="cc_exp_mo" required
+                                            data-bind="value:$data.store.cart.instance.payment.CreditCard.CardExpirationMonth">
+                                        <option></option>
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </td>
+                                <td class="col m3">
+                                    <select class="cart_select" id="cc_exp_year" name="cc_exp_year"
+                                            data-bind="value:$data.store.cart.instance.payment.CreditCard.CardExpirationYear" required>
+                                        <option></option>
+                                        <option>2015</option>
+                                        <option>2016</option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                    </select>
+                                </td>
+                                <td class="col m3">
+                                    <input type="text" placeholder="CCV"
+                                           class="form-control" name="CVV" id="CVV"
+                                           autocomplete="off"
+                                           maxlength="3"
+                                           pattern="\d{3}" data-bind="value:$data.store.cart.instance.payment.CreditCard.CardCCV"
+                                           title="Three digits at back of your card" required>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="cart-payment-billing-address-template" type="text/html">
+    <div class="cart_step__6__view2 isValidateForm m-hide" style="margin-bottom: 0;">
+        <div class="row row-ext fadeIn animated" style="border-top: solid 0 #ccc; margin-bottom: 5px !important; padding-bottom: 0 !important;">
+            <div class="col s12">
+                <div class="row row-ext-2 blue darken-2 white-text" style="font-size: 18px; font-weight: 500; margin-bottom: 5px; padding: 8px;">
+                    Billing Address<br />
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row row-ext-2" style="margin-bottom: 5px !important; padding-bottom: 0 !important;">
+                    <div class="input-field col s12 m6">
+                        <br />
+                        <span class="cart_label__for__text" for="inputStreetAddress" style="display: block; clear: both; margin-bottom: 5px;">Street Address</span>
+                        <input placeholder="Street Address" id="inputStreetAddress" type="text" required
+                               data-bind="textInput:$data.store.cart.instance.payment.BillingAddress.Address1" />
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <br />
+                        <span class="cart_label__for__text" for="inputStreetAddress2" style="display: block; clear: both; margin-bottom: 5px;">Apt./Suite</span>
+                        <input placeholder="Apt./Suite" id="inputStreetAddress2" type="text"
+                               data-bind="textInput:$data.store.cart.instance.payment.BillingAddress.Address2" />
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row row-ext-2" style="margin-bottom: 5px !important; padding-bottom: 0 !important;">
+                    <div class="input-field col s12 m6">
+                        <!--<br/>-->
+                        <!--<span class="cart_label__for__text" for="inputCity" style="display: block; clear: both; margin-bottom: 15px;">City</span>-->
+                        <input placeholder="City" id="inputCity" type="text" required
+                               data-bind="textInput:$data.store.cart.instance.payment.BillingAddress.City">
+                    </div>
+                    <div class="input-field col s12 m3">
+                        <!--<br/>-->
+                        <!--<span class="cart_label__for__text" style="display: block; clear: both; margin-bottom: 5px;">State</span>-->
+                        <select id="ddlState"
+                                required
+                                class="form-control form-control-ext"
+                                data-bind="value: $data.store.cart.instance.payment.BillingAddress.State">
+                            <option></option>
+                            <optgroup label="U.S. States">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </optgroup>
+                            <optgroup label="US Outlying Territories">
+                                <option value="AS">American Samoa</option>
+                                <option value="GU">Guam</option>
+                                <option value="MP">Northern Mariana Islands</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="UM">United States Minor Outlying Islands</option>
+                                <option value="VI">Virgin Islands</option>
+                            </optgroup>
+                            <optgroup label="Armed Forces">
+                                <option value="AA">Armed Forces Americas</option>
+                                <option value="AP">Armed Forces Pacific</option>
+                                <option value="AE">Armed Forces Others</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="input-field col s12 m3">
+                        <input type="text" placeholder="Zipcode"
+                               class="form-control" name="zipCode" id="zipCode"
+                               autocomplete="on"
+                               maxlength="5"
+                               data-bind="textInput:$data.store.cart.instance.payment.BillingAddress.ZipCode"
+                               pattern="\d{5}"
+                               required>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col s12">
+                <div class="row" style="margin-bottom: 5px !important; padding-bottom: 0 !important;">
+                    <div class="input-field col s6 m3 l3 ">
+                        <br/>
+                        <span class="cart_label__for__text" for="cc_exp_year" style="display: block; clear: both; margin-bottom: 5px;">Zip Code</span>
+                        <input type="text" placeholder="Zipcode"
+                               class="form-control" name="zipCode" id="zipCode"
+                               autocomplete="on"
+                               maxlength="5"
+                               data-bind="textInput:$data.store.cart.instance.payment.BillingAddress.ZipCode"
+                               pattern="\d{5}"
+                               required>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</script>
+<script id="cart-payment-terms-template" type="text/html">
+    <div class="cart_step__6__view3 m-hide">
+        <div class="z-depth-1" style="background: #1976D2; height: 28px; position: absolute; left: -20px; right: -20px; top: -25px; z-index: 99">&nbsp;</div>
+        <div id="viewTermsForm" class="cart_step__6__view3 fadeIn animated " style="padding: 20px;">
+            <h5 style="border-bottom: solid 1px #ccc; padding-bottom: 10px;">Terms & Conditions</h5>
+            <p>You may use our Products only if you can form a binding contract with Pinterest, and only in compliance with these Terms and all applicable laws. When you create your Pinterest account, you must provide us with accurate and complete information. Any use or access by anyone under the age of 13 is prohibited. If you open an account on behalf of a company, organization, or other entity, then (a) " you" includes you and that entity, and (b) you represent and warrant that you are authorized to grant all permissions and licenses provided in these terms and bind the entity to these terms, and that you agree to these terms on the entity's behalf.</p>
+            <br />
+        </div>
+    </div>
+</script>
+<script id="cart-payment-processing-loader-template" type="text/html">
+
+    <div style="width: 100%; text-align: center; margin-top: 25px;" class="fadeInUp animated">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-------------------------------------------------------------------->
+<!-- [ PAYMENT   TEMPLATES       ------------------------------------->
+<!-------------------------------------------------------------------->
+<script id="template-upload" type="text/html">
+    <div style="border-bottom: solid 4px #ccc; margin-top: 25px;">
+        <div class="row">
+            <form id="frmUpload" enctype="multipart/form-data" class="col s12 m12">
+                <h4 class="blue-text">File Upload</h4>
+                <h5>
+                    Would you like to upload some files and associate them with this consult? Choose file(s) <label for="upload" class="btn blue white-text" style="width: 120px;">BROWSE</label>
+                </h5>
+                <div>
+                    <!-- if: $data.IsUploading() -->
+                    <!-- ko template:{name:"template_clinical_form__loader"}-->
+                    <!-- /ko-->
+                    <div class="col s12 m12">
+                        <ul data-bind="foreach:$data.views.ctxUpload.listDisplay">
+                            <li><span data-bind="text:name"></span></li>
+                        </ul>
+                    </div>
+                    <div class="col s12 m12">
+                        <p>
+                            <input type="file" multiple id="upload" name="upload" data-bind="event:{ change: $data.views.ctxUpload.changeEvent }" />
+                            <input type="hidden" id="inputConsultationID" name="inputConsultationID" data-bind="value:$data.views.ConsultationID" />
+                        </p>
+                        <div class="form-group" data-bind="visible:$data.views.ctxUpload.isEnabled">
+                            <label for="inputDescription">Notes about the image(s)</label>
+                            <textarea id="inputDescription" name="inputDescription"
+                                      style="width: 100%; height: 100px;" data-bind="textInput:$data.views.ctxUpload.Description, enable:$data.views.ctxUpload.isEnabled"></textarea>
+                            <a href="javascript:void(0);" id="buttonUploadXXX"
+                               class="btn blue white-text pull-right" data-bind="click: function(data,event){ $data.views.ctxUpload.doUpload(data,event)}">Click Here to Upload</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="col s12 m12 m-hide" id="uploadComplete">
+                <h5>Thank you, your upload is complete.</h5>
+            </div>
+        </div>
+    </div>
+</script>

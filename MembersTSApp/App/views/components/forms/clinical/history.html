@@ -1,0 +1,57 @@
+﻿<div class="blue darken-3" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;" data-bind="visible:$data.isLoading">
+    <div class="preloader-wrapper big active" id="spinnerHealthRecords">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position: relative">
+    <div class="container">
+        <div class="row blue darken-1 white-text" style="padding: 8px; padding-left: 25px!important;" data-bind="text:$data.title">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <select data-bind="
+                options:$data.dataModel.familyRelationship.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.FamilyRelationshipID,
+                optionsCaption: 'Choose...'"
+                        required></select>
+                <label>Relationship to member</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select data-bind="
+                options:$data.dataModel.familyHistoryCondition.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.FamilyHistoryConditionID,
+                optionsCaption: 'Choose...'"></select>
+                <label>Condition</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <input type="checkbox" id="test5" class="filled-in" data-bind="checked:!$data.vm.IsHidden()" />
+                <label for="test5">Yes, This Family History Condition is visible on my medical record?</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12  m12">
+                <label> Notes</label>
+                <textarea class="materialize-textarea" data-bind="textInput:$data.vm.Notes"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,322 @@
+﻿<style type="text/css">
+    .left-buffer {
+        padding-left: 15px !important;
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    .splitter-left {
+        border-left: solid 1px #ccc;
+    }
+
+    label {
+        font-size: 1.1rem !important;
+        color: #062B4F;
+        -ms-text-rendering: optimizeLegibility !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    .label_accountInfo__value {
+        font-weight: 300;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 550px) {
+        .left-buffer {
+            padding-left: 25px !important;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .splitter-left {
+            border-left: solid 1px #ccc;
+        }
+
+        .label_accountInfo__value {
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+    }
+
+    @media only screen and (max-width: 550px) {
+        .tabs .tab a.ext {
+            font-size: .8rem !important;
+            font-weight: 700;
+        }
+    }
+
+    input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+        box-shadow: 0 0 0 0 rgb(16, 108, 200) !important;
+    }
+</style>
+<link href="Content/formreset.css" rel="stylesheet" />
+<section class="container-fluid  fadeInUp animated-500"
+         style="margin-top: 1px; overflow-y: hidden;">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; top: 0;" id="bottomPANEL">
+        <div class="row tab_row__account2">
+            <!-- ko template: { name: 'template_account__tabs'}--><!-- /ko -->
+            <!-- ko template:{ name:'template_tab__loader'} --><!-- /ko -->
+            <!-- ko template:{ name:'template_account__sections'}--><!-- /ko -->
+        </div>
+    </div>
+</section>
+<!--==========================================================================-->
+<!--============[ TABS         ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_account__tabs">
+    <div class="tab_wrapper fadeInLeft animated">
+        <ul class="tabs blue darken-4 tab_ul_clinical__wrapper">
+            <li class="tab col s3">
+                <a href="#accountInfo"
+                   data-bind="click:function(data,event){return $data.resetView(data,event,1);}"
+                   class=" waves-effect white-text active ext">Account Info</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#familymemberInfo"
+                   data-bind="click:function(data,event){return $data.resetView(data,event,2);}"
+                   class="waves-effect white-text ext">Family Members</a>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="text/html" id="template_account__sections">
+    <article class=" tab_content__wrapper content_account2 fadeIn animated-300"
+             id="viewAccountInfo" style="bottom: -18px;">
+        <section id="accountInfo"
+                 class="col s12 fadeInUp animated-500-delay m-hide"
+                 style="position: absolute; top: 0; left: 0; right: -10px; bottom:-10px; overflow-y: auto; overflow-x: hidden;">
+            <!-- ko template: {name:'template_myaccount__account'}--><!--/ko-->
+        </section>
+        <section id="familymemberInfo"
+                 class="col s12 fadeInUp animated-500-delay"
+                 style="position: absolute; top: 0; left: 0; right: -10px; bottom: 0; overflow-y: hidden; overflow-x: hidden; padding-left: 0;padding-right:0">
+            <!-- ko if: $data.hasData()-->
+            <!-- ko compose: $data.pageControl --><!-- /ko  --><!-- /ko -->
+            <!--==========================================================================-->
+            <!--============[ ACCOUNT ]==============================================-->
+            <!--==========================================================================-->
+        </section>
+    </article>
+</script>
+<script type="text/html" id="template_myaccount__account">
+    <div style="position: absolute; left:0; right: -10px; top:0; overflow-y: auto" class="show-on-small-and-down hide-on-med-and-up">
+        <table class="table bordered striped z-depth-1 show-on-small-and-down hide-on-med-and-up white">
+            <thead class="red darken-1">
+                <tr>
+                    <th class=" col m6 white-text"
+                        style="border-radius: 0; padding: 15px; font-size: 1.2rem;">Account Information</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table bordered striped z-depth-1 show-on-small-and-down hide-on-med-and-up white" style="border-bottom: solid 3px #FFFFFF;">
+            <tbody class="show-on-small-and-down hide-on-med-and-up">
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Account #
+                    </td>
+                    <td style="width: 50%!important">
+                        &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.AccountInfo.Account.AccountID"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Client
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.ClientInfo.Client.Name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Group
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <span class="label_accountInfo__value" data-bind="text:$data.GroupInfo.GroupName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Member #
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <span class="label_accountInfo__value" data-bind="text:$data.checkMemberNumber($data.AccountInfo.MemberNumber)"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Status
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <!-- ko if: $data.AccountInfo.Account.IsActive -->
+                        <i class="material-icons green-text darken-2"
+                           style="font-size: 1.2rem;">check_circle</i> Active
+                        <!-- /ko -->
+                        <!-- ko if: !$data.AccountInfo.Account.IsActive() -->
+                        <i class="material-icons yellow-text darken-2">remove_circle</i>
+                        <!-- /ko -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Membership
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <span class="label_accountInfo__value" data-bind="text: $data.Membership.MembershipLabel"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Activated Date
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Activated"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-buffer" style="width: 50%!important">
+                        Expiration Date
+                    </td>
+                    <td class="splitter-left" style="width: 50%!important">
+                        &nbsp;
+                        <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Expires"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="position: absolute; left: 0; right: -10px; top: 0; overflow-y: auto">
+        <div class="row" style="padding: 0 !important;">
+            <table class="table bordered striped z-depth-1 hide-on-small-and-down white"
+                   style="background: #fff;">
+                <thead class=" red darken-1">
+                    <tr>
+                        <th class="col m6 white-text"
+                            colspan="4"
+                            style="border-radius: 0; padding: 15px; font-size: 1.2rem;">Account Information</th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table bordered striped z-depth-1 hide-on-small-and-down white " style="background: #fff;border-bottom: solid 3px #FFFFFF;">
+                <tbody class="hide-on-small-and-down">
+                    <tr>
+                        <td class="left-buffer" style="max-width: 150px !important;">Client</td>
+                        <td style="width: 30%">
+                            &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.ClientInfo.Client.Name"></span>
+                        </td>
+                        <td class="left-buffer splitter-left">Account #</td>
+                        <td style="width: 30%">
+                            &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.AccountInfo.Account.AccountID"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-buffer">Group</td>
+                        <td>
+                            &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.GroupInfo.GroupName"></span>
+                        </td>
+                        <td class="left-buffer splitter-left">Member #</td>
+                        <td>
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="text:$data.checkMemberNumber($data.AccountInfo.MemberNumber)"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-buffer">Status</td>
+                        <td>
+                            &nbsp;
+                            <!-- ko if: $data.AccountInfo.Account.IsActive -->
+                            <i class="material-icons green-text darken-2" style="font-size: 1.2rem;">check_circle</i> Active
+                            <!-- /ko -->
+                            <!-- ko if: !$data.AccountInfo.Account.IsActive() -->
+                            <i class="material-icons yellow-text darken-2">remove_circle</i>
+                            <!-- /ko -->
+                        </td>
+                        <td class="left-buffer splitter-left">Membership</td>
+                        <td>
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="text: $data.Membership.MembershipLabel"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-buffer">Activated Date</td>
+                        <td style="width: 30%">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Activated"></span>
+                        </td>
+                        <td class="left-buffer splitter-left">Expiration Date</td>
+                        <td style="width: 30%">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Expires"></span>
+                        </td>
+
+                    </tr>
+                </tbody>
+                <tbody class="show-on-small-and-down hide-on-med-and-up">
+                    <tr>
+                        <td class="col left-buffer s5 offset-s1" style="width: 150px !important">Account #</td>
+                        <td class="col s5">
+                            &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.AccountInfo.Account.AccountID"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 m1 left-buffer offset-s1">Client</td>
+                        <td class=" col s5 m5">
+                            &nbsp;<span class="label_accountInfo__value" data-bind="text:$data.ClientInfo.Client.Name"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 left-buffer offset-s1">Group</td>
+                        <td class="col s5">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="text:$data.GroupInfo.GroupName"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 offset-s1 left-buffer">Member #</td>
+                        <td class="col s5 ">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="text:$data.checkMemberNumber($data.AccountInfo.MemberNumber)"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 offset-s1 left-buffer">Status</td>
+                        <td class="col s5 ">
+                            &nbsp;
+                            <!-- ko if: $data.AccountInfo.Account.IsActive -->
+                            <i class="material-icons green-text darken-2" style="font-size: 1.2rem;">check_circle</i> Active
+                            <!-- /ko -->
+                            <!-- ko if: !$data.AccountInfo.Account.IsActive() -->
+                            <i class="material-icons yellow-text darken-2">remove_circle</i>
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 offset-s1 left-buffer ">Membership</td>
+                        <td class="col s5">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="text: $data.Membership.MembershipLabel"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 offset-s1 left-buffer">Activated Date</td>
+                        <td class="col s5 ">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Activated"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col s5 offset-s1 left-buffer">Expiration Date</td>
+                        <td class="col s5 ">
+                            &nbsp;
+                            <span class="label_accountInfo__value" data-bind="date:$data.AccountInfo.Account.DTUTC_Expires"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>

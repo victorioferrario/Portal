@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\Projects\1800MD-Members\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\Projects\1800MD-Members\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{9C5F0C8C-B192-42D0-9413-A9D866BAF0C1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/e683a05f-d490-4d55-88a3-80515065f310/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/MembersTSApp01</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="apple-touch-icon-152x152-precomposed.png" />
+    <Content Include="apple-touch-icon-152x152.png" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="App\components\grid\viewModel.html" />
+    <Content Include="App\components\grid\viewModel2.html" />
+    <Content Include="App\components\grid\viewNoResults.html" />
+    <Content Include="App\sections\shared\reload.html" />
+    <Content Include="App\sections\shared\upgrade.html" />
+    <Content Include="App\views\components\forms\account\dependent.html" />
+    <Content Include="App\views\components\forms\manager4.html" />
+    <Content Include="App\views\text\terms.html" />
+    <Content Include="App\sections\account\default.html" />
+    <Content Include="App\sections\account\familymembers.html" />
+    <Content Include="App\sections\account\profile.html" />
+    <Content Include="App\sections\account\viewer.html" />
+    <Content Include="App\sections\clinical\default.html" />
+    <Content Include="App\sections\consults\AltContent.html">
+      <DependentUpon>history.ts</DependentUpon>
+    </Content>
+    <Content Include="App\sections\consults\default.html" />
+    <Content Include="App\sections\consults\history.html" />
+    <Content Include="App\sections\consults\store.html" />
+    <Content Include="App\sections\dashboard.html" />
+    <Content Include="App\sections\shared\notfound404.html" />
+    <Content Include="App\sections\template\default.html" />
+    <Content Include="App\sections\template\responsivePage.html" />
+    <Content Include="App\shell.html" />
+    <Content Include="App\views\components\details\manager.html" />
+    <Content Include="App\views\components\details\pendingManager.html" />
+    <Content Include="App\views\components\details\planofCare.html" />
+    <Content Include="App\views\components\forms\account\billing.html" />
+    <Content Include="App\views\components\forms\clinical2x\allergy.html" />
+    <Content Include="App\views\components\forms\clinical2x\blank.html" />
+    <Content Include="App\views\components\forms\clinical2x\condition.html" />
+    <Content Include="App\views\components\forms\clinical2x\history.html" />
+    <Content Include="App\views\components\forms\clinical2x\medication.html" />
+    <Content Include="App\views\components\forms\clinical2x\ReadMe.html">
+      <DependentUpon>ReadMe.md</DependentUpon>
+    </Content>
+    <Content Include="App\views\components\forms\clinical\allergy.html" />
+    <Content Include="App\views\components\forms\clinical\condition.html" />
+    <Content Include="App\views\components\forms\clinical\history.html" />
+    <Content Include="App\views\components\forms\clinical\medication.html" />
+    <Content Include="App\views\components\forms\manager.html" />
+    <Content Include="App\views\components\forms\manager3.html" />
+    <Content Include="App\views\components\forms\manager2.html" />
+    <Content Include="App\views\components\html\loader.html" />
+    <Content Include="App\views\templates\account.html" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\app.bundle.2.css" />
+    <Content Include="Content\app.bundle.2.min.css">
+      <DependentUpon>app.bundle.2.css</DependentUpon>
+    </Content>
+    <Content Include="Content\app.bundle.4.css" />
+    <Content Include="Content\app.bundle.5.css" />
+    <Content Include="Content\xapp.bundle.5.min.css" />
+    <Content Include="Content\app.bundle.css" />
+    <Content Include="Content\app.bundle.min.css">
+      <DependentUpon>app.bundle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\app.css" />
+    <Content Include="Content\cart.css" />
+    <Content Include="Content\formreset.css" />
+    <Content Include="Content\history.css" />
+    <Content Include="Content\images\1800md-logo.svg" />
+    <Content Include="Content\images\39FD35EA.png" />
+    <Content Include="Content\images\banners\1800MD-2.png" />
+    <Content Include="Content\images\banners\1800MD.png" />
+    <Content Include="Content\images\banners\2.jpg" />
+    <Content Include="Content\images\banners\About.jpg" />
+    <Content Include="Content\images\banners\Banner-10-1.jpg" />
+    <Content Include="Content\images\banners\Banner-8-1.png" />
+    <Content Include="Content\images\banners\Banner-8.png" />
+    <Content Include="Content\images\banners\Banner-9-1.jpg" />
+    <Content Include="Content\images\banners\clock.png" />
+    <Content Include="Content\images\banners\family-doctor-fm-2.jpg" />
+    <Content Include="Content\images\banners\family-doctor-fm.jpg" />
+    <Content Include="Content\images\banners\Header-Contact.jpg" />
+    <Content Include="Content\images\banners\Header-Individual.jpg" />
+    <Content Include="Content\images\banners\Header-Physicians.jpg" />
+    <Content Include="Content\images\banners\shutterstock_160380812.jpg" />
+    <Content Include="Content\images\banners\shutterstock_160380812_1600.jpg" />
+    <Content Include="Content\images\customer-service.svg" />
+    <Content Include="Content\images\doctor.png" />
+    <Content Include="Content\images\member-1.svg" />
+    <Content Include="Content\images\member-2.svg" />
+    <Content Include="Content\images\members-2.svg" />
+    <Content Include="Content\images\members-3.svg" />
+    <Content Include="Content\images\members-4.svg" />
+    <Content Include="Content\images\members.svg" />
+    <Content Include="Content\images\noun_65703_cc.svg" />
+    <Content Include="Content\images\rx\cvs.png" />
+    <Content Include="Content\images\rx\generic.png" />
+    <Content Include="Content\images\rx\kroger.png" />
+    <Content Include="Content\images\rx\pixel.png" />
+    <Content Include="Content\images\rx\publix.png" />
+    <Content Include="Content\images\rx\riteaid.png" />
+    <Content Include="Content\images\rx\shim.png" />
+    <Content Include="Content\images\rx\walgreens.png" />
+    <Content Include="Content\images\rx\walmart.png" />
+    <Content Include="Content\messagingLoader.css" />
+    <Content Include="Content\navTemplate.css" />
+    <Content Include="Content\pageTemplate.css" />
+    <Content Include="Content\store.css" />
+    <Content Include="Content\tabs.css" />
+    <Content Include="Content\vendors\durandal.css" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\css\font-awesome.css" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\css\font-awesome.min.css" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\HELP-US-OUT.txt" />
+    <Content Include="Content\vendors\material-master\assets\js-project\project.js" />
+    <Content Include="Content\vendors\material-master\assets\js\bootstrap.js" />
+    <Content Include="Content\vendors\material-master\assets\js\datepicker.js" />
+    <Content Include="Content\vendors\material-master\assets\js\form-adv-label.js" />
+    <Content Include="Content\vendors\material-master\assets\js\form-adv-textarea.js" />
+    <Content Include="Content\vendors\material-master\assets\js\header.js" />
+    <Content Include="Content\vendors\material-master\assets\js\menu.js" />
+    <Content Include="Content\vendors\material-master\assets\js\tab.js" />
+    <Content Include="Content\vendors\material-master\assets\js\tile.js" />
+    <Content Include="Content\vendors\material-master\assets\js\toast.js" />
+    <Content Include="Content\vendors\material-master\assets\js\wave.js" />
+    <Content Include="Content\vendors\material-master\assets\js\webfont.js" />
+    <Content Include="Content\vendors\material-master\assets\js\_.js" />
+    <Content Include="Content\vendors\material-master\css\base.css" />
+    <Content Include="Content\vendors\material-master\css\base.min.css" />
+    <Content Include="Content\vendors\material-master\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\alt.jpg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\blue.jpg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\green.jpg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\purple.jpg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\red.jpg" />
+    <Content Include="Content\vendors\material-master\css\images\bg\yellow.jpg" />
+    <Content Include="Content\vendors\material-master\css\project.css" />
+    <Content Include="Content\vendors\material-master\css\project.min.css" />
+    <Content Include="Content\vendors\material-master\favicon.ico" />
+    <Content Include="Content\vendors\material-master\Gruntfile.js" />
+    <Content Include="Content\vendors\material-master\images\samples\landscape.jpg" />
+    <Content Include="Content\vendors\material-master\images\samples\portrait.jpg" />
+    <Content Include="Content\vendors\material-master\images\screenshots\material01.png" />
+    <Content Include="Content\vendors\material-master\images\screenshots\material02.png" />
+    <Content Include="Content\vendors\material-master\images\screenshots\material03.png" />
+    <Content Include="Content\vendors\material-master\images\users\avatar-001.jpg" />
+    <Content Include="Content\vendors\material-master\images\users\noun_65703_cc.svg" />
+    <Content Include="Content\vendors\material-master\js\base.js" />
+    <Content Include="Content\vendors\material-master\js\base.min.js" />
+    <Content Include="Content\vendors\material-master\js\project.js" />
+    <Content Include="Content\vendors\material-master\js\project.min.js" />
+    <Content Include="Content\vendors\material-master\templates\index.html" />
+    <Content Include="Content\vendors\material-master\templates\page-login.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette-blue.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette-green.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette-purple.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette-red.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette-yellow.html" />
+    <Content Include="Content\vendors\material-master\templates\page-palette.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-button.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-card.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-collapse.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-dropdown.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-form-adv.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-form-default.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-form.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-icon.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-modal.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-nav.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-progress.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-tab.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-table.html" />
+    <Content Include="Content\vendors\material-master\templates\ui-tile.html" />
+    <Content Include="Content\vendors\materialize.9.72\css\materialize.css" />
+    <Content Include="Content\vendors\materialize.9.72\css\materialize.min.css" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\LICENSE.txt" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.svg" />
+    <Content Include="Content\vendors\materialize.9.72\js\materialize.js" />
+    <Content Include="Content\vendors\materialize.9.72\js\materialize.min.js" />
+    <Content Include="Content\vendors\materialize.9.73\css\materialize.css" />
+    <Content Include="Content\vendors\materialize.9.73\css\materialize.min.css">
+      <DependentUpon>materialize.css</DependentUpon>
+    </Content>
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\LICENSE.txt" />
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\Material-Design-Icons.svg" />
+    <Content Include="Content\vendors\materialize.9.73\js\materialize.js" />
+    <Content Include="Content\vendors\materialize.9.73\js\materialize.min.js" />
+    <Content Include="Content\vendors\materialize\css\materialize.css" />
+    <Content Include="Content\vendors\materialize\css\materialize.min.css">
+      <DependentUpon>materialize.css</DependentUpon>
+    </Content>
+    <Content Include="Content\vendors\materialize\font\material-design-icons\LICENSE.txt" />
+    <Content Include="Content\vendors\materialize\font\material-design-icons\Material-Design-Icons.svg" />
+    <Content Include="Content\vendors\materialize\js\materialize.js" />
+    <Content Include="Content\vendors\materialize\js\materialize.min.js" />
+    <Content Include="Content\vendors\mdl\material.css" />
+    <Content Include="Content\vendors\mdl\material.js" />
+    <Content Include="Content\vendors\mdl\material.min.css" />
+    <Content Include="Content\vendors\mdl\material.min.js" />
+    <Content Include="Scripts\app.bundle.4.js" />
+    <Content Include="Scripts\app.bundle.4.min.js">
+      <DependentUpon>app.bundle.4.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout\knockout-3.4.0.js" />
+    <Content Include="Scripts\vendors\polyfill\html.js" />
+    <Content Include="Scripts\vendors\scrollReveal.js" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\animated.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\bordered-pulled.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\core.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\fixed-width.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\font-awesome.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\icons.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\larger.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\list.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\mixins.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\path.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\rotated-flipped.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\stacked.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\less\variables.less" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\font-awesome.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_animated.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_core.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_fixed-width.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_icons.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_larger.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_list.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_mixins.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_path.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_stacked.scss" />
+    <Content Include="Content\vendors\font-awesome-4.4.0\scss\_variables.scss" />
+    <Content Include="Content\vendors\material-master\.gitignore" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\_font-awesome.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\_material-design-icon.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\_waves.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_animated.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_bordered-pulled.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_core.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_fixed-width.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_flipped-rotated.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_icons.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_larger.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_list.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_mixins.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_path.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_stacked.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\font-awesome\_variables.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\material-design-icon\_core.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\material-design-icon\_larger.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\material-design-icon\_path.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\addons\material-design-icon\_variables.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\base\_grid.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\base\_reset.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\base.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_avatar.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_breadcrumb.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_button-flat.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_button-float.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_button.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_card.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_code.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_dropdown.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form-adv-checkbox.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form-adv-datepicker.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form-adv-label.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form-adv-switch.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form-adv-textarea.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_form.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_label.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_modal.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_nav.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_progress-circular.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_progress-loadbar.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_progress.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_tab.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_table.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_tile.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\components\_toast.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\elements\_content.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\elements\_footer.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\elements\_header.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\elements\_menu.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\mixin\_css3.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\mixin\_grid.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\mixin\_responsive.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\mixin\_utilities.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\utilities\_print.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\utilities\_utilities-responsive.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\utilities\_utilities.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass\var\_variable.scss" />
+    <Content Include="Content\vendors\material-master\assets\sass-project\project.scss" />
+    <Content Include="Content\vendors\material-master\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendors\material-master\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendors\material-master\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendors\material-master\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendors\material-master\css\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendors\material-master\css\fonts\MaterialIcons-Regular.eot" />
+    <Content Include="Content\vendors\material-master\css\fonts\MaterialIcons-Regular.ttf" />
+    <Content Include="Content\vendors\material-master\css\fonts\MaterialIcons-Regular.woff" />
+    <Content Include="Content\vendors\material-master\css\fonts\MaterialIcons-Regular.woff2" />
+    <Content Include="Content\vendors\material-master\LICENSE" />
+    <Content Include="Content\vendors\material-master\package.json" />
+    <Content Include="Content\vendors\material-master\README.md" />
+    <Content Include="Content\vendors\materialize\font\material-design-icons\Material-Design-Icons.eot" />
+    <Content Include="Content\vendors\materialize\font\material-design-icons\Material-Design-Icons.ttf" />
+    <Content Include="Content\vendors\materialize\font\material-design-icons\Material-Design-Icons.woff" />
+    <Content Include="Content\vendors\materialize\font\material-design-icons\Material-Design-Icons.woff2" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Bold.ttf" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Bold.woff" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Bold.woff2" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Light.ttf" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Light.woff" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Light.woff2" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Medium.ttf" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Medium.woff" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Medium.woff2" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Regular.ttf" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Regular.woff" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Regular.woff2" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Thin.ttf" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Thin.woff" />
+    <Content Include="Content\vendors\materialize\font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Content\vendors\materialize\LICENSE" />
+    <Content Include="Content\vendors\materialize\README.md" />
+    <Content Include="App\data\clinical.json" />
+    <Content Include="Scripts\jquery\Everest.min.js" />
+    <Content Include="Scripts\jquery\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery\jquery.jTableScroll.js" />
+    <Content Include="Scripts\jquery\jquery.creditCardValidator.js" />
+    <Content Include="Scripts\jquery\jquery.form.js" />
+    <Content Include="Scripts\jquery\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery\typeahead.jquery.js" />
+    <Content Include="Scripts\knockout\knockout-3.4.0rc.js" />
+    <Content Include="Scripts\knockout\knockout-date-bindings.js" />
+    <Content Include="Scripts\knockout\knockout.load.js" />
+    <Content Include="Scripts\knockout\knockout.upload.js" />
+    <Content Include="Scripts\knockout\logger.css" />
+    <Content Include="Scripts\knockout\logger.html" />
+    <Content Include="Scripts\knockout\logger.js" />
+    <Content Include="Scripts\knockout\storage.js" />
+    <Content Include="Scripts\knockout\KODataTable.js" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\trumbowyg.js" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\trumbowyg.min.js" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\images\icons-black-2x.png" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\images\icons-black.png" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\images\icons-white-2x.png" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\images\icons-white.png" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\trumbowyg.css" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\trumbowyg.min.css" />
+    <Content Include="Scripts\vendors\localforage.min.js" />
+    <Content Include="App\views\components\forms\clinical2x\ReadMe.md" />
+    <Content Include="Bugs.md" />
+    <Content Include="App\sections\consults\ReadMe.CheckOut.md" />
+    <Content Include="App\views\components\forms\clinical2x\Updates.md" />
+    <None Include="bundleconfig.json" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.eot" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Bold.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Bold.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Bold.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Light.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Light.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Light.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Medium.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Medium.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Medium.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Regular.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Regular.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Regular.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Thin.ttf" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Thin.woff" />
+    <Content Include="Content\vendors\materialize.9.72\font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Content\vendors\materialize.9.72\LICENSE" />
+    <Content Include="Content\vendors\materialize.9.72\README.md" />
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\Material-Design-Icons.eot" />
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\Material-Design-Icons.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\Material-Design-Icons.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\material-design-icons\Material-Design-Icons.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Bold.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Bold.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Bold.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Light.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Light.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Light.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Medium.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Medium.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Medium.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Regular.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Regular.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Regular.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Thin.ttf" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Thin.woff" />
+    <Content Include="Content\vendors\materialize.9.73\font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Content\vendors\materialize.9.73\LICENSE" />
+    <Content Include="Content\vendors\materialize.9.73\README.md" />
+    <None Include="Scripts\jquery\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\durandal\activator.js" />
+    <Content Include="Scripts\durandal\app.js" />
+    <Content Include="Scripts\durandal\binder.js" />
+    <Content Include="Scripts\durandal\composition.js" />
+    <Content Include="Scripts\durandal\events.js" />
+    <Content Include="Scripts\durandal\plugins\dialog.js" />
+    <Content Include="Scripts\durandal\plugins\history.js" />
+    <Content Include="Scripts\durandal\plugins\http.js" />
+    <Content Include="Scripts\durandal\plugins\observable.js" />
+    <Content Include="Scripts\durandal\plugins\router.js" />
+    <Content Include="Scripts\durandal\plugins\serializer.js" />
+    <Content Include="Scripts\durandal\plugins\widget.js" />
+    <Content Include="Scripts\durandal\system.js" />
+    <Content Include="Scripts\durandal\transitions\entrance.js" />
+    <Content Include="Scripts\durandal\viewEngine.js" />
+    <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery\jquery.fullscreen.js" />
+    <Content Include="Scripts\jquery\jquery.timer.js" />
+    <Content Include="Scripts\jquery\jquery.transit.min.js" />
+    <Content Include="Scripts\jquery\velocity.js" />
+    <Content Include="Scripts\jquery\velocity.ui.js" />
+    <Content Include="Scripts\knockout\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout\knockout-postbox.js" />
+    <Content Include="Scripts\knockout\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout\knockout.timago.js" />
+    <Content Include="Scripts\knockout\knockout.transitions.js" />
+    <Content Include="Scripts\knockout\knockout.validation.js" />
+    <Content Include="Scripts\require\r.js" />
+    <Content Include="Scripts\require\require.js" />
+    <Content Include="Scripts\require\text.js" />
+    <Content Include="Scripts\typings\knockout.timer\knockout.timer.js" />
+    <Content Include="Scripts\vendors\fastclick.js" />
+    <Content Include="Scripts\vendors\modernizr-2.8.3.js" />
+    <Content Include="Scripts\vendors\moment.js" />
+    <Content Include="Scripts\vendors\q.js" />
+    <Content Include="Scripts\vendors\quickselect\jquery.quickselect.js" />
+    <Content Include="Scripts\vendors\quickselect\jquery.quickselect.min.js" />
+    <Content Include="Scripts\vendors\quickselect\quickselect.css" />
+    <Content Include="Scripts\vendors\respond.js" />
+    <Content Include="Scripts\vendors\ripple.js" />
+    <Content Include="Scripts\vendors\screenfull.min.js" />
+    <Content Include="Scripts\vendors\selectric\jquery.selectric.js" />
+    <Content Include="Scripts\vendors\selectric\jquery.selectric.min.js" />
+    <Content Include="Scripts\vendors\selectric\selectric.css" />
+    <Content Include="Scripts\vendors\tinymce\changelog.txt" />
+    <Content Include="Scripts\vendors\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Scripts\vendors\tinymce\LICENSE.TXT" />
+    <Content Include="Scripts\vendors\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\vendors\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\example\dialog.html" />
+    <Content Include="Scripts\vendors\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Scripts\vendors\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Scripts\vendors\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\vendors\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\vendors\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\vendors\toastr.js" />
+    <Content Include="Scripts\vendors\toastr.min.js" />
+    <Content Include="Scripts\vendors\transitionEnd.js" />
+    <Content Include="Scripts\vendors\viewport.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.4.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\vendors\mdl\bower.json" />
+    <Content Include="Content\vendors\mdl\LICENSE" />
+    <Content Include="Content\vendors\mdl\material.min.css.map" />
+    <Content Include="Content\vendors\mdl\material.min.js.map" />
+    <Content Include="Content\vendors\mdl\package.json" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\mixins\_sprite-pos.scss" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\trumbowyg.scss" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\_sprite-black-2x.scss" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\_sprite-black.scss" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\_sprite-white-2x.scss" />
+    <Content Include="Scripts\vendors\htmlEditor\dist\ui\sass\_sprite-white.scss" />
+    <Content Include="Scripts\vendors\tinymce\langs\readme.md" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\vendors\tinymce\skins\lightgray\fonts\tinymce.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="App\components\cart\checkout.ts" />
+    <TypeScriptCompile Include="App\components\cart\fileattachment2.ts" />
+    <TypeScriptCompile Include="App\components\cart\fileattachment.ts" />
+    <TypeScriptCompile Include="App\components\cart\layout.ts" />
+    <TypeScriptCompile Include="App\components\cart\logic.ts" />
+    <TypeScriptCompile Include="App\components\cart\store.ts" />
+    <TypeScriptCompile Include="App\components\cart\tools.ts" />
+    <TypeScriptCompile Include="App\components\cart\view.ts" />
+    <TypeScriptCompile Include="App\components\clinical\IHealthRecords.ts" />
+    <TypeScriptCompile Include="App\components\clinical\IPayLoad.ts" />
+    <TypeScriptCompile Include="App\components\grid\PagerMetrics.ts">
+      <DependentUpon>viewModel.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\components\grid\viewModel.ts">
+      <DependentUpon>viewModel.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\components\grid\viewModel2.ts">
+      <DependentUpon>viewModel2.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\components\grid\viewNoResults.ts">
+      <DependentUpon>viewNoResults.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\core\AppContext.ts" />
+    <TypeScriptCompile Include="App\core\AppTransitionManager.ts" />
+    <TypeScriptCompile Include="App\core\AppViewTransitions.ts" />
+    <TypeScriptCompile Include="App\core\DialogState.ts" />
+    <TypeScriptCompile Include="App\core\IAppContext.ts">
+      <DependentUpon>AppContext.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\core\ILoaders.ts" />
+    <TypeScriptCompile Include="App\core\IPageModel.ts">
+      <DependentUpon>PageModel.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\core\IViewModel.ts">
+      <DependentUpon>ViewModel.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\core\PageModel.ts" />
+    <TypeScriptCompile Include="App\core\ViewModel.ts" />
+    <TypeScriptCompile Include="App\data\terms.ts" />
+    <TypeScriptCompile Include="App\main.ts">
+      <DependentUpon>shell.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\models\account\IDependent.ts" />
+    <TypeScriptCompile Include="App\models\account\IMemberInstance.ts" />
+    <TypeScriptCompile Include="App\models\clinical\HealthRecords.ts" />
+    <TypeScriptCompile Include="App\models\consults\data.ts" />
+    <TypeScriptCompile Include="App\models\consults\history.ts" />
+    <TypeScriptCompile Include="App\models\consults\messaging\messaging.ts" />
+    <TypeScriptCompile Include="App\models\identity\IPayload.ts" />
+    <TypeScriptCompile Include="App\models\rxnt.ts" />
+    <TypeScriptCompile Include="App\sections\account\default.ts">
+      <DependentUpon>default.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\account\familymembers.ts">
+      <DependentUpon>familymembers.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\account\Options.ts">
+      <DependentUpon>viewer.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\account\profile.ts">
+      <DependentUpon>profile.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\account\viewer.ts">
+      <DependentUpon>viewer.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\clinical\default.ts">
+      <DependentUpon>default.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\clinical\viewModelHealthRecords.ts">
+      <DependentUpon>default.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\consults\default.ts">
+      <DependentUpon>default.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\consults\history.ts">
+      <DependentUpon>history.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\consults\store.ts">
+      <DependentUpon>store.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\consults\viewManager.ts">
+      <DependentUpon>store.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\dashboard.ts">
+      <DependentUpon>dashboard.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\shared\reload.ts">
+      <DependentUpon>reload.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\shared\upgrade.ts">
+      <SubType>Code</SubType>
+      <DependentUpon>upgrade.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\template\default.ts">
+      <DependentUpon>default.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\sections\template\responsivePage.ts" />
+    <TypeScriptCompile Include="App\services\Routes\ClinicalApi.ts" />
+    <TypeScriptCompile Include="App\system\events\ClinicalCommands.ts" />
+    <TypeScriptCompile Include="App\system\events\EventCommand.ts" />
+    <TypeScriptCompile Include="App\sections\shared\notfound404.ts">
+      <DependentUpon>notfound404.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\services\HttpService.ts" />
+    <TypeScriptCompile Include="App\services\Routes\MemberApi.ts" />
+    <TypeScriptCompile Include="App\shell.ts">
+      <DependentUpon>shell.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\system\session\ClinicalData.ts" />
+    <TypeScriptCompile Include="App\system\session\HealthRecords.ts" />
+    <TypeScriptCompile Include="App\system\session\IClinicalData.ts">
+      <DependentUpon>ClinicalData.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\system\session\IdentityUser.ts" />
+    <TypeScriptCompile Include="App\system\utilities\BrowserManager.ts" />
+    <TypeScriptCompile Include="App\system\utilities\Forms.ts" />
+    <TypeScriptCompile Include="App\system\utilities\ViewManager.ts" />
+    <TypeScriptCompile Include="App\system\utilities\global.ts" />
+    <TypeScriptCompile Include="App\views\components\details\manager.ts">
+      <DependentUpon>manager.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\details\pendingManager.ts">
+      <DependentUpon>pendingManager.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\details\planofCare.ts">
+      <DependentUpon>planofCare.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\account\billing.ts">
+      <DependentUpon>billing.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\account\dependent.ts">
+      <DependentUpon>dependent.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical2x\allergy.ts">
+      <DependentUpon>allergy.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical2x\blank.ts">
+      <DependentUpon>blank.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical2x\condition.ts">
+      <DependentUpon>condition.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical2x\history.ts">
+      <DependentUpon>history.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical2x\medication.ts">
+      <DependentUpon>medication.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical\allergy.ts">
+      <DependentUpon>allergy.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical\condition.ts">
+      <DependentUpon>condition.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical\history.ts">
+      <DependentUpon>history.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\clinical\medication.ts">
+      <DependentUpon>medication.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\manager.ts">
+      <DependentUpon>manager.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\manager4.ts">
+      <DependentUpon>manager4.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\manager3.ts">
+      <DependentUpon>manager3.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\forms\manager2.ts">
+      <DependentUpon>manager2.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\html\loader.ts">
+      <DependentUpon>loader.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="App\views\components\html\loaderViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\typings\durandal\durandal.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout-projections\knockout-projections.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout.mapping\knockout.mapping.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout.postbox\knockout-postbox.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout.timer\knockout.timer.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\komoment\komoment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\localForage\localForage.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\modernizr\modernizr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\q\Q.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\tinymce\tinymce.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\velocity\velocity-animate.d.ts" />
+    <TypeScriptCompile Include="App\models\icart.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Web.TelemetryChannel, Version=1.0.0.4227, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.ApplicationInsights.Web.TelemetryChannel.1.0.0\lib\net45\Microsoft.ApplicationInsights.Web.TelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\Projects\1800MD-Members\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Projects\1800MD-Members\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App\views\components\data\" />
+    <Folder Include="App\views\components\pending\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>MembersTSApp01</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9520</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Members/App/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>
+    </TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'D:\Documents\Visual Studio 2015\Projects\1800MD-Members\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\Projects\1800MD-Members\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Projects\1800MD-Members\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+</Project>

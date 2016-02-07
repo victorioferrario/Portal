@@ -1,0 +1,69 @@
+[
+  {
+    "outputFileName": "Scripts/app.bundle.4.js",
+    "inputFiles": [
+      "Scripts/vendors/localforage.min.js",
+      "Scripts/jquery/jquery-2.1.4.min.js",
+      "Scripts/vendors/moment.js",
+      "Scripts/jquery/jquery-ui.min.js",
+      "Scripts/jquery/jquery.transit.min.js",
+      "Scripts/jquery/jquery.maskedinput.min.js",
+      "Scripts/jquery/jquery.creditCardValidator.js",
+      "Scripts/jquery/jquery.form.js",
+      "Scripts/knockout-3.4.0.js",
+      "Scripts/knockout/knockout-postbox.js",
+      "Scripts/knockout/knockout.mapping-latest.js",
+      "Scripts/knockout/knockout.timago.js",
+      "Scripts/knockout/knockout.transitions.js",
+      "Scripts/knockout/knockout.validation.js",
+      "Scripts/knockout/knockout.upload.js",
+      "scripts/knockout/knockout-date-bindings.js",
+      "Scripts/vendors/localforage.min.js",
+      "Scripts/vendors/toastr.min.js",
+      "Scripts/vendors/q.js",
+      "Scripts/vendors/fastclick.js",
+      "Scripts/vendors/viewport.js",
+      "Scripts/vendors/screenfull.min.js",
+      "Scripts/jquery/velocity.js",
+      "Scripts/jquery/velocity.ui.js",
+      "Content/vendors/materialize.9.73/js/materialize.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/app.bundle.4.css",
+    "inputFiles": [
+      "Content/app.bundle.4.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/app.bundle.5.css",
+    "inputFiles": [
+      "Content/animate.css",
+      "Content/vendors/materialize.9.73/css/materialize.css",
+      "Content/vendors/font-awesome-4.4.0/css/font-awesome.css",
+      "Content/vendors/durandal.css",
+      "Content/app.css",
+      "Content/cart.css",
+      "Content/formreset.css",
+      "Content/history.css",
+      "Content/navTemplate.css",
+      "Content/pageTemplate.css",
+      "Content/messagingLoader.css",
+      "Content/tabs.css",
+      "Content/store.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/app.bundle.5.min.css",
+    "inputFiles": [
+      "Content/app.bundle.5.min.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/app.bundle.6.css",
+    "inputFiles": [
+      "Content/tabs.css",
+      "Content/xapp.bundle.5.min.css"
+    ]
+  }
+]

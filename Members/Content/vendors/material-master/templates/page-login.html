@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <title>Login - Material</title>
+    <!-- css -->
+    <link href="../css/base.min.css" rel="stylesheet">
+    <!-- css for this project -->
+    <style type="text/css">
+        body {
+            padding-top: 56px;
+            padding-bottom: 69px;
+            background-image: -moz-linear-gradient(3% 30% 90deg,rgb(16,108,200) 0%,rgb(12,34,56) 100%);
+            background-image: -webkit-gradient(linear,3% 30%,3% -18%,color-stop(0, rgb(16,108,200)),color-stop(1, rgb(12,34,56)));
+            background-image: -webkit-linear-gradient(-90deg,rgb(16,108,200) 0%,rgb(12,34,56) 100%);
+            background-image: -o-linear-gradient(-90deg,rgb(16,108,200) 0%,rgb(12,34,56) 100%);
+            background-image: -ms-linear-gradient(-90deg,rgb(16,108,200) 0%,rgb(12,34,56) 100%);
+            background-image: linear-gradient(0deg,rgb(16,108,200) 0%,rgb(12,34,56) 100%);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0c2238,endColorstr=#ff106cc8,GradientType=0)";
+            -webkit-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0c2238,endColorstr=#ff106cc8,GradientType=0);
+            -moz-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0c2238,endColorstr=#ff106cc8,GradientType=0);
+            -o-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0c2238,endColorstr=#ff106cc8,GradientType=0);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0c2238,endColorstr=#ff106cc8,GradientType=0);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: rgb(16,108,200) !important;
+        }
+
+        .top-section {
+            background-color: #2196F3 !important;
+            box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+            top: 68px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+    </style>
+
+    <!-- favicon -->
+    <!-- ... -->
+    <!-- ie -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="avoid-fout">
+    <div class="avoid-fout-indicator avoid-fout-indicator-fixed">
+        <div class="progress-circular progress-circular-alt progress-circular-center progress-circular-red">
+            <div class="progress-circular-wrapper">
+                <div class="progress-circular-inner">
+                    <div class="progress-circular-left">
+                        <div class="progress-circular-spinner"></div>
+                    </div>
+                    <div class="progress-circular-gap"></div>
+                    <div class="progress-circular-right">
+                        <div class="progress-circular-spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header" style="border-bottom: solid 1px #2196F3; position: absolute; top: 0; left: 0; right: 0;">
+        <div class="container">
+            <div style="max-width: 1200px !important; margin: auto; width: 100%;">
+                <div style="max-width: 1100px !important; margin: auto; width: 100%;">
+                    <img src="/Content/images/1800md-logo.svg" style="width: 195px !important; min-height: 43px !important; margin-top: 5px;" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="top-section">
+        <div class="container">
+            <div style="max-width: 1200px; margin: auto;width: 100%;">
+                <div style="max-width: 1100px; margin: auto; width: 100%;">
+                    <h3 style="margin-top: 7px; margin-left: 25px; color: #fff;">
+                        Welcome
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="content" style="top:117px!important; position: absolute; left: 0; right: 0; bottom: 70px; overflow-y: auto;">
+        <div class="container">
+            <div class="row" style="overflow-y: auto;">
+                <div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
+                    <section class="content-inner">
+                        <div class="card-wrap">
+                            <div class="card">
+                                <div class="card-main">
+                                    <div class="card-header">
+                                        <div class="card-inner">
+                                            <h1 class="card-heading" style="color: #265BAA">Login</h1>
+                                        </div>
+                                    </div>
+                                    <div class="card-inner">
+                                        <p class="text-center">
+                                            <img alt="Login" src="../images/users/noun_65703_cc.svg" style="max-height: 170px; color: #0c2238" />
+                                        </p>
+                                        <form class="form" action="index.html">
+                                            <div class="form-group form-group-label">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-md-push-1">
+                                                        <label class="floating-label" for="login-username">Username</label>
+                                                        <input class="form-control" id="login-username" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-label form-group-red">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-md-push-1">
+                                                        <label class="floating-label" for="login-password">Password</label>
+                                                        <input class="form-control" id="login-password" type="password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-md-push-1">
+                                                        <button class="btn btn-block waves-attach waves-button">Sign In</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-md-push-1">
+                                                        <div class="checkbox checkbox-adv">
+                                                            <label for="login-remember">
+                                                                <input class="access-hide" id="login-remember" name="login-remember" type="checkbox">Stay signed in
+                                                                <span class="circle"></span><span class="circle-check"></span><span class="circle-icon icon">done</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <p class="margin-no-top pull-left">
+                                <a class="btn btn-flat waves-attach waves-button waves-light waves-effect" style="color: rgba(255,255,255,.7)!important;" href="javascript:void(0)">Need help?</a>
+                            </p>
+                            <p class="margin-no-top pull-right">
+                                <a class="btn btn-flat waves-attach waves-button waves-light waves-effect" style="color: rgba(255,255,255,.7)!important;">Need to activate your account?</a>
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" style="background-color:rgb(12,34,56) !important; border-top: solid 0 #fff; color: #0277bd !important;font-size: 1.0rem;">
+        <div class="container">
+            <p>© 2015 Copyright 1800MD.com </p>
+        </div>
+    </footer>
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../js/base.min.js"></script>
+    <!-- js for this project -->
+    <script src="../js/project.min.js"></script>
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/knockout-3.3.0.debug.js"></script>
+    <script src="/Scripts/encoder/encoder.js"></script>
+    <script id='modelJson' type='application/json'>
+        {&quot;loginUrl&quot;:&quot;/identity/login?signin=0743449c0181532e0d1b20a36a02ec66&quot;,&quot;antiForgery&quot;:{&quot;name&quot;:&quot;idsrv.xsrf&quot;,&quot;value&quot;:&quot;WhgWpTsOOlUzDeKmDSBDPLGkmDjxzPKHTY0574lyU__jLWA83esWHUV_VvbaKJMuSty2hXb2Jczu6_E7J_r5Em0lT8Oachrm24ErIEMEZ3I&quot;},&quot;allowRememberMe&quot;:true,&quot;rememberMe&quot;:false,&quot;username&quot;:null,&quot;externalProviders&quot;:[{&quot;text&quot;:&quot;Sign-in with Google&quot;,&quot;href&quot;:&quot;https://ids1888md.com/identity/external?provider=Google&amp;signin=0743449c0181532e0d1b20a36a02ec66&quot;},{&quot;text&quot;:&quot;Sign-in with Facebook&quot;,&quot;href&quot;:&quot;https://ids1888md.com/identity/external?provider=Facebook&amp;signin=0743449c0181532e0d1b20a36a02ec66&quot;}],&quot;additionalLinks&quot;:[{&quot;text&quot;:&quot;Forgot Password&quot;,&quot;href&quot;:&quot;https://ids1888md.com/mvc/forgotpassword?signin=0743449c0181532e0d1b20a36a02ec66&quot;}],&quot;errorMessage&quot;:null,&quot;requestId&quot;:&quot;80000606-0001-c400-b63f-84710c7967bb&quot;,&quot;siteUrl&quot;:&quot;https://ids1888md.com/identity/&quot;,&quot;siteName&quot;:&quot;1800MD IDENTITY SERVER&quot;,&quot;currentUser&quot;:null,&quot;logoutUrl&quot;:&quot;https://ids1888md.com/identity/logout&quot;}
+    </script>
+</body>
+</html>

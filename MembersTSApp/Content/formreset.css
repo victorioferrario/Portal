@@ -1,0 +1,432 @@
+﻿ body {
+            font-family: 'Roboto';
+        }
+        /**/
+        .field > select,
+        .field > textarea,
+        .field > input[type="text"],
+        .field > input[type="tel"],
+        .field > input[type="email"],
+        .field > input[type="date"],
+        .field > input[type="url"],
+        .field > input[type="number"],
+        .field > input[type="search"],
+        .field > input[type="password"] {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Roboto';
+            font-size: 16px;
+            height: 45px !important;
+            border-width: 4px;
+            border-color: #DBDBEA;
+            padding: 7px 9px;
+            border: 3px solid #ccc !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -webkit-transition: all ease-out .5s;
+            -moz-transition: all ease-out .5s;
+            -o-transition: all ease-out .5s;
+            -ms-transition: all ease-out .5s;
+            transition: all ease-out .5s;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            height: 45px;
+            margin-bottom: 15px;
+            border-width: 4px;
+            border-color: #DBDBEA;
+            padding: 7px 9px;
+            border: 3px solid #ccc;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -webkit-transition: all ease-out .5s;
+            -moz-transition: all ease-out .5s;
+            -o-transition: all ease-out .5s;
+            transition: all ease-out .5s;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .field > textarea {
+            height: 150px !important;
+        }
+
+            .field > select:focus,
+            .field > textarea:focus,
+            .field > input[type="text"]:focus,
+            .field > input[type="email"]:focus,
+            .field > input[type="date"]:focus,
+            .field > input[type="search"]:focus,
+            .field > input[type="number"]:focus,
+            .field > input[type="tel"]:focus,
+            .field > input[type="password"]:focus {
+                height: 45px;
+                border-width: 3px !important;
+                border-color: #0080FF !important;
+                -webkit-box-shadow: 0 0 5px #999999;
+                -moz-box-shadow: 0 0 5px #999999;
+                box-shadow: 0 0 5px #999999;
+            }
+
+        .isValidate .field > select:invalid,
+        .isValidate .field > textarea:invalid,
+        .isValidate .field > input[type="text"]:invalid,
+        .isValidate .field > input[type="tel"]:invalid,
+        .isValidate .field > input[type="email"]:invalid,
+        .isValidate .field > input[type="date"]:invalid,
+        .isValidate .field > input[type="number"]:invalid,
+        .isValidate .field > input[type="url"]:invalid,
+        .isValidate .field > input[type="search"]:invalid,
+        .isValidate .field > input[type="password"]:invalid {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            border-width: 4px;
+            border-color: #f8e5df;
+            padding: 7px 9px;
+            background: #f8e5df;
+            border: 3px solid #FF0000 !important;
+            -webkit-transition: border linear .2s, box-shadow linear .2s;
+            -moz-transition: border linear .2s, box-shadow linear .2s;
+            -o-transition: border linear .2s, box-shadow linear .2s;
+            transition: border linear .4s, box-shadow linear .4s;
+            border-radius: 4px;
+        }
+
+            .isValidate .field > select:invalid:focus,
+            .isValidate .field > textarea:invalid:focus,
+            .isValidate .field > input[type="text"]:invalid:focus,
+            .isValidate .field > input[type="tel"]:invalid:focus,
+            .isValidate .field > input[type="email"]:invalid:focus,
+            .isValidate .field > input[type="date"]:invalid:focus,
+             .isValidate .field > input[type="number"]:invalid:focus,
+            .isValidate .field > input[type="url"]:invalid:focus,
+            .isValidate .field > input[type="search"]:invalid:focus,
+            .isValidate .field > input[type="password"]:invalid:focus {
+                font-size: 16px;
+                height: auto;
+                margin-bottom: 15px;
+                border-width: 4px;
+                padding: 7px 9px;
+                border: 3px solid #FF0000;
+                -webkit-transition: border linear .2s, box-shadow linear .2s;
+                -moz-transition: border linear .2s, box-shadow linear .2s;
+                -o-transition: border linear .2s, box-shadow linear .2s;
+                transition: border linear .4s, box-shadow linear .4s;
+                border-radius: 4px;
+                -webkit-box-shadow: 0 0 5px #Ff0000;
+                -moz-box-shadow: 0 0 5px #Ff0000;
+                box-shadow: 0 0 5px #Ff0000;
+            }
+
+        .isValidate .field > select:valid,
+        .isValidate .field > textarea:valid,
+        .isValidate .field > input[type="text"]:required:valid,
+        .isValidate .field > input[type="tel"]:valid,
+        .isValidate .field > input[type="email"]:valid,
+        .isValidate .field > input[type="url"]:valid,
+        .isValidate .field > input[type="number"]:required:valid,
+        .isValidate .field > input[type="datetime"]:valid,
+        .isValidate .field > input[type="search"]:valid,
+        .isValidate .field > input[type="password"]:valid {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            border-width: 4px;
+            padding: 7px 9px;
+            border: 3px solid #32cd32 !important;
+            -webkit-transition: border linear .2s, box-shadow linear .2s;
+            -moz-transition: border linear .2s, box-shadow linear .2s;
+            -o-transition: border linear .2s, box-shadow linear .2s;
+            -ms-transition: border linear .2s, box-shadow linear .2s;
+            transition: border linear .2s, box-shadow linear .2s;
+            border-radius: 4px;
+        }
+          .isValidate .field > select:valid:focus {
+              outline: none!important;
+          }
+        .field > label {
+            display: block;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            clear: both;
+        } body {
+            font-family: 'Roboto';
+        }
+        /**/
+        .field > select,
+        .field > textarea,
+        .field > input[type="text"],
+        .field > input[type="tel"],
+        .field > input[type="email"],
+        .field > input[type="date"],
+        .field > input[type="url"],
+        .field > input[type="search"],
+        .field > input[type="password"] {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Roboto';
+            font-size: 16px;
+            height: 45px !important;
+            border-width: 4px;
+            border-color: #DBDBEA;
+            padding: 7px 9px;
+            border: 3px solid #ccc !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -webkit-transition: all ease-out .5s;
+            -moz-transition: all ease-out .5s;
+            -o-transition: all ease-out .5s;
+            -ms-transition: all ease-out .5s;
+            transition: all ease-out .5s;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            height: 45px;
+            margin-bottom: 15px;
+            border-width: 4px;
+            border-color: #DBDBEA;
+            padding: 7px 9px;
+            border: 3px solid #ccc;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+            -webkit-transition: all ease-out .5s;
+            -moz-transition: all ease-out .5s;
+            -o-transition: all ease-out .5s;
+            transition: all ease-out .5s;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .field > textarea {
+            height: 150px !important;
+        }
+
+            .field > select:focus,
+            .field > textarea:focus,
+            .field > input[type="text"]:focus,
+            .field > input[type="email"]:focus,
+            .field > input[type="date"]:focus,
+            .field > input[type="search"]:focus,
+            .field > input[type="tel"]:focus,
+            .field > input[type="password"]:focus {
+                height: 45px;
+                border-width: 3px !important;
+                border-color: #0080FF !important;
+                -webkit-box-shadow: 0 0 5px #999999;
+                -moz-box-shadow: 0 0 5px #999999;
+                box-shadow: 0 0 5px #999999;
+            }
+
+        .isValidate .field > select:invalid,
+        .isValidate .field > textarea:invalid,
+        .isValidate .field > input[type="text"]:invalid,
+        .isValidate .field > input[type="tel"]:invalid,
+        .isValidate .field > input[type="email"]:invalid,
+        .isValidate .field > input[type="date"]:invalid,
+        .isValidate .field > input[type="url"]:invalid,
+        .isValidate .field > input[type="search"]:invalid,
+        .isValidate .field > input[type="password"]:invalid {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            border-width: 4px;
+            border-color: #f8e5df;
+            padding: 7px 9px;
+            background: #f8e5df;
+            border: 3px solid #FF0000 !important;
+            -webkit-transition: border linear .2s, box-shadow linear .2s;
+            -moz-transition: border linear .2s, box-shadow linear .2s;
+            -o-transition: border linear .2s, box-shadow linear .2s;
+            transition: border linear .4s, box-shadow linear .4s;
+            border-radius: 4px;
+        }
+
+            .isValidate .field > select:invalid:focus,
+            .isValidate .field > textarea:invalid:focus,
+            .isValidate .field > input[type="text"]:invalid:focus,
+            .isValidate .field > input[type="tel"]:invalid:focus,
+            .isValidate .field > input[type="email"]:invalid:focus,
+            .isValidate .field > input[type="date"]:invalid:focus,
+            .isValidate .field > input[type="url"]:invalid:focus,
+            .isValidate .field > input[type="search"]:invalid:focus,
+            .isValidate .field > input[type="password"]:invalid:focus {
+                font-size: 16px;
+                height: auto;
+                margin-bottom: 15px;
+                border-width: 4px;
+                padding: 7px 9px;
+                 outline: none !important;
+                border: 3px solid #FF0000;
+                -webkit-transition: border linear .2s, box-shadow linear .2s;
+                -moz-transition: border linear .2s, box-shadow linear .2s;
+                -o-transition: border linear .2s, box-shadow linear .2s;
+                transition: border linear .4s, box-shadow linear .4s;
+                border-radius: 4px;
+                -webkit-box-shadow: 0 0 5px #Ff0000;
+                -moz-box-shadow: 0 0 5px #Ff0000;
+                box-shadow: 0 0 5px #Ff0000;
+            }
+
+        .isValidate .field > select:valid,
+        .isValidate .field > textarea:valid,
+        .isValidate .field > input[type="text"]:required:valid,
+         .isValidate .field > input[type="tel"]:required:valid,
+        .isValidate .field > input[type="email"]:valid,
+        .isValidate .field > input[type="url"]:valid,
+        .isValidate .field > input[type="number"]:valid,
+        .isValidate .field > input[type="datetime"]:valid,
+        .isValidate .field > input[type="search"]:valid,
+        .isValidate .field > input[type="password"]:valid {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            border-width: 4px;
+            padding: 7px 9px;
+            outline: none !important;
+            border: 3px solid #32cd32 !important;
+            -webkit-transition: border linear .2s, box-shadow linear .2s;
+            -moz-transition: border linear .2s, box-shadow linear .2s;
+            -o-transition: border linear .2s, box-shadow linear .2s;
+            -ms-transition: border linear .2s, box-shadow linear .2s;
+            transition: border linear .2s, box-shadow linear .2s;
+            border-radius: 4px;
+        }
+
+        .field > label {
+            display: block;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            clear: both;
+        }
+
+        input[type=text]:focus:not([readonly]), 
+        input[type=password]:focus:not([readonly]),
+         input[type=email]:focus:not([readonly]), 
+        input[type=url]:focus:not([readonly]), 
+        input[type=time]:focus:not([readonly]),
+         input[type=date]:focus:not([readonly]), 
+        input[type=datetime-local]:focus:not([readonly]),
+         input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid rgb(16, 108, 200);
+    box-shadow: 0 0 0 0 rgb(16, 108, 200);
+}
+
+        input[type=text]:disabled, input[type=text][readonly="readonly"], input[type=password]:disabled, input[type=password][readonly="readonly"], input[type=email]:disabled, input[type=email][readonly="readonly"], input[type=url]:disabled, input[type=url][readonly="readonly"], input[type=time]:disabled, input[type=time][readonly="readonly"], input[type=date]:disabled, input[type=date][readonly="readonly"], input[type=datetime-local]:disabled, input[type=datetime-local][readonly="readonly"], input[type=tel]:disabled, input[type=tel][readonly="readonly"], input[type=number]:disabled, input[type=number][readonly="readonly"], input[type=search]:disabled, input[type=search][readonly="readonly"], textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="readonly"] {
+    color: rgba(0,0,0,.55)!important;
+            font-weight: 500;
+   
+}
+.cw-loader-control {
+    position: absolute;
+    top: 50px;
+    left: -10px;
+    right: 0;
+    overflow: hidden;
+    height: 35px;
+}
+
+.anim,
+.colored {
+    width: 100%;
+    height: 5px;
+    left: 10px;
+    right: 25px;
+    z-index: 10;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+}
+
+.anim {
+    -webkit-animation: colors 2000ms linear infinite;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.colored {
+    -webkit-animation: colorsmv 5s linear infinite;
+}
+
+@-webkit-keyframes colorsmv {
+    0% {
+        width: 0;
+        background: #DA4530;
+    }
+
+    25% {
+        width: 100%;
+        background: #DA4530;
+    }
+
+    25.1% {
+        width: 0;
+        background: #156CEC;
+    }
+
+    50% {
+        width: 100%;
+        background: #156CEC;
+    }
+
+    50.1% {
+        width: 0;
+        background: #FFB900;
+    }
+
+    75% {
+        width: 100%;
+        background: #FFB900;
+    }
+
+    75.1% {
+        width: 0;
+        background: #009956;
+    }
+
+    100% {
+        width: 100%;
+        background: #009956;
+    }
+}
+
+@-webkit-keyframes colors {
+    0% {
+        background: #009956;
+    }
+
+    25% {
+        background: #009956;
+    }
+
+    25.1% {
+        background: #DA4530;
+    }
+
+    50% {
+        background: #DA4530;
+    }
+
+    50.1% {
+        background: #156CEC;
+    }
+
+    75% {
+        background: #156CEC;
+    }
+
+    75.1% {
+        background: #FFB900;
+    }
+
+    100% {
+        background: #FFB900;
+    }
+}

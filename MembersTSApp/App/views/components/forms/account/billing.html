@@ -1,0 +1,297 @@
+﻿<style>
+    table.editBilling > tbody > tr > td {
+        padding: 0;
+    }
+</style>
+<article>
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px; z-index: 777;background-color: rgb(12, 34, 56);"
+         data-bind="visible:$data.isLoading">
+        <!-- ko template:{ name:'loaderHealthRecordItem'}--><!--/ko-->
+    </div>
+    <!-- ko template :{name:'template_billing_credit_card__form', data:$data.ctxCreditCard }--><!-- /ko-->
+    <!-- ko template :{name:'template_billing_credit_card_address__form', data:$data.ctxCreditCard.BAddress }--><!-- /ko-->
+    <div data-bind="visible:$data.IsError">
+        <table class="z-depth-1 fadeIn animated-200-delay"
+               style="border-radius: 4px; border: solid 2px #ff0000; background: #f8e5df">
+            <tr>
+                <td>
+                    <i class="medium material-icons red-text">error</i>
+                </td>
+                <td class="black-text"
+                    style="width: 100%; font-weight: 700">
+                    Credit Card or Address is not valid.
+                </td>
+            </tr>
+        </table>
+    </div>
+</article>
+<script type="text/html"
+        id="template_billing_credit_card__form">
+    <form class="row"
+          style="margin-bottom: 2px;">
+        <div class="col s12 m12"
+             style="text-align: left;"
+             data-bind="css:$root.hasValidateCreditCard">
+            <div class="field">
+                <label style="font-weight: 500">Name on Card&nbsp;&nbsp;&nbsp;</label>
+                <input type="text"
+                       name="NameOnCard"
+                       placeholder="Name on Card"
+                       required
+                       data-bind="textInput:$data.NameOnCard "/>
+            </div>
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+            <div class="field">
+                <p class="log"
+                   style="position: absolute; top: 145px; right: 45px; z-index: 776"></p>
+                <label style="font-weight: 500">Credit Card Number&nbsp;&nbsp;&nbsp;</label>
+                <input type="tel"
+                       placeholder="Credit Card Number"
+                       required
+                       data-bind="textInput:$data.CCNumber"
+                       id="modal_credit_card__input"/>
+            </div>
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+            <table style="padding: 0 !important; margin: 0 !important;"
+                   class="editBilling">
+                <tbody>
+                <tr>
+                    <td style="padding: 0 !important; margin: 0 !important;">
+                        <div class="field">
+                            <label style="font-weight: 500">Exp. Month</label>
+                            <select id="ddlExpMonth"
+                                    required
+                                    style="height: 3.2rem;"
+                                    class="form-control form-control-ext"
+                                    data-bind="value: $data.ExpMonth">
+                                <option></option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td style="padding: 0 !important; margin: 0 !important;">&nbsp;</td>
+                    <td style="padding: 0 !important; margin: 0 !important;">
+                        <div class="field">
+                            <label style="font-weight: 500">Exp. Year</label>
+                            <select id="ddlYear"
+                                    required
+                                    style="height: 3.2rem;"
+                                    class="form-control form-control-ext"
+                                    data-bind="value: $data.ExpYear">
+                                <option></option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+                        </td>
+                    </tr>
+                <tr>
+                    <td style="padding: 0 !important; margin: 0 !important;">
+                        <div class="field">
+                            <label style="font-weight: 500">Card Type</label>
+                            <select id="ddlCCType"
+                                    required
+                                    style="height: 3.2rem;"
+                                    class="form-control form-control-ext"
+                                    data-bind="value: $data.CCType">
+                                <option></option>
+                                <option value="1">Visa</option>
+                                <option value="2">Master Card</option>
+                                <option value="3">American Express</option>
+                                <option value="4">Discover</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td style="padding: 0 !important; margin: 0 !important;">
+                        <div class="field">
+                            <label style="font-weight: 500">CCV Code</label>
+                                <input type="tel" name="CCV"
+                                       placeholder="CCV" required style="width: 100px;"
+                                       data-bind="textInput:$data.CVVCode" />
+                            </div>
+                        </td>
+                    </tr>                  
+                    <tr>
+                        <td colspan="3">
+                            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</script>
+<script type="text/html"
+        id="template_billing_credit_card_address__form">
+    <form class="row" style="margin-top:0!important">
+        <div class="col s12 m12" style="text-align: left;"     
+             data-bind="css:$root.hasValidateCreditCard">
+            <div style="position: absolute; left: 15px; top: 3px; color: #fff">
+                <table class="fadeInRight animated-200-delay"
+                       data-bind="visible:$data.isError">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top: 18px;"><i class="material-icons yellow-text darken-2">notifications</i></td>
+                        <td> Please fill in required fields, outlined in <span style="color: #ff0000; font-weight: 500">RED</span>.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="field">
+                <label style="font-weight: 500">Billing Address&nbsp;&nbsp;&nbsp;</label>
+                <input type="text"
+                       name="Address1"
+                       placeholder="Address1"
+                       required
+                       data-bind="textInput:$data.AddressLine1"/>
+            </div>
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+            <div class="field">
+                <input type="text"
+                       name="Address2"
+                       placeholder="Address 2"
+                       data-bind="textInput:$data.AddressLine2">
+            </div>
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+            <div class="field"
+                 style="margin-bottom: 0 !important">
+                <input type="text"
+                       name="City"
+                       placeholder="City"
+                       required
+                       data-bind="textInput:$data.City"/>
+            </div>
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+            <table class="table"
+                   cellspacing="0"
+                   cellpadding="0"
+                   style="margin-left: 1px;">
+                <tbody>
+                <tr>
+                    <td style="padding: 0 !important; margin: 0 !important;">
+                        <div class="field">
+                            <select id="ddlThemedAddressState"
+                                    required
+                                    style="height: 3.2rem;"
+                                    class="form-control form-control-ext"
+                                    data-bind="value: $data.State">
+                                <option></option>
+                                <optgroup label="U.S. States">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District Of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                                <optgroup label="US Outlying Territories">
+                                    <option value="AS">American Samoa</option>
+                                    <option value="GU">Guam</option>
+                                    <option value="MP">Northern Mariana Islands</option>
+                                    <option value="PR">Puerto Rico</option>
+                                    <option value="VI">Virgin Islands</option>
+                                </optgroup>
+                                <optgroup label="Armed Forces">
+                                    <option value="AA">Armed Forces Americas</option>
+                                    <option value="AP">Armed Forces Pacific</option>
+                                    <option value="AE">Armed Forces Others</option>
+                                </optgroup>
+                            </select>
+                        </div>
+</td>
+                    <td style="padding: 0 !important; margin: 0 !important;">&nbsp;</td>
+                        <td style="padding: 0 !important; margin: 0 !important;">
+                            <div class="field">
+                                <input type="tel"
+                                       name="ZipCode"
+                                       pattern="\d{5}"
+                                       style="height: 2.0rem;"
+                                       placeholder="ZipCode"
+                                       required
+                                       maxlength="5"
+                                       size="5"
+                                       max="99999" id="modal_credit_card_billing_zipcode__input"
+                                       data-bind="textInput:$data.ZipCode" />
+                            </div>
+                        </td>
+                    </tr>                    
+                </tbody>
+            </table>
+                
+        </div>
+    </form>  
+</script>
+
+<script type="text/html" id="template_billing__field___splitter">
+    <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+</script>

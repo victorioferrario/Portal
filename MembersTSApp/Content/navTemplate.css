@@ -1,0 +1,107 @@
+﻿.nav_container__wrapper {
+    height: 56px;
+    margin: auto;
+    max-width: 1250px !important;
+    background: rgba(16, 108, 200, 1) !important;
+    border-bottom: solid 1px rgba(38, 91, 170, 0.6);
+}
+
+    .nav_container__wrapper > .nav_control_user__wrapper {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 999;
+    }
+
+        .nav_container__wrapper > .nav_control_user__wrapper > .label_text {
+            font-size: 12px;
+            font-weight: 300;
+            position: absolute;
+            right: 4px;
+            top: -5px !important;
+        }
+
+        .nav_container__wrapper > .nav_control_user__wrapper > .label_value {
+            position: absolute;
+            width: 150px;
+            right: 5px;
+            text-align: right;
+            top: 14px;
+        }
+
+.nav_element {
+    background: rgba(16, 108, 200, 1) !important;
+    height: 56px;
+    max-width: 1250px !important;
+}
+
+.nav_breadcrumbs__wrapper {
+    width: 55px;
+    padding-left: 0;
+    height: 56px;
+    border-left: solid 1px rgba(38, 91, 170, 0.6);
+    border-right: solid 1px rgba(38, 91, 170, 0.6);
+}
+
+.nav_button_collapse__extend {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.nav_button_collapse__i {
+    margin-top: 0;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    color: rgba(0, 0, 0, 0.5);
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.sideNav_drawer {
+    border-right: #fff solid 1px;
+    z-index: 1000;
+}
+
+.sideNav_drawer_content {
+    background: #fff;
+    height: 150px;
+    padding-left: 20px;
+    padding-top: 5px;
+    border-bottom: solid 1px rgba(38, 91, 170, 0.9);
+    width: 100%;
+    text-align: center;
+}
+
+.nav_margin__top5x {
+    top: 5px !important;
+}
+
+.sideNav_drawer__ul {
+    margin-top: 0;
+    text-align: left;
+}
+
+.sideNav_drawer_ul__li {
+    border-bottom: solid 1px rgba(38, 91, 170, 0.9);
+}
+
+
+@media only screen and (min-width: 601px) {
+    nav, nav > .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 64px;
+        /* line-height: 64px; */
+    }
+}
+
+nav .button-collapse i {
+    /* font-size: 2.7rem; */
+    height: 56px;
+    line-height: 56px;
+}
+nav .button-collapse i {
+    
+}

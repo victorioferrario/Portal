@@ -1,0 +1,53 @@
+﻿<!--==========================================================================-->
+<!--============[ GENERAL INFO ]==============================================-->
+<!--==========================================================================-->
+<script type="text/html" id="template_myaccount__general">
+    <div class="row ">
+        <!-- ko template:{ name:'template_myaccount__general1'}--><!-- /ko -->
+        <!-- ko template: { name:'template_myaccount__general2'}--><!-- /ko -->
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__general1">
+    <br />
+    <div class="col s10 offset-s1 col-s-push-1 m5 offset-m1" style="padding-top: 0 !important;">
+        <label style="font-weight: 700; margin-bottom: 5px;">Name</label><br /><br />
+        <form class="isValidate">
+            <div class="field">
+                <input type="text" name="first-name" placeholder="First Name" required data-bind="textInput:$data.PersonInfo.FName" />
+            </div>
+            <div class="field">
+                <input type="text" name="middle-name" placeholder="Middle Name" data-bind="textInput:$data.PersonInfo.MName">
+            </div>
+            <div class="field">
+                <input type="text" name="last-name" placeholder="Last Name" data-bind="textInput:$data.PersonInfo.LName" />
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/html" id="template_myaccount__general2">
+    <div class="col s10 offset-s1 col-s-push-1 m5 col-m-push-1">
+        <label style="font-weight: 700">Date Of Birth</label>
+        <!--dateFormat: 'YYYY Do MMMM'-->
+        <table class="table" style="">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <input type="date" data-bind="date: $data.PersonInfo.Dob" style="margin-bottom: 0 !important;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight: 700">Gender</label>
+                    </td>
+                    <td>
+                        <!-- ko foreach:$data.optionList.items -->
+                        <input class="with-gap" name="radioGender" type="radio" style="margin-left: 5px;"
+                               data-bind="checkedValue:$data,attr:{ id:$data.id}, checked: $root.optionList.selectedValue" />
+                        <label data-bind="attr:{for:$data.id}, text:$data.label"></label>&nbsp;&nbsp;
+                        <!-- /ko-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>

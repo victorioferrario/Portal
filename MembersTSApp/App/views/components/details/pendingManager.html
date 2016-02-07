@@ -1,0 +1,204 @@
+﻿<style>
+    .item_message_title_row {
+        display: block;
+        clear: both;
+        position: relative;
+        width: 100%;
+        height: 60px;
+        border-bottom: solid 1px #ccc;
+    }
+
+    .item_message_title_sub__row {
+        display: block;
+        clear: both;
+        margin-top: 1px;
+        position: relative;
+        height: 20px;
+    }
+
+        .item_message_title_sub__row .col__1 {
+            font-size: .8rem;
+            width: 50px !important;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .item_message_title_sub__row .col__2 {
+            position: absolute;
+            left: 60px;
+            top: 8px;
+        }
+
+    .name__field {
+        font-size: 18px;
+    }
+
+    .date__field {
+        font-size: 14px;
+        font-weight: 300 !important;
+    }
+
+    .data__record {
+        margin-bottom: 10px !important;
+    }
+
+    .data__message {
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+    }
+
+    .data_history__section {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+</style>
+<div id="modalPendingDetailsManager" class="modal bottom-sheet  modal-fixed-footer">
+    <div class="modal-content" id="modalPendingContent" style="text-align: left; position: relative;">
+        <div class="blue darken-3"
+             style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;" data-bind="visible:$data.isLoadingDetails">
+            <!-- ko template:{ name:'template_loader__multiColor'}--><!-- /ko-->
+        </div>
+        <!--#region [ templates ] -->
+        <!-- ko if: $data.hasData() -->
+        <!-- ko template:{name:'template_item__name', data:$data} --><!-- /ko -->
+        <!-- ko template:{name:'template_item__complaint', data:$data} --><!-- /ko -->
+        <!-- ko template:{name:'template_item__files', data:$data} --><!-- /ko -->
+        <!-- ko template:{name:'template_item__messages', data:$data} --><!-- /ko -->
+        <!-- /ko -->
+        <!-- #endregion -->
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" data-bind="click: function(data,event){ return $data.clickExit(data,event); }"
+           class="btn waves-effect waves-lights btn-flat blue darken-2 white-text">Exit</a>
+    </div>
+</div>
+<script type="text/html" id="template-file-item">
+    <span data-bind="html:$data.ImagePlaceHolder ,
+              click:function(data,event){ return $root.selectImage($data, data, event);},attr:{id:$root.getDynamicId()}"></span>
+    <span data-bind="html:$data.ImageFullView"></span>
+</script>
+<script type="text/html" id="template-diagnosis">
+    <tr>
+        <td><span class="label label-success label-fixed" data-bind="text:$data.ICD10Code"></span></td>
+        <td style="text-align: left; width: 80%;"><span data-bind="text:$data.ShortDesc"></span></td>
+    </tr>
+</script>
+<script id="template_item__files" type="text/html">
+    <!-- ko if: $data.hasFiles() -->
+    <div class="blue darken-2 white-text" style="padding: 8px;">Files</div>
+    <div style="padding: 15px;border:solid 1px #ddd" data-bind="template: { name: 'template-file-item', foreach: $data.dataFiles }"></div>
+    <!-- /ko -->
+</script>
+<script id="template_item__messages" type="text/html">
+    <!-- ko if: $data.hasMessages() -->
+
+    <!-- ko if: $data.isLoadingMessages() -->
+    <!-- ko template : {name :'template_loader_flat__bar'} --><!--/ko -->
+    <!-- /ko -->
+
+    <!-- ko if: !$data.isLoadingMessages() -->
+    <!-- ko template : {name :'template_item__message__items'} --><!--/ko -->
+    <!-- /ko -->
+
+
+    <!-- /ko -->
+</script>
+<script id="template_item__reply" type="text/html">
+    <!-- ko if: $data.isReplyActive() -->
+    <li class="collection-item fadeInUp animated-2 z-depth-1" style="background-color: #eee; height: 200px; border-top: solid 1px #cccccc;">
+        <form data-bind="css:$root.isValidate() ? 'isValidate' : '' ">
+            <div class="field fadeInUp animated-500-delay" id="divReply" style="margin-top: 10px; position: relative;">
+                <label>Reply</label>
+                <textarea data-bind="value:$data.replyMessage,valueUpdate:'keypress'"
+                          style="height: 80px !important; background: #ffffff;" required></textarea>
+                <a href="javascript:void(0);" class="btn btn-flat grey white-text" title="Cancel" data-bind="click:function(data,event){ return $root.clickToCancelReply(data,event);}">Cancel</a>
+                <a href="javascript:void(0);" class="secondary-content btn btn-flat blue white-text" title="Reply" data-bind="click:function(data,event){ return $root.clickToSendMessage(data,event);}">Send</a>
+            </div>
+        </form>
+    </li>
+    <!-- /ko -->
+</script>
+<script id="template_item__message__items" type="text/html">
+    <div class="fadeInUp animated-500-delay">
+        <div class="grey lighten-2 blue-text z-depth-0 " style="padding: 8px; border-top: solid 1px #ccc;">Responses</div>
+        <ul class="collection data_history__section fadeInDown animated-500-delay">
+            <!-- ko template:{name:'template_item__message', foreach:$data.appContext.identityUser.dataContext.data.messages} -->
+            <!-- /ko -->
+            <!-- ko template :{name:'template_item__reply'}-->
+            <!-- /ko-->
+        </ul>
+    </div>
+</script>
+<script id="template_item__message" type="text/html">
+    <li class="collection-item avatar z-depth-1">
+        <!-- ko if: $data.SendByRID !== $root.appContext.identityUser.instance.RolodexItemID -->
+        <i class="fa fa-user-md circle blue"></i>
+        <!-- /ko -->
+        <span data-bind="text:$root.appContext.identityUser.instanceRID"></span>
+        <!-- ko if: $data.SendByRID === $root.appContext.identityUser.instance.RolodexItemID -->
+        <i class="fa fa-user circle yellow darken-2"></i>
+        <!-- /ko -->
+        <div class="title data__record">
+            <div class="item_message_title_row">
+                <div class="item_message_title_sub__row">
+                    <!-- ko if: $data.SendByRID !== $root.appContext.identityUser.instance.RolodexItemID -->
+                    <span class="label blue darken-2 white-text label-info col__1">From:</span>
+                    <!-- /ko -->
+                    <!-- ko if: $data.SendByRID === $root.appContext.identityUser.instance.RolodexItemID -->
+                    <span class="label yellow darken-3 white-text label-info col__1">From:</span>
+                    <!-- /ko -->
+                    <span class="col__2 name__field" data-bind="text:$root.getSenderName($data.SendByRID);"></span>
+                </div>
+                <span class="item_message_title_sub__row">
+                    <span class="label label-info grey white-text col__1">Time:</span>
+                    <span class="col__2">
+                        <span data-bind="text:$root.getDateFormat($data.DTUTC_Created);" class="date__field"></span>&nbsp;| <span data-bind="text:$root.getTimeFormat($data.DTUTC_Created);" class="date__field"></span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <p data-bind="html:$data.Message" class="data__message"> </p>
+        <!-- ko if: $data.SendByRID !== $root.appContext.identityUser.instance.RolodexItemID -->
+
+        <a href="javascript:void(0);" class="secondary-content btn btn-flat green white-text" id="replyButton"
+           title="Reply" data-bind="visible:!$root.isReplyActive() && $root.verifyIfHasReplyButton($data),click:function(data,event){ return $root.clickToReply(data,event);}">
+            <i class="material-icons">reply</i>
+        </a>
+
+        <!-- /ko -->
+    </li>
+</script>
+<script id="template_item__name" type="text/html">
+    <div class="blue darken-3 white-text fadeInUp animated-500-delay" style="padding: 8px; font-size: 1.5rem; height: 45px;">
+        <div style="float: left; width: 35px; margin-top: 4px;" data-bind="html:$data.getProductIcon($data.selectedInstance().ProductID)"></div>
+        <div style="float: left;" data-bind="text:$data.selectedInstance().ConsultationName"></div>
+    </div>
+</script>
+<script id="template_item__complaint" type="text/html">
+    <div class="fadeInUp animated-500-delay">
+        <div class="blue darken-4 white-text" style="padding: 8px;">Chief Complaint</div>
+        <ul class="collection data_history__section">
+            <li class="collection-item">
+                <span data-bind="html:$data.dataModel().EncounterData.ChiefComplaints[0].ChiefComplaintShort"></span>
+            </li>
+        </ul>
+    </div>
+</script>
+<script id="template_item__status" type="text/html">
+    <!--<div class="blue darken-4 white-text" style="padding: 8px;">State</div>
+    Assigned to:
+    <span data-bind="text:$data.selectedInstance().DrName"></span>
+    <br />
+    Waiting For:
+    <span data-bind="text:$data.selectedInstance().ListeningForValue"></span>
+    <br />
+    Consultation Processing:
+    <span data-bind="text:$data.getConsultationProcessingProcessState()"></span>
+    <br />
+    Consultation Servicing:
+    <span data-bind="text:$data.getConsultationServicingProcessState()">
+
+    </span>
+    <br />-->
+</script>

@@ -1,0 +1,183 @@
+﻿<style>
+    .initialized {
+        display: none;
+    }
+
+    .caret {
+        color: #fff;
+    }
+
+    .dropdown-content li > a, .dropdown-content li > span {
+        color: rgb(16, 108, 200);
+    }
+
+    .picker__weekday-display {
+        background-color: rgb(14, 120, 200);
+    }
+
+    .picker__date-display {
+        background-color: rgb(16, 108, 200);
+    }
+
+    .picker__nav--prev:hover, .picker__nav--next:hover {
+        background-color: rgb(16, 130, 200);
+    }
+
+    [type="checkbox"]:checked + label:before {
+        border-right: 2px solid rgb(16, 108, 200);
+        border-bottom: 2px solid rgb(16, 108, 200);
+    }
+
+    [type="checkbox"].filled-in:checked + label:after {
+        border: 2px solid rgb(16, 108, 200) !important;
+        background-color: rgb(16, 108, 200) !important;
+    }
+
+    input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid rgb(16, 108, 200);
+        box-shadow: 0 1px 0 0 rgb(16, 108, 200);
+    }
+
+    input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+        color: rgb(16, 108, 200);
+    }
+
+    .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+        background-color: rgb(16, 108, 200);
+    }
+
+    .picker__day.picker__day--today {
+        color: rgb(16, 108, 200);
+    }
+
+    .picker__close, .picker__today {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+        color: rgb(16, 108, 200);
+    }
+
+    label {
+        font-size: 1.1rem !important;
+        color: #062B4F;
+        -ms-text-rendering: optimizeLegibility !important;
+        text-rendering: optimizeLegibility !important;
+    }
+    span {
+        -ms-text-rendering: optimizeLegibility !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    .select-wrapper + label {
+        font-size: 1.1rem !important;
+        color: #062B4F;
+        top: -20px;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    .select-dropdown {
+        text-transform: capitalize;
+    }
+
+    .dropdown-content {
+        max-height: 250px !important;
+    }
+    .dropdown-content li > a, .dropdown-content li > span {
+        text-transform: capitalize;
+    }
+
+    select {
+        display: block;
+        font-size: 1.4rem !important;
+    }
+    .my-label {display: block;
+        position: relative;
+    }
+</style>
+<div class="blue darken-3" 
+     style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;" data-bind="visible:$data.isLoading">
+    <div class="preloader-wrapper big active" id="spinnerHealthRecords">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position: relative;" class="fadeIn animated-200" data-bind="visible:!$data.isLoading()">
+    <div class="container">
+        <div class="row blue darken-1 white-text" style="padding: 8px; padding-left: 25px !important;"
+             data-bind="text:$data.title">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" data-bind="visible:$data.isInsert()">
+            <div class="col s12 m12">
+                <label>Allergy</label>
+                <div style="position: relative;">
+                    <input 
+                           data-bind="textInput: selectedItemValue, autoComplete: {selected: selectedItem}" id="SearchText33" type="text" style="margin: auto" />
+                </div>
+            </div>
+        </div>
+        <div class="row" data-bind="visible:!$data.isInsert()">
+            <div class="col s12 m6">
+                <label>Allergy</label>
+                <input type="text" data-bind="textInput:$data.vm.AllergyText" disabled="disabled"/>
+            </div>
+            <div class="col s12 m6">
+                <label>Date Started</label>
+                <input type="text"
+                       data-bind="textInput:$data.vm.D_FirstObserved,valueUpdate:'keypress'">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label class="my-label">
+                    Allergen
+                </label>
+                <select >
+                    <option value="" disabled selected>Choose your option</option>
+                    <option>Animal</option>
+                    <option>Environmental</option>
+                    <option>Food</option>
+                    <option>Medication</option>
+                    <option>Plant</option>
+                </select>
+            </div>
+            <div class="col s12 m6">
+                <label class="my-label">Reaction</label>
+                <select data-bind="
+                            options:$data.dataModel.reactionList.options.availableOptions,
+                            optionsText:'Label' ,
+                            optionsValue: 'Value',
+                            value: $data.vm.ReactionID,
+                            optionsCaption :'Choose...'"></select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <input type="checkbox" id="allergyVisible" class="filled-in"
+                       data-bind="checked:$data.isShow"/>
+                <label for="allergyVisible">Yes, This allergy is visible on my medical record.</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12  m12">
+                <label> Notes</label>
+                <textarea class="materialize-textarea"
+                          
+                          data-bind="value:$data.vm.Notes,valueUpdate:'keypress'"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿.responsive_page__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: solid 2px #FF0000;
+}
+.responsive_page_article__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background: #cacaca;
+    min-height: 350px !important;
+}
+.responsive_page_article__bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    /*background: #dadada;*/
+}
+    .responsive_page_article__bottom > .control_content__container {
+        height: 500px;
+        display: block;
+        width: 100%;
+    }
+

@@ -1,0 +1,41 @@
+﻿
+<div style="position: relative;" class="fadeIn animated-200" data-bind="visible:!$data.isLoading()">
+    <div class="container">
+        <div class="row blue darken-1 white-text" style="padding: 8px; padding-left: 25px!important;" data-bind="text:$data.title"></div>
+    </div>
+    <div class="container">
+        <!-- ko if: $data.hasData() -->
+        <div class="row" data-bind="visible:$data.isInsert()">
+            <div class="col s12 m12">
+                <label>Condition</label>
+                <div style="position: relative;">
+                    <input data-bind="textInput: selectedItemValue, autoComplete: {selected: selectedItem}" id="SearchText" type="text" style="margin: auto" />
+                </div>
+            </div>
+        </div>
+        <div class="row" data-bind="visible:!$data.isInsert()">
+            <div class="col s12 m6">
+                <label>Condition</label>
+                <input type="text" disabled="disabled" data-bind="textInput:$data.vm.MedicalConditionText" />
+            </div>
+            <div class="col s12 m6">
+                <label>Date Started</label>
+                <input type="text" data-bind="textInput:$data.vm.DTUTC_Created,valueUpdate:'keypress'">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <input type="checkbox" id="conditionVisible" class="filled-in"
+                       data-bind="checked:$data.isShow" />
+                <label for="conditionVisible">Yes, This allergy is visible on my medical record.</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12  m12">
+                <label> Notes</label>
+                <textarea class="materialize-textarea" data-bind="value:$data.vm.Notes,valueUpdate:'keypress'"></textarea>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

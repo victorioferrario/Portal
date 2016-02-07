@@ -1,0 +1,98 @@
+﻿<div class="blue darken-3" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; padding-top: 150px;z-index:5555" data-bind="visible:$data.isLoading">
+    <!-- ko template: {name:'template_clinical_form__loader'}--><!-- /ko -->
+</div>
+<div style="position: relative">
+    <div class="row red darken-2 white-text" style="padding: 10px; text-align: left !important;">
+        <h5 data-bind="text:$data.title">
+            Add Condition
+        </h5>
+    </div>
+    <div class="row"
+         data-bind="visible:$data.isInsert()">
+        <form style="text-align: left !important;"
+              data-bind="css:$data.isValidate()?'isValidate':''">
+            <div class="field">
+                <label>Condition</label>
+                <select data-bind="
+                options:$data.dataModel.familyHistoryCondition.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.FamilyHistoryConditionID,
+                optionsCaption: 'Choose...'"
+                        required></select>
+            </div>
+            <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+            <div class="field">
+                <label>Relationship to member</label>
+                <select data-bind=" options:$data.dataModel.familyRelationship.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.vm.FamilyRelationshipID,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'"
+                        required>
+                    <option value="">Choose...</option>
+                </select>
+            </div>
+            
+            <!-- ko template:{ name:'template_health_records_combination___splitter__notes__splitter'} --><!-- /ko -->
+        </form>
+    </div>
+    <div class="row"
+         data-bind="visible:$data.isEdit()">
+        <form style="text-align: left !important;"
+              data-bind="css:$data.isValidate()?'isValidate':''">
+            <div class="field">
+                <label>Condition</label>
+                <select data-bind="
+                options:$data.dataModel.familyHistoryCondition.options.availableOptions,
+                optionsText:'Label' ,
+                optionsValue:'Value' ,
+                value: $data.vm.FamilyHistoryConditionID,
+                optionsCaption: 'Choose...'"
+                        required></select>
+            </div>
+            <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+            <div class="field">
+                <label>Relationship to member</label>
+                <select data-bind=" options:$data.dataModel.familyRelationship.options.availableOptions,
+                                        optionsText:'Label' ,
+                                        optionsValue: 'Value',
+                                        value: $data.vm.FamilyRelationshipID,
+                                        optionsCaption :'Choose...',
+                                        valueUpdate:'keypress'"
+                        required>
+                    <option value="">Choose...</option>
+                </select>
+            </div>
+            <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+            <div class="field" id="divAddNote2" style="margin-bottom: 10px;">
+                <a href="javascript:void(0);"
+                   class="btn btn-flat blue white-text"
+                   data-bind="click:function(data,event){ return $root.showNotes2(data,event);}">+ Add Note</a>
+            </div>
+            <div class="field fadeIn animated-200-delay m-hide"
+                 id="divNote2"
+                 style="margin-top: 10px; position: relative;">
+                <label>
+                    Notes
+                </label>
+                <a href="javascript:void(0)"
+                   data-bind="click:function(data,event){ return $root.hideNotes2(data,event);}"
+                   style="position: absolute; right: 10px; top: 55px;">
+                    <i class="material-icons red-text ">
+                        delete
+                    </i>
+                </a>
+                <textarea data-bind="value:$data.Notes,valueUpdate:'keypress'"
+                          style="height: 80px !important;"></textarea>
+            </div>
+            <!-- ko template:{ name:'template_health_records__field___splitter'} --><!-- /ko -->
+            <div class="field">
+                <input type="checkbox" class="filled-in" data-bind="checked:$root.isShow, attr:{ id:'cbVisibleFM'}" />
+                <label data-bind="attr:{ for:'cbVisibleFM'}">Yes, This record is active.</label>
+            </div>
+          
+        </form>
+    </div>
+    </div>

@@ -1,0 +1,219 @@
+﻿<style>
+    td.dependent {
+        padding: 0;
+    }
+
+    .table_error__invalid {
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        border: solid 2px #ff0000;
+        background: #f8e5df;
+    }
+
+    .loadwrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        padding-top: 150px;
+        z-index: 777;
+        background-color: rgb(12, 34, 56);
+    }
+
+    label {
+        font-size: 1.1rem !important;
+        color: #062B4F;
+        -ms-text-rendering: optimizeLegibility !important;
+        text-rendering: optimizeLegibility !important;
+    }
+</style>
+
+<article
+         style="text-align: left">
+    <!-- ko template:{ name:'template_dialog__loader'}--><!-- /ko-->
+    <section class="fadeInUp animated-500-delay">
+        <!-- ko template:{name:'template_dependent__add__form', data:$data }--><!-- /ko-->
+        <!-- ko template:{name:'template_errors', data:$data }--><!-- /ko-->
+        <span data-bind="text:$data.calCulateAge" style="display: none;"></span>
+    </section>
+</article>
+<script id="template_dependent__add__form"
+        type="text/html">
+    <div class="row">
+        <!-- ko template:{ name:'template_dependent__general1'}--><!--/ko-->
+        <!-- ko template:{ name:'template_dependent__general2'}--><!--/ko-->
+        <!-- ko template:{ name:'template_dependent__general3'}--><!--/ko-->
+    </div>
+</script>
+<script type="text/html"
+        id="template_dependent__general1">
+    <div class="col s12 m6 "
+         style="padding-top: 0 !important;">
+        <label style="font-weight: 700; margin-bottom: 5px;">Name</label><br/><br/>
+        <form data-bind="css:$root.hasValidateInfo">
+            <div class="field">
+                <input type="text"
+                       name="first-name"
+                       placeholder="First Name"
+                       required
+                       data-bind="textInput:$data.PersonInfo.FName"/>
+            </div>
+            <!--<div class="field">
+                <input type="text"
+                       name="middle-name"
+                       placeholder="Middle Name"
+                       data-bind="textInput:$data.PersonInfo.MName">
+            </div>-->
+            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"
+                 class="show-on-small-and-down"></div>
+            <div class="field">
+                <input type="text"
+                       name="last-name"
+                       placeholder="Last Name"
+                       required
+                       data-bind="textInput:$data.PersonInfo.LName" />
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/html"
+        id="template_dependent__general2">
+    <div class="col s12 m6">
+        <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"
+             class="show-on-small-and-down hide-on-med-and-up"></div>
+        <label style="font-weight: 700">Date Of Birth</label><br class="hide-on-small-and-down show-on-med-and-up"/>
+        <form data-bind="css:$root.hasValidateInfo">
+            <table class="table"
+                   style="margin-top: 6px;">
+                <tbody>
+                <tr>
+                    <td colspan="2" style="padding-left:0;">
+                        <div class="field">
+                            <input type="text"
+                                   id="inputDOB"
+                                   required
+                                   data-bind="date: $data.PersonInfo.Dob, dateFormat: 'L',valueUpdate:'keypress'"
+                                   style="margin-bottom: 0 !important;"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="show-on-small-and-down">
+                    <td colspan="2" style="padding:0;">
+                        <div style="border-top: solid 1px #ccc; margin-top: 0;" class="hide-med-and-up"></div>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                                <td>
+                                    <label style="font-weight: 700">Gender</label>
+                                </td>
+                                <td>
+                                    <!-- ko foreach:$data.optionList.items -->
+                                    <input class="with-gap"
+                                           name="radioGender"
+                                           type="radio"
+                                           style="margin-left: 5px;"
+                                           data-bind="checkedValue:$data,attr:{ id:$data.id}, checked: $root.optionList.selectedValue" />
+                                    <label data-bind="attr:{for:$data.id}, text:$data.label"></label>&nbsp;&nbsp;
+                                    <!-- /ko-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+        </form>
+</div>
+    </script>
+<script type="text/html"
+        id="template_dependent__general3">
+    <div class="col s12 m12"
+         style="text-align: left;">
+        <form data-bind="css:$root.hasValidateInfo">
+            <table style="padding: 0"
+                   class="dependent">
+                <tbody>
+                    <tr data-bind="visible:$data.isSelfManagedDependent">
+                        <td colspan="3"
+                            class="dependent">
+                            <div style="border-top: solid 1px #ccc; margin-bottom: 10px;"></div>
+                        </td>
+                    </tr>
+                    <tr data-bind="visible:$data.isSelfManagedDependent"
+                        class="fadeIn animated-200-delay">
+                        <td class="dependent">
+                            <div class="field">
+                                <label style="font-weight: 500">Email&nbsp;Address&nbsp;&nbsp;</label>
+                                <input type="email"
+                                       name="EmailAddress"
+                                       id="inputEmailAddress"
+                                       placeholder="Email Address"
+                                       required
+                                       data-bind="textInput:$data.Email " />
+                            </div>
+                        </td>
+                        <td class="dependent">&nbsp;</td>
+                        <td class="dependent">
+                            <div class="field">
+                                <label style="font-weight: 500">Mobile&nbsp;Phone&nbsp;&nbsp;</label>
+                                <input type="tel"
+                                       name="MobilePhone"
+                                       id="inputPhoneNumber"
+                                       placeholder="Mobile Phone Number"
+                                       required
+                                       data-bind="textInput:$data.PhoneNumber " />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+</div>   
+</script>
+<script id="template_dialog__loader"
+        type="text/html">
+    <div class="fadeIn animated-500-delay loadwrapper"
+         data-bind="visible:$data.isLoading">
+        <!-- ko template:{ name:'loaderHealthRecordItem'}--><!--/ko-->
+    </div>
+</script>
+<script id="template_errors"
+        type="text/html">
+    <!-- ko template:{name:'template_error__email', data:'Please fill out the required fields.'}--><!-- /ko-->
+    <!-- ko template:{name:'template_error__general', data:'Please fill out the required fields.'}--><!-- /ko-->
+</script>
+<script id="template_error__email"
+            type="text/html">
+        <div data-bind="visible:$data.IsEmailError">
+            <table class="table_error__invalid z-depth-1 fadeIn animated-200-delay">
+                <tbody>
+                    <tr>
+                        <td>
+                            <i class="medium material-icons red-text">error</i>
+                        </td>
+                        <td class="black-text"
+                            style="width: 100%; font-weight: 700">
+                            Email address is not valid. It is already in use.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+<script id="template_error__general" type="text/html">
+<div data-bind="visible:$data.IsError">
+    <table class="table_error__invalid z-depth-1 fadeIn animated-200-delay">
+        <tbody>
+            <tr>
+                <td>
+                    <i class="medium material-icons red-text">error</i>
+                </td>
+                <td class="black-text"
+                    style="width: 100%; font-weight: 700">
+                    <span data-bind="text:$data"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</script>

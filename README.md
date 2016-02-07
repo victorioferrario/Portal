@@ -3,6 +3,8 @@ Asp.Net Application & TypeScript Application that make up the member portal.  Th
 
 To view the portal in action, please view <a href="https://www.youtube.com/watch?v=xr5rM_vVdyw&list=PLGHOdV5AK2dhFB7Q3pFarVOeNt9ZhYtX7" target="blank">Demos playlist</a> video captures I have uploaded to YouTube.com   
 
+<img src="https://github.com/vmfdesign/Portal/blob/master/MembersTSApp/01.png" />
 <img src="https://github.com/vmfdesign/Portal/blob/master/MembersTSApp/02.png" />
+<img src="https://github.com/vmfdesign/Portal/blob/master/MembersTSApp/Web.png" />
 
 

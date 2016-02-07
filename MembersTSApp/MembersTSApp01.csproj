@@ -28,6 +28,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01.png" />
+    <Content Include="02.png" />
     <Content Include="apple-touch-icon-152x152-precomposed.png" />
     <Content Include="apple-touch-icon-152x152.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
@@ -385,6 +387,7 @@
     <Content Include="Bugs.md" />
     <Content Include="App\sections\consults\ReadMe.CheckOut.md" />
     <Content Include="App\views\components\forms\clinical2x\Updates.md" />
+    <Content Include="Web.png" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.eot" />
     <Content Include="Content\vendors\materialize.9.72\font\material-design-icons\Material-Design-Icons.ttf" />

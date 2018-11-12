@@ -23,7 +23,7 @@ I would be more than happy to go into depth, sharing the structure of this appli
 
 
 At the end of the day, the spa application works as follows:
-
+```
 spa => (c#) => webApi
   webApi => wcf services-layer 
     wcf => Business Logic
@@ -31,7 +31,7 @@ spa => (c#) => webApi
       twillio
       rxnt
       table-storage
-
+```
 
 # Portal
 Asp.Net Application & TypeScript Application that make up the member portal.  The Members Application is the Asp.Net application that exposes an api to typescript that communicates to the WCF services.

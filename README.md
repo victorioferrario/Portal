@@ -1,3 +1,34 @@
+The following applications are a good example, of how I like to wrap my applications.
+```
+<aspnet-azure>    
+    <signalR-service></signalR-service>   
+    <sql-services></sql-services>
+    <table-storage></table-storage>
+   <wcf-services></wcf-services>
+</aspnet-azure>
+<aspnet-services>
+    ## The repository for this later can be found:
+    https://github.com/victorioferrario/Services
+</aspnet-services>
+<aspnet-site>  
+  <asp-web-session>    
+    <asp-web-api>
+      <durandal-typescript-spa></durandal-typesrcipt-spa>
+    </asp-web-api>
+  </asp-web-session>
+</aspnet-site>
+```
+At the end of the day, the spa application works as follows:
+
+spa => (c#) => webApi
+  webApi => wcf services-layer 
+    wcf => Business Logic
+      sql-server
+      twillio
+      rxnt
+      table-storage
+
+
 # Portal
 Asp.Net Application & TypeScript Application that make up the member portal.  The Members Application is the Asp.Net application that exposes an api to typescript that communicates to the WCF services.
 

@@ -18,6 +18,10 @@ The following applications are a good example, of how I like to wrap my applicat
   </asp-web-session>
 </aspnet-site>
 ```
+Essentially its a three tier architecture, do to its layers. 
+I would be more than happy to go into depth, sharing the structure of this application, and why we choose to develop it this way.
+
+
 At the end of the day, the spa application works as follows:
 
 spa => (c#) => webApi

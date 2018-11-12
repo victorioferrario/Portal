@@ -5,7 +5,9 @@ The following applications are a good example, of how I like to wrap my applicat
     <sql-services></sql-services>
     <table-storage></table-storage>
    <wcf-services></wcf-services>
+   <identity-server></identity-server>
 </aspnet-azure>
+
 <aspnet-services>
     ## The repository for this later can be found:
     https://github.com/victorioferrario/Services
